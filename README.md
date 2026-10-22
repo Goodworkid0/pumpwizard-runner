@@ -4,11 +4,13 @@ PumpWizard Runner is an open-source, local-first desktop application for running
 
 This repository is independent at runtime. Importing a configuration is a local paste or file operation: the app does not need a PumpWizard account, signal feed, hosted service, or license server to operate.
 
+The companion [PumpWizard website](https://github.com/Goodworkid0/pumpwizard-website) provides hosted market research, paper-trading dashboards and replay tools. This repository contains the independent local runner.
+
 ## Current build: 0.1.0
 
 The first development build provides a local strategy library, compatibility inspection, a native desktop shell, and a command-line interface. It does **not** yet monitor markets, connect a wallet, or submit a transaction. Those capabilities will be added in public, versioned milestones; the app never presents an unimplemented strategy as executable.
 
-Download a ready-to-run build from [Releases](https://github.com/Smileyface101/PumpWizard/releases). Extract the archive and run PumpWizard. The build includes Python and its required files.
+Download a ready-to-run build from [Releases](https://github.com/Goodworkid0/pumpwizard-runner/releases). Extract the archive and run PumpWizard. The build includes Python and its required files.
 
 To run from source:
 

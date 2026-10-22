@@ -28,9 +28,9 @@ dev = ["pytest==8.4.2", "ruff==0.13.2"]
 pumpwizard = "pumpwizard_runner.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/Smileyface101/PumpWizard"
-Repository = "https://github.com/Smileyface101/PumpWizard"
-Issues = "https://github.com/Smileyface101/PumpWizard/issues"
+Homepage = "https://github.com/Goodworkid0/pumpwizard-runner"
+Repository = "https://github.com/Goodworkid0/pumpwizard-runner"
+Issues = "https://github.com/Goodworkid0/pumpwizard-runner/issues"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
