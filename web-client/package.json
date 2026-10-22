@@ -1,0 +1,43 @@
+{
+  "name": "web-client",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "test:e2e": "npm run build && playwright test"
+  },
+  "dependencies": {
+    "@scure/bip39": "1.6.0",
+    "@wallet-standard/app": "1.1.0",
+    "@wallet-standard/base": "1.1.0",
+    "qrcode": "1.5.4",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "tweetnacl": "1.0.3"
+  },
+  "overrides": {
+    "@solana/web3.js": {
+      "rpc-websockets": "9.2.0"
+    }
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.25.0",
+    "@playwright/test": "^1.63.0",
+    "@solana/web3.js": "1.99.0",
+    "@types/qrcode": "1.5.6",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "@vitejs/plugin-react": "^4.4.1",
+    "eslint": "^9.25.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "globals": "^16.0.0",
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.30.1",
+    "vite": "^6.3.5"
+  }
+}

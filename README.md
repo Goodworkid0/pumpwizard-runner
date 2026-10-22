@@ -1,56 +1,69 @@
 # PumpWizard Runner
 
-PumpWizard Runner is an open-source, local-first desktop application for running a supported PumpWizard strategy configuration with the user's own market data, research history, wallet, and position library.
+A local-first application for Solana strategy research, market monitoring and wallet workflows. A Python service manages local data and background jobs; a React and TypeScript interface runs in your browser.
 
-This repository is independent at runtime. Importing a configuration is a local paste or file operation: the app does not need a PumpWizard account, signal feed, hosted service, or license server to operate.
+The companion [PumpWizard Website](https://github.com/Goodworkid0/pumpwizard-website) provides hosted market research, paper-trading dashboards and reproducible replay. The runner operates independently: importing a strategy is a local file or paste operation and does not require a website account or hosted signal service.
 
-The companion [PumpWizard website](https://github.com/Goodworkid0/pumpwizard-website) provides hosted market research, paper-trading dashboards and replay tools. This repository contains the independent local runner.
+## Current source: 0.2.0.dev121
 
-## Current build: 0.1.0
+This development version includes:
 
-The first development build provides a local strategy library, compatibility inspection, a native desktop shell, and a command-line interface. It does **not** yet monitor markets, connect a wallet, or submit a transaction. Those capabilities will be added in public, versioned milestones; the app never presents an unimplemented strategy as executable.
+- Monitoring and trading workspaces, saved strategies and shared session allocations.
+- Background observation, research jobs, paper evaluation and replay that continue independently of the browser.
+- Wallet, holdings and position views, recorded balance history and token charts.
+- An Activity workspace with order receipts, decision explanations, filters, pagination and CSV exports.
+- Encrypted local wallet storage, explicit signing authorization, bounded allowances and recovery workflows.
+- An optional AI assistant with request previews and separate approval before provider calls or expanded context access.
 
-Download a ready-to-run build from [Releases](https://github.com/Goodworkid0/pumpwizard-runner/releases). Extract the archive and run PumpWizard. The build includes Python and its required files.
+Source publication is separate from a packaged release. See [Releases](https://github.com/Goodworkid0/pumpwizard-runner/releases) for published downloads and [CHANGELOG.md](CHANGELOG.md) for version history. Publishing source does not establish funded-trading reliability or profitable strategies; route, authorization and execution checks remain enforced by the application.
 
-To run from source:
+## Technology
 
-```bash
+Python 3.11+, SQLite, React, TypeScript, Vite, Solana RPC/solders, cryptography, pytest and Playwright. PyInstaller packaging is provided for standalone builds.
+
+## Run from source
+
+Install Python 3.11+ and Node.js 22, then run from the repository root:
+
+```sh
 python3 -m venv .venv
-.venv/bin/pip install -e .[dev]
-.venv/bin/pumpwizard desktop
+.venv/bin/python -m pip install -e '.[dev]'
+cd web-client
+npm ci
+npm run build
+cd ..
+.venv/bin/solanamarket-wizard --data-dir /tmp/pumpwizard-local-evaluation browser
 ```
 
-## Importing a strategy
+On Windows, use the corresponding executables under `.venv/Scripts/`. Use a dedicated data directory for evaluation. The local API binds to loopback; wallet unlock, collection and signing are separate operations.
 
-The app can import an existing `pumpwizard.strategy-handoff/v1` JSON handoff or a native `pumpwizard.strategy/v2` package. Version 0.1.0 stores legacy handoffs for inspection and reports their execution compatibility as unavailable; it does not quietly reinterpret their simulation fields as a live strategy.
+For background operation, use the [service guide](docs/BACKGROUND-SERVICE.md). Review [backup and restore procedures](docs/PILOT-LINUX-CANDIDATE.md) before opening existing data with a newer version.
 
-```bash
-pumpwizard import examples/xyz-local-strategy.json
-pumpwizard strategies
-pumpwizard status
+## Architecture
+
+- **Local service:** owns the data directory, authenticated loopback API, background jobs and recovery state.
+- **Browser client:** displays account, research and strategy state and submits explicit user actions.
+- **Strategy library:** validates versioned configuration data; imported strategies are not arbitrary executable code.
+- **Wallet and execution:** keeps monitoring, wallet ownership, signing permission and spending limits separate.
+- **Research evidence:** records inputs, decisions and receipts; missing observations or valuations remain visible.
+
+See the [documentation index](docs/README.md), [security policy](SECURITY.md) and [contribution guide](CONTRIBUTING.md).
+
+## Development checks
+
+```sh
+.venv/bin/python -m pytest
+.venv/bin/ruff check .
+.venv/bin/python packaging/check_release_note.py
+cd web-client
+npm run build
+npm run lint
+npx playwright install chromium
+PUMPWIZARD_E2E_PYTHON=../.venv/bin/python npx playwright test
 ```
 
-Local application data defaults to a platform-specific user directory. Override it for testing or a portable install with `--data-dir PATH`. It contains the strategy library and later releases will add the encrypted wallet material and position ledger. It is never stored in the Git repository.
+Browser tests use synthetic fixtures and a separate local test server. Results for this source publication are recorded in [verification status](docs/VERIFICATION-STATUS.md). Tagged releases require a matching published Community note, as described in [release-note requirements](docs/PATCH-NOTES.md).
 
-## Design commitments
+## License
 
-- The app has its own data collection, research, strategy evaluation and position library.
-- A copied strategy config is data, never arbitrary executable code.
-- Strategies cannot enable real execution, choose a wallet, alter the RPC endpoint, or expand the user's limits.
-- The strategy engine and its data semantics are versioned. An unsupported config cannot run as a near match.
-- A user can choose automatic or manual position management when execution support lands.
-- A release is retained as a runnable download even when a newer build fails.
-
-The roadmap and compatibility rules are in [docs/ROADMAP.md](docs/ROADMAP.md). See [SECURITY.md](SECURITY.md) before reporting a vulnerability or using a future wallet feature.
-
-## Contributing
-
-Install the development extras and run:
-
-```bash
-pytest
-ruff check .
-```
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request.
-
+MIT. See [LICENSE](LICENSE).

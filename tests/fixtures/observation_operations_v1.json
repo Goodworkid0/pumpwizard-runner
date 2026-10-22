@@ -1,0 +1,58 @@
+{
+  "schema": "pumpwizard.observation-operations-fixtures/v1",
+  "states": [
+    {
+      "state": "healthy",
+      "campaign_state": "running",
+      "usable_intervals": 8,
+      "expected_intervals": 8,
+      "blocker": null,
+      "message": "Collection and evaluator exposure are current."
+    },
+    {
+      "state": "sparse",
+      "campaign_state": "running",
+      "usable_intervals": 2,
+      "expected_intervals": 8,
+      "blocker": "minimum_independent_tokens",
+      "message": "Responses arrived but too few independent tokens were usable."
+    },
+    {
+      "state": "stale",
+      "campaign_state": "degraded",
+      "usable_intervals": 0,
+      "expected_intervals": 8,
+      "blocker": "max_source_age_seconds",
+      "message": "Source timestamps exceeded the frozen freshness policy."
+    },
+    {
+      "state": "outage",
+      "campaign_state": "degraded",
+      "usable_intervals": 0,
+      "expected_intervals": 8,
+      "blocker": "provider_failure",
+      "message": "Provider requests failed and bounded backoff is active."
+    },
+    {
+      "state": "exhausted",
+      "campaign_state": "capped",
+      "usable_intervals": 6,
+      "expected_intervals": 8,
+      "blocker": "request_quota",
+      "message": "The frozen provider-request ceiling was reached."
+    },
+    {
+      "state": "paused",
+      "campaign_state": "paused",
+      "usable_intervals": 5,
+      "expected_intervals": 8,
+      "blocker": "service_restart",
+      "message": "Explicit Resume is required; missed intervals are not backfilled."
+    }
+  ],
+  "unknown_cost": {
+    "price_basis": "unknown",
+    "known_total_cost": null,
+    "fully_costed_profitability_allowed": false
+  }
+}

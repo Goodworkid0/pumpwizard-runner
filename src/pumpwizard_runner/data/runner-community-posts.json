@@ -1,0 +1,1972 @@
+[
+  {
+    "id": "pumpwizard-runner-0-2-0-dev121",
+    "date": "2026-10-03",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev121 — Clearer Orders and Decisions",
+    "summary": "Add recorded order activity and saved candidate charts, clear summaries, searchable filters, expandable details and CSV exports to Activity.",
+    "paragraphs": [
+      "Orders now combines summary cards, a submitted buy/sell timeline and clickable settlement counts with searchable, sortable records. Filter by time, side, strategy and status. Expand an order to inspect its recorded receipt, exact SOL fees and wallet changes, mint and signature; copy identifiers or open its Explorer link and full token chart. CSV exports include all matching records across pages.",
+      "Decisions combines the selected scope into one workspace. A candidate market map plots saved market cap against liquidity, distinguishing enter signals from do-not-enter decisions and shading the selected strategy entry range when available. Reason counts, search, time/strategy/reason filters, sorting and expandable saved inputs make the latest candidate decisions easier to inspect. Token charts may include later market data and remain separate from the saved inputs. An inspected token stays open when its latest saved decision refreshes.",
+      "Both views use consistent headings, token identity icons, compact summaries and labelled mobile record cards. Scope changes reset filters to that session or strategy; archived order attribution is retained. Unknown receipts, fees, timestamps and candidate inputs stay explicit rather than becoming fabricated values or chart points."
+    ],
+    "bullets": [
+      "Frontend build and lint passed. Twenty-three distinct selected Playwright checks passed after test corrections and focused reruns. The final four Activity checks passed against the updated frontend, covering desktop/mobile charts, scope isolation, filters, pagination, CSV exports, copying, exact fee formatting, missing inputs, full token charts and keeping inspected decisions open during refresh. Package, backup and installed-service evidence is recorded separately in output/dev121-activity-verification.json; this draft does not claim its completion.",
+      "Decisions uses the API’s latest saved stance per token, up to 12 candidates per strategy, with open held tokens excluded; it is not a complete decision history or trade result. Order charts count recorded submissions, not confirmed fills. This Community post is an unpublished local draft. No full repository suite or real funded transaction is claimed. Strategy exchange formats, accounting, allocations and execution authorization gates are unchanged."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev120",
+    "date": "2026-10-03",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev120 — Positions belong to sessions and strategies",
+    "summary": "Simplify the wallet dashboard to Overview, Activity and Wallet; show Positions only for the selected session or strategy.",
+    "paragraphs": [
+      "The wallet-wide dashboard has three tabs: Overview, Activity and Wallet. The duplicate global Positions tab, open-position preview and position shortcut are removed. Overview keeps the Performance cards, full strategy comparison, current/history filters, attention and recent trades from dev119. Per-strategy open counts and historical results retain their existing accounting.",
+      "Selecting a session or strategy adds its Positions tab and scoped preview, preserving ownership, exit-rule details and position selection. All wallet activity returns to Overview and removes the scoped Positions view. Its click handler is corrected so clearing a selection activates a valid tab.",
+      "Manual holdings and reviewed sell actions remain in Wallet. Wallet-wide stale-price reviews and sidebar wallet shortcuts open Wallet. Selecting a holding name opens the full token chart, keeping manual-token details accessible after the global Positions view is removed. Closing a manual order returns to Wallet; closing an attributed strategy order returns to its strategy positions."
+    ],
+    "bullets": [
+      "Frontend build and lint passed. Nineteen selected source-browser checks passed after fixes and rerunning the selected set, covering three wallet tabs, four selected-scope tabs, returning from Positions to Overview, archived attribution, stale-price reviews, desktop/mobile layout, token charts, strategy ownership and synthetic trade recovery. Native package, backup and installed-service evidence is recorded separately in output/dev120-positions-verification.json; this draft does not claim their completion.",
+      "This is an unpublished local Community draft. Existing valuation, since-start performance and missing-history limits apply. No full repository suite or real funded transaction is claimed. Strategy exchange formats, allocations, accounting and trading authorization gates are unchanged."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev119",
+    "date": "2026-10-03",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev119 — Performance becomes Overview",
+    "summary": "Merge Performance into Overview, retaining its P&L cards and detailed strategy comparison alongside compact operational status and attention.",
+    "paragraphs": [
+      "Dashboard now has Overview, Positions, Activity and Wallet, with New order remaining an action. Overview uses the previous Performance layout: realized P&L, unrealized P&L, total strategy P&L and closed-position cards, plus the full strategy table with operating state, positions, results and recorded fees. The separate Performance tab is removed.",
+      "A compact row adds monitoring, verified service-trading and open-position status. Shared funding alerts remain deduplicated per session, with existing review actions for funds, strategy faults, pending orders and stale prices. Open-position and recent-trade previews follow the comparison, with compact empty states. The table defaults to Current, including paused strategies; All history adds labelled archived rows and Needs attention stays limited to current strategies.",
+      "Since-start SOL results retain archived attribution and the existing accounting. Changing the table filter does not remove historical results from the summary. Session and strategy scope, total-P&L sorting, mobile cards and wallet-wide holdings/history remain. The dev118 holdings graphs, artwork, Details and trading setup checklist are retained."
+    ],
+    "bullets": [
+      "Frontend build and lint passed. Twelve selected source-browser checks passed, covering the four-tab layout, merged P&L cards and full comparison, current/archived/attention filtering, total-P&L sorting, preserved strategy scope, desktop/mobile layout, holdings and the existing synthetic session sale flow. Native package, backup and installed-service checks are recorded separately in output/dev119-overview-verification.json; this draft does not claim their completion.",
+      "This local development candidate has an unpublished Community draft. Missing costs, stale prices and unavailable historical metrics keep their existing limits. No full repository suite or real funded transaction is claimed. Strategy exchange formats, accounting, allocations and trading authorization gates are unchanged."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev118",
+    "date": "2026-10-03",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev118 — Clear strategy setup and holdings graphs",
+    "summary": "Show current strategies separately from archived results, clarify real-wallet trading setup and display recorded holdings price graphs with token artwork.",
+    "paragraphs": [
+      "Overview now lists current strategies in a compact strategy/session, operating state, open positions and total SOL result table. Archived strategies remain in Performance and historical results retain their attribution. Shared session funding warnings appear once per session and link directly to the existing funds dialog.",
+      "The strategy picker groups versions of the same named strategy, prioritizes the version used by this session and expands other saved versions on request. Added to this session describes membership, while Can add describes an available compatible version. Edit session strategy opens the attached configuration. The real-wallet checklist separately shows supported rules, fresh confirmed funds and wallet or service trading approval. Optional simulation history stays collapsed and does not grant trading authority.",
+      "Holdings replace percentage-based trend placeholders with graphs of actual recorded prices and timestamps, hover inspection and an expandable full chart. Visible rows progressively read cached data and request a bounded public history page when needed. Token icons use exact-mint metadata and a bounded approved-host proxy, including sanitized static SVG; failed or missing artwork uses a labelled generated identifier. Evidence is renamed Details because it shows ownership, purchase attribution, valuation and historical market records, rather than a paper-trading position."
+    ],
+    "bullets": [
+      "Frontend build and lint passed. Seventy-three focused Python checks passed for strategy and archived accounting, shared funding and wallet scope, holding valuation and history, metadata alternatives, bounded artwork proxying and SVG sanitization. Nineteen distinct source-browser checks passed after corrections and focused reruns, covering desktop/mobile layout, real price graphs, decoded artwork and fallback recovery, strategy versions and funding status, current/archived separation, session scope, wallet receipts and manual exits. New display/setup checks sent no trading orders. Native package and local update evidence is recorded separately in output/dev118-dashboard-verification.json; this note does not claim their completion.",
+      "This local Linux development candidate has an unpublished Community draft. Missing history or stale marks stay explicit; complete strategy return curves, ROI and drawdown are not added. Setup readiness is not a profitability claim. No real funded transaction, complete repository suite, public release or Community publication is claimed. Strategy exchange formats, allocations and execution authorization gates remain unchanged."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev117",
+    "date": "2026-10-02",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev117 — Strategies and positions dashboard",
+    "summary": "Focus Overview on active strategies, open positions and since-start results, with separate Performance, Activity and Wallet views.",
+    "paragraphs": [
+      "Dashboard now has Overview, Positions, Performance, Activity and Wallet. Overview removes the repeated wallet balance and holdings list, showing separate monitoring and service-trading counts, attention signals, active strategy comparison, compact wallet positions and recent orders. New order is an action. Wallet contains the existing asset tools and observed valuation charts; deposits and withdrawals remain included in wallet-value movement.",
+      "Strategy results reuse the existing receipt-backed SOL accounting and fresh retained marks, exposing realized, unrealized and total P&L, recorded fees and closed positions per strategy, including archived strategies and user-directed exits of their positions. Session and strategy selection persists across the four operational tabs; Wallet returns to the whole selected wallet. Session funds remain shared rather than being repeated as each strategy’s allocation.",
+      "Position details expand on demand. Narrow-screen strategy and position previews become labelled cards. Activity separates orders from strategy decisions. Unknown costs or stale marks remain unavailable, while known realized results can remain visible. Trading counts require fresh matching service authorization; enabling monitoring alone does not count as trading."
+    ],
+    "bullets": [
+      "Frontend build and lint passed. Forty focused Python checks passed for session/strategy accounting, wallet scope, funding and holding valuation. Twelve distinct source-browser checks passed after fixes and targeted reruns, covering dashboard accounting and scope, archived attribution, desktop/mobile display, wallet value/history, manual and session sale flows, and the detached activity view. Browser trade flows use isolated synthetic RPC; the new dashboard navigation check sent no orders.",
+      "This is a local Linux development candidate with an unpublished Community draft. Package and installed-service validation are recorded separately; this note does not claim their completion. Strategy comparisons currently use since-start SOL results, not period returns, return percentages or drawdown. Wallet charts retain seven days of observed snapshots and gaps. Legacy independent-strategy performance and browser-only runtime trading counts remain unavailable. No real funded transaction, full repository suite, public release or Community publication is claimed. Saved strategy exchange formats and trading authorization gates are unchanged."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev116",
+    "date": "2026-10-02",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev116 — Wallet balance when adjusting session funds",
+    "summary": "Show confirmed wallet SOL and the amount available to allocate prominently in Adjust trading funds.",
+    "paragraphs": [
+      "Adjust trading funds now displays the confirmed wallet balance and available-to-allocate SOL above the existing session allocation, available trading cash and managed positions. A check time identifies the fetched snapshot, and Refresh funds reads the balance again. Available SOL excludes existing reservations across sessions and orders.",
+      "The allocation preview shows the unallocated wallet SOL remaining after a top-up or release. An amount above the available wallet funds shows a clear explanation and leaves Update allocation disabled. Existing exact lamport calculations, shared-session reservations, stale-snapshot checks and strategy/signing pause requirements are unchanged. The Overview simplification from dev115 is retained."
+    ],
+    "bullets": [
+      "Frontend build/lint, seven targeted session-funds Python checks and two isolated offline browser scenarios passed. Browser checks cover balance refresh after external spending, reservations from another session, top-up, release, overdraw prevention, zero available funds and desktop/mobile layout.",
+      "This is a local Linux development candidate with an unpublished Community draft. No complete repository suite, real funded transaction or public release is claimed. Balances reflect the last successful confirmed RPC read and can change afterward; saving retains the existing fresh balance and reservation checks. This UI change does not increase user allocations or authorize trading."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev115",
+    "date": "2026-10-02",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev115 — Compact Overview",
+    "summary": "Remove the repeated Overview title and manual Refresh button while retaining automatic updates and responsive layout.",
+    "paragraphs": [
+      "Overview now starts with the wallet value, SOL balance, open-position P&L and running-strategy cards directly below the tabs. The Wallet overview / Dashboard heading, repeated wallet identity and manual Refresh button have been removed.",
+      "Portfolio reads continue automatically every 30 seconds while the app is visible, and trading records retain their existing eight-second refresh. Performance charts, saved history, strategy and holdings links, data warnings and narrow-screen layout remain available. Signing authority, trading controls, saved strategy formats and allocations are unchanged."
+    ],
+    "bullets": [
+      "Frontend build and lint passed. The two existing portfolio browser checks passed against an isolated synthetic backend, covering valuation/history calculations, desktop/mobile layout, saved history across reload and automatic stale-price updates with no Overview Refresh button.",
+      "This is a local development candidate with an unpublished Community draft. No complete repository suite, real funded transaction, public release or Community publication is claimed."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev114",
+    "date": "2026-10-02",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev114 — Strategy-sized auto-trading limits",
+    "summary": "Keep wallet-approved auto trading and size its proposed position allowance to the selected strategy.",
+    "paragraphs": [
+      "Imported private-key and app-generated local wallets retain dev113’s encrypted service enrollment, selected-session limits, exact-build wallet approval and explicit service-password Start. Run monitor and trading Start enable the background collector. Source previews and unsigned starts remain blocked, and paper research remains monitoring-only.",
+      "The proposed auto-trading allowance now uses the lower of the saved risk-policy position cap and the strategy’s own position count. An older policy permitting more positions therefore does not inflate the default exit reserve for a smaller strategy. Saved policies and allocations are not changed. The existing conservative reserve is 0.0201 SOL per proposed position, plus entry funds; insufficient funding remains a preflight blocker.",
+      "Exact transaction signing, route simulation, atomic allowance usage, receipt recovery, pause/stop and locking on expiry, restart or sleep remain. Runs last at most one hour and require fresh wallet approval to renew."
+    ],
+    "bullets": [
+      "The reused dev113 backend passed 47 targeted signing/approval/service/monitor Python checks. Seven source browser scenarios and nine distinct packaged scenarios passed using offline or synthetic RPC, including signed approval and service activation for both local-wallet types and background entry/exit after browser closure. No completed dev114 package check is claimed in this prepared draft.",
+      "This is a local Linux development candidate with an unpublished Community draft. No complete repository suite, real funded auto-trading lifecycle, OS reboot, public release or Community publication is claimed. Existing user wallet records, allocations and stored briefs were preserved during the dev113 install and scanner check."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev113",
+    "date": "2026-10-02",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev113 — Wallet-approved auto trading",
+    "summary": "Expose bounded auto-trading setup for imported and app-generated local wallets and start the scanner from session controls.",
+    "paragraphs": [
+      "Set up auto trading opens encrypted service enrollment for a local wallet, selected-session allowance review, wallet-signed approval of the exact installed build, routes and duration, then a fresh service password and explicit Start. Imported private-key and app-generated wallets use the same encrypted local-wallet format. The default route selection includes all four routes already allowed by the allowance. Approval, active and inactive states are displayed accurately; an unsigned request and a source preview cannot enable live signing.",
+      "Run monitor and service trading Start now enable the background collector. A waiting session displays Start scanning instead of claiming that its scanner is active. Monitoring does not authorize an order. Start is bound to the selected session’s allowance, and existing allocation, spending, position, fee and exit-reserve preflight limits are shown without increasing wallet allocations.",
+      "The existing wallet-signed capability and encrypted service vault retain exact-ticket signing, normal route simulation, atomic allowance usage, single-broadcast recovery, pause/stop and locking on expiry, restart or sleep/clock discontinuity. Runs last at most one hour and require fresh approval to renew. Strategy exchange formats and monitoring-only paper research are preserved."
+    ],
+    "bullets": [
+      "Forty-seven focused signing/approval/service/monitor Python checks and seven source browser scenarios passed, including synthetic background entry/exit after browser closure, restart locking, retained trading allocations, service controls and monitoring paper research. Frontend build/lint passed. Two additional wallet-approval browser scenarios require the exact packaged app and are skipped in a source preview; no completed packaged approval check is claimed in this prepared note.",
+      "This is a local Linux development candidate with an unpublished Community draft. No complete repository suite, real funded auto-trading lifecycle, OS reboot, public release or Community publication is claimed. Real activation still requires the selected wallet’s scoped approval, a service unlock and successful existing preflight checks."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev112",
+    "date": "2026-10-02",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev112 — Paper research for monitoring sessions",
+    "summary": "Make forward paper research available only in monitoring sessions, with matching UI and API enforcement.",
+    "paragraphs": [
+      "Forward paper research and paper campaign sources now require a monitoring session, using the saved strategy brief and owning workspace. Older monitoring and trading briefs are recognized. Trading-session evidence views retain Evidence, Results and History without Forward paper or Campaigns tabs; their funded allocation, execution mode, order controls and custody controls remain visible.",
+      "The API rejects typed and legacy paper starts, paper resumes and campaign starts/resumes tied to trading sessions. Older paper records remain readable and can be paused or stopped for cleanup. Stored briefs, real SOL allocations, strategy exchange formats and production execution gates are preserved. Retrospective evidence review remains available for trading sessions."
+    ],
+    "bullets": [
+      "Seven focused synthetic browser scenarios passed for funded interactive, service and legacy browser Autopilot controls, monitoring paper research, forward campaigns and paper retry/history views. Thirty-five targeted paper/research/campaign Python checks and frontend build/lint passed. These checks cover rejected trading-session API requests and explicit monitoring paper start, pause and resume. No complete repository suite is claimed.",
+      "This is a local Linux development candidate with an unpublished Community draft. No funded transaction, signing unlock, OS reboot, public release or Community publication is claimed."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev111",
+    "date": "2026-10-02",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev111 — Trading controls without paper shortcuts",
+    "summary": "Keep funded trading-strategy controls focused on their actual SOL allocation and execution mode.",
+    "paragraphs": [
+      "Trading-strategy monitors and sidebar menus no longer show the Paper trading shortcut. Their session brief also omits the Paper budget field, retaining the actual shared SOL allocation, execution mode, loss review, order controls, evidence review and signing/custody controls. Older interactive and Autopilot briefs are recognized even when the newer session-mode field is absent.",
+      "Monitoring strategies retain their separate paper-research shortcut and budget. The removed shortcut opened a distinct simulated research run; it did not spend the trading allocation or convert the trading session to paper mode. This presentation change preserves stored session briefs, SOL reservations, strategy exchange formats, approval requirements and production execution gates."
+    ],
+    "bullets": [
+      "Four focused synthetic browser scenarios passed for funded interactive, service Autopilot and older browser Autopilot controls, and monitoring paper research. They verify retained allocation/custody/order controls and explicit paper start, pause and stop with no submitted transaction. Frontend build and lint passed. No complete repository suite is claimed.",
+      "This is a local Linux development candidate with an unpublished Community draft. No funded transaction, signing unlock, OS reboot, public release or Community publication is claimed."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev110",
+    "date": "2026-10-02",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev110 — USD history and activity actions",
+    "summary": "Make the wallet chart follow SOL/USD and place startup/session recovery actions inside System activity & AI chat.",
+    "paragraphs": [
+      "The inline wallet chart now follows the main currency switch: its label, scale, path, hover details and keyboard inspection show SOL or USD together. The compact header and 58-pixel chart are retained, with the larger view in History.",
+      "Lifetime USD history estimates confirmed native balances using historical SOL/USD opening prices from Coinbase, hourly for histories up to 12 days and daily for longer histories. Price readings are cached separately, load progressively and include price movement while the confirmed native balance is unchanged. The latest point uses the current quote when available. Missing receipts or prices remain gaps with partial coverage or automatic retry; older balances are not repriced with today’s rate. First available activity is not a wallet key creation date, and provider/archive coverage can remain incomplete.",
+      "Retry startup, Review session and other service recovery actions move from the top header into System activity & AI chat. These controls collapse with that panel and follow it into the detached window, retaining their existing behavior. System status continues to show health and attention signals in the header."
+    ],
+    "bullets": [
+      "Thirteen focused synthetic browser scenarios passed for currency history, historical USD inspection, missing values, retry, compact desktop/mobile layout, public locked restoration, portfolio views, system recovery and detached activity/chat. Frontend build/lint and 27 targeted native balance/history, historical-price and currency API Python checks passed. No complete repository suite is claimed.",
+      "A read-only check priced the connected mainnet wallet’s 122 listed transactions into 284 USD readings with zero missing price intervals. This verifies that wallet’s available history at the check time, not archive completeness or continued public-provider availability.",
+      "This is a local Linux development candidate with an unpublished Community draft. Existing encrypted-account, ownership, signing and provider approval gates and production execution limits are preserved. No funded transaction, OS reboot, public release or Community publication is claimed."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev109",
+    "date": "2026-10-02",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev109 — Compact wallet history header",
+    "summary": "Bring the header back near its earlier height while retaining the native USD equivalent and confirmed lifetime SOL chart.",
+    "paragraphs": [
+      "The inline chart now uses a 58-pixel plot with readable dates and balance labels. The currency switch and History controls share one row, and tighter card spacing removes the excess header height. Guides and Sign out remain beside the wallet card. History still opens the larger chart.",
+      "The independent native USD refresh, price fallback, persisted transaction backfill, range controls and hover/keyboard inspection remain available. No wallet history or signing rules changed in this layout correction. History starts at first available confirmed activity; key creation dates, archive completeness and older USD prices are not inferred."
+    ],
+    "bullets": [
+      "Nine focused synthetic native-balance/history and portfolio browser scenarios passed, covering compact height, desktop/mobile overflow, currency persistence, history continuation, missing-price behavior and locked public wallet restoration. Frontend build and lint passed. No complete repository suite is claimed.",
+      "This is a local Linux development candidate with an unpublished Community draft. No funded transaction, public release or Community publication is claimed."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev108",
+    "date": "2026-10-02",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev108 — Reliable USD balance and lifetime SOL chart",
+    "summary": "Refresh the native balance independently, recover wallet history progressively and show a larger chart with dates, balance scale and hover inspection.",
+    "paragraphs": [
+      "The header balance no longer depends on the slower token portfolio request. A separate public native-balance read refreshes automatically, using a fresh Pump SOL/USD quote with a timestamp-checked Coinbase fallback. A retained estimate expires after five minutes and is labelled when aged. If both quotes fail, SOL stays the main amount and the USD status retries automatically. These display quotes are separate from execution validation.",
+      "The inline SOL chart is larger, with shaded confirmed segments, a labelled balance scale, date ticks, hover and keyboard inspection, and 7d, 1m and All controls. All spans first available confirmed activity through today. The history loader saves public pre/post balances in a separate local cache, pages beyond the former 500-transaction lifetime limit, fetches receipts in paced batches, preserves confirmed progress across restarts and resumes after provider errors. Missing receipts remain visible gaps.",
+      "Saved wallet metadata restores a locked public dashboard after authorization expires or a temporary RPC failure. Public native-balance and native-history routes require the local browser token and never grant ownership proof, private journal access or signing. Portfolio accounting, signing and transaction approval retain their existing gates. Wallet key creation dates are not inferred from first activity; pruned provider histories can remain incomplete, and older USD rates are not invented."
+    ],
+    "bullets": [
+      "Nineteen focused synthetic browser scenarios passed for chart inspection, automatic continuation, USD switching, unknown quotes, wallet and dashboard controls, provider ownership proof, wallet scope and detached windows. Frontend build/lint and 75 targeted native balance/history, portfolio, account/API and release-note/packaging checks passed. No complete repository suite is claimed.",
+      "A read-only check recovered all 122 transactions then listed for the connected mainnet wallet, with zero missing receipts and zero balance gaps, and verified a live native USD estimate. This does not prove archive completeness for other wallets or guarantee public-provider availability.",
+      "This is a local Linux development candidate with an unpublished Community draft. No funded transaction, OS reboot, public release or Community publication is claimed."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev107",
+    "date": "2026-10-02",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev107 — Inline wallet balance history",
+    "summary": "Widen the wallet balance card and show a small SOL chart from the earliest available confirmed activity to today.",
+    "paragraphs": [
+      "The header balance card is wider and includes a small interactive SOL history chart directly beneath the main amount, visible without opening a dialog. The main SOL/USD display, smaller italic equivalent, saved currency switch and Deposit/Withdraw remain together. Guides and Sign out follow the card, with the existing desktop and mobile layout.",
+      "The native history reader pages backward through available confirmed wallet transactions and uses their exact pre/post balances. The chart includes deposits, withdrawals and failed transaction fee effects, and ends with the current confirmed balance. Missing records, unavailable timestamps and inconsistent balance continuity remain gaps. All in the expanded history view shows this longer SOL history alongside the existing 24h/7d ranges.",
+      "The earliest available transaction is not presented as the wallet key creation date. Reads are bounded to 500 signatures with a 20-second scan/detail budget and cached for five minutes; busy wallets or limited RPC data can show partial coverage. Historical dollar prices are not supplied by these transactions and are not filled with today’s rate. The inline chart stays labelled SOL history when the main amount switches to USD, and saved USD observations retain their recorded rates and seven-day history."
+    ],
+    "bullets": [
+      "Twenty distinct focused synthetic browser scenarios passed for inline and expanded charts, older activity, missing records, history retry, unit persistence, desktop/mobile layout and existing wallet, dashboard, service and detached-chat controls. Two inline-history checks were rerun after correcting the test for an additional asynchronously confirmed reading. Frontend build/lint and 64 wallet-history, portfolio, account/API and release-note/packaging checks passed; no complete repository suite is claimed.",
+      "This is a local Linux development candidate with an unpublished Community draft. Existing saved wallet encryption, signing and provider approval gates and production execution limits are preserved. No funded transaction, OS reboot, public release or Community publication is claimed."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev106",
+    "date": "2026-10-02",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev106 — One wallet balance with currency switch and history",
+    "summary": "Show SOL with a smaller italic USD equivalent, switch the main currency and inspect saved native wallet balance history.",
+    "paragraphs": [
+      "The compact header card now shows one native wallet balance: SOL as the main amount, with its estimated USD equivalent smaller and italic. A currency switch reverses the two amounts and remembers the choice for each wallet and network on the local server. Both amounts refer to the same SOL balance; complete or partial token-inclusive portfolio value stays in Dashboard Overview. Deposit and Withdraw remain in the card beside Guides and Sign out.",
+      "History opens an interactive native balance chart with SOL/USD currency controls, 24-hour and seven-day ranges, hover inspection and keyboard arrows. Confirmed readings save exact lamports and the observed USD equivalent in server-owned preferences, using 15-minute buckets and seven-day retention. USD history retains the rate recorded at the time, rather than repricing past balances at the latest rate.",
+      "Recording begins with the first confirmed reading while the Dashboard is open. Older chain activity is not backfilled and existing portfolio-worth history is not converted into native SOL history. Missing SOL/USD prices leave USD gaps while confirmed SOL remains available; unobserved intervals are also left blank. Deposits, withdrawals and fees affect the balance, and this native chart excludes token holdings."
+    ],
+    "bullets": [
+      "Eighteen focused synthetic browser checks passed for unit persistence, historical USD inspection, missing FX, first-point history, desktop/mobile layout and existing dashboard, wallet, service and detached-chat controls. Frontend build/lint and 44 account/API, encrypted backup/restore, storage-validation and release-note/packaging checks passed. No complete repository suite is claimed.",
+      "This is a local Linux development candidate with an unpublished Community draft. Existing encrypted accounts, signing and provider approval gates and production execution limits are preserved. No funded transaction, OS reboot, public release or Community publication is claimed."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev105",
+    "date": "2026-10-02",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev105 — Wallet address as the main identity",
+    "summary": "Make the wallet address the main line and show the provider, network and signing state beneath it.",
+    "paragraphs": [
+      "The wallet identity card now emphasizes the address in bold monospace text, showing eight characters from each end. Its full address remains available in the hover title and screen-reader text. The actual provider or generated-wallet name moves into the supporting details alongside the network and signing state.",
+      "Locked wallets retain Unlock signing inside the card, including its gentle pulse and reduced-motion support. Walletless research retains Connect wallet. This presentation change does not connect or unlock a wallet, change its address or grant trading permission."
+    ],
+    "bullets": [
+      "Three focused synthetic browser checks passed for desktop/mobile header layout, walletless keyboard access and Wallet Standard ownership. Frontend build and lint passed, with the existing large-chunk advisory. No complete repository suite is claimed.",
+      "This is a local Linux development candidate with an unpublished Community draft. Existing signing and provider approval gates remain in place; production execution remains blocked. No funded transaction, OS reboot, public release or Community publication is claimed."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev104",
+    "date": "2026-10-02",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev104 — Wallet controls in the top header",
+    "summary": "Put compact SOL and wallet value with Deposit/Withdraw left of Guides, and a larger Sign out tile to the right.",
+    "paragraphs": [
+      "The top header now includes confirmed SOL and estimated or explicitly partial known wallet value in one compact card with Deposit and Withdraw. Guides follows that card, then a larger Sign out tile. These controls keep their existing dialogs, signing checks and wallet-lock behavior.",
+      "The separate four-metric strip and wallet action/version toolbar are removed. Dashboard navigation sits beside the PumpWizard title, while the actual running version remains in System status. Open-position P/L and its data limits remain in Dashboard Overview; 24-hour wallet worth movement and its history requirements appear above the Performance charts.",
+      "A partial value still includes only known SOL and freshly priced holdings. Its price explanation remains available on hover and to assistive technology, with visible detail in Overview. Partial estimates never become complete history snapshots or a 24-hour worth move. Narrow screens stack the compact wallet card and keep Guides and Sign out together.",
+      "Unlock signing has a gentle amber glow pulse while it is available inside the locked wallet card. Its 2.4-second cycle changes the border and halo without moving or resizing the button. Reduced-motion preferences disable the animation. Both the action and pulse disappear after the existing unlock flow succeeds."
+    ],
+    "bullets": [
+      "Fifteen focused synthetic browser checks passed for header placement at 1280/1600/2048 pixels, mobile overflow and partial-value labels, Deposit/Withdraw access, signing unlock/sign-out, encrypted-account persistence, walletless navigation, provider setup/detached approvals, service recovery and separate valuation/P&L/history. Frontend build/lint and six release-note/packaging checks passed. No complete repository suite, funded transaction, OS reboot, public release or Community publication is claimed. This note is an unpublished draft.",
+      "Saved wallet encryption, financial records, service controls, provider approvals and production execution limits are unchanged. Signing remains locked after restoration until the existing unlock flow succeeds.",
+      "A browser preview with isolated synthetic data verified the changing glow, stable dimensions, reduced-motion disable/re-enable behavior and the existing password unlock flow. Frontend build and lint passed; no real wallet or funded transaction was used for that preview."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev103",
+    "date": "2026-10-02",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev103 — Unlock signing inside the wallet card",
+    "summary": "Keep the signing-locked state and Unlock signing action together in the restored wallet card.",
+    "paragraphs": [
+      "Unlock signing now appears inside the restored wallet card beside the selected provider or wallet name, address and network. The separate header signal is removed. The same wallet unlock dialog handles password or extension ownership proof, and the card action disappears once signing is available.",
+      "The card fits narrow screens, while walletless research retains Connect wallet. System status and Guides, compact optional AI setup and the detached activity/chat view retain their existing behavior."
+    ],
+    "bullets": [
+      "Five focused synthetic browser checks passed for desktop/mobile layout, walletless keyboard access, startup failures, password unlock and Wallet Standard ownership. Frontend build and lint passed, with the existing large-chunk advisory. No complete repository suite is claimed.",
+      "This is a local Linux development candidate with an unpublished Community draft. Existing signing and provider approval gates remain in place; production execution remains blocked. No funded transaction, OS reboot, public release or Community publication is claimed."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev102",
+    "date": "2026-10-02",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev102 — System controls and a Guides tile",
+    "summary": "Open service controls from System status and replace the optional AI header shortcut with a larger Guides tile.",
+    "paragraphs": [
+      "System status now opens the existing background service controls. Offline, unhealthy, stopped, restart-recovery and version-mismatch states remain visible in that card, replacing the separate Background status button. Active signing keeps its Pause or stop service action and Trading active detail.",
+      "A larger Guides tile with a book icon opens the existing welcome and usage guidance. Its desktop height matches the adjacent status and wallet cards; narrow screens stack the cards. It replaces the header AI shortcut and the smaller toolbar Guide button. AI connection and settings remain available inside System activity & AI chat.",
+      "The optional AI setup prompt is now one compact sentence with Add API key. The separate provider/footer strip is removed. Once a provider is connected, New chat and AI settings are compact icon buttons beside the message field, including in the detached window. Provider details remain in the status history and settings. Preparing a message still requires explicit approval before any provider request."
+    ],
+    "bullets": [
+      "Fourteen focused synthetic browser checks passed for desktop/mobile card placement, Guides keyboard access and welcome/update visits, service control/restart/offline states, startup/RPC failures, walletless research, AI setup and detached approvals, wallet values/history, actual extension names and encrypted-account persistence. Frontend build/lint and six release-note/packaging checks passed. No complete repository suite, funded transaction, OS reboot, public release or Community publication is claimed. The note is an unpublished draft.",
+      "This header change preserves wallet valuation limits, encrypted accounts, existing signing/approval gates and the companion activity/chat window. Production execution remains blocked.",
+      "Eight focused synthetic Chromium checks passed for Dashboard access, provider setup, chat drafts/history, pending approval/cancellation and detached-window lifecycle, including narrow-window fit. A real Firefox 140.16.0 check passed for popup persistence, setup-dialog focus, return, native closure and Dashboard reload. Frontend build/lint and six release-note/packaging checks passed; no full repository suite or real provider request is claimed."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev101",
+    "date": "2026-10-02",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev101 — Wallet beside precise system status",
+    "summary": "Show wallet connection beside the running version and verified service/RPC status, with wallet metrics in one row below.",
+    "paragraphs": [
+      "Wallet identity now follows System status beside the PumpWizard title. The name reflects the actual selected provider or generated wallet, such as Phantom wallet connected when signing is available. Reloaded wallet views explicitly retain signing locked. Walletless research keeps its Connect wallet control in that location.",
+      "System status reports the actual Runner version and running, checking, unavailable or service state instead of Core systems available. Service health and verified RPC status are visible, along with failed check names, restart recovery and Dashboard/service mismatch. Offline, stopped or unverified service states require attention.",
+      "Confirmed SOL, known or complete estimated worth, open-position P/L and 24-hour movement fill the row below without a repeated wallet identity block. The Dashboard tools, Background controls and detachable activity/chat view retain their existing behavior.",
+      "The detached System activity & AI chat window now stays open in Firefox. The previous explicit blank-page navigation discarded the new view and emitted a startup event that was mistaken for closure. The window now retains its initial document, and reattachment follows an actual closure or replacement of that document. Keep the main Dashboard open while using the companion window."
+    ],
+    "bullets": [
+      "Eleven focused synthetic browser checks passed for desktop/mobile wallet placement, actual extension provider names, restored signing locks, walletless keyboard access, healthy/offline/restarted service and failed startup/RPC states, complete versus partial valuations/history and detached-view sign-out. Frontend build/lint and six release-note/packaging checks passed; no complete repository suite is claimed.",
+      "RPC verified refers to the most recent startup or configuration check. It is not a guarantee that token prices are fresh or that a trade can execute.",
+      "Six focused synthetic Chromium window scenarios and a real Firefox 140.16.0 check passed for startup persistence, portal/styles/history, AI settings focus, return, collapsed detachment, native close and Dashboard reload. Firefox used a new profile and isolated synthetic data without a wallet signature or provider request.",
+      "This is a local Linux development candidate. Stale token prices and missing purchase-time FX retain their existing limits. Signing and approval checks remain in place and production execution remains blocked. No funded transaction, OS reboot, public release or Community publication is claimed; this note is an unpublished draft."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev100",
+    "date": "2026-10-02",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev100 — System status beside the app title",
+    "summary": "Place System status immediately after the PumpWizard title block while keeping actionable controls on the right.",
+    "paragraphs": [
+      "The System status card follows the PumpWizard mascot and title on desktop. Background status, recovery, signing and optional AI actions remain available on the right. Narrow screens stack the title, status and actions in that order.",
+      "The candidate retains the explicitly partial known wallet value and explanations for missing prices, purchase-time SOL/USD rates and complete 24-hour history, together with Dashboard holdings/tools and the detachable activity/chat view. This placement change does not refresh stale prices or reconstruct missing purchase-time FX."
+    ],
+    "bullets": [
+      "Eight focused synthetic browser checks passed for unified navigation, desktop/mobile layout, partial wallet values, complete history, walletless keyboard access and service control/restart/offline states. Frontend build/lint and six release-note/packaging checks passed; no complete repository suite is claimed.",
+      "This is a local Linux development candidate. Production execution remains blocked. No funded transaction, OS reboot, public release or Community publication is claimed; this note is an unpublished draft."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev99",
+    "date": "2026-10-02",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev99 — Detachable system activity and AI chat",
+    "summary": "Open the live system activity and optional AI chat in a movable window while keeping the Dashboard available.",
+    "paragraphs": [
+      "Open in new window beside System activity & AI chat works with the section expanded or collapsed. It moves only that section into a separate resizable window. The current activity history, unsent chat message, conversation and pending provider approval follow the view, and monitoring updates continue from the same Dashboard.",
+      "AI provider settings open within the companion window with their existing keyboard focus controls. Service and strategy links focus their existing controls in the main Dashboard. Return to Dashboard, Return here or closing the companion window restores the inline section. Blocked pop-ups show a message and keep the inline view available.",
+      "Keep the main Dashboard open while using the companion window. Closing or reloading the Dashboard, signing out or changing wallet scope closes the detached view. Detachment adds no AI tools or signing authority, and every provider request retains its existing approval.",
+      "This candidate also includes dev98's explicitly partial known wallet value, specific explanations for unavailable P/L and 24-hour movement, and clickable Background status controls. Stale token prices and missing purchase-time SOL/USD rates still require usable data."
+    ],
+    "bullets": [
+      "Five focused synthetic window scenarios and seven existing dashboard, chat-history and wallet-isolation browser scenarios passed, along with frontend build/lint and six release-note/packaging checks. The complete repository suite has not been run for this update.",
+      "Eight focused synthetic wallet-value and service-status browser checks passed for partial values, missing purchase-time FX, complete history, desktop/mobile layouts, navigation, walletless access and service control/restart/offline states.",
+      "This is a local Linux development candidate. Production execution remains blocked. No funded transaction, OS reboot, public release or Community publication is claimed; this note is an unpublished draft."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev98",
+    "date": "2026-10-02",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev98 — Explain wallet values and show background status",
+    "summary": "Show known wallet value explicitly as partial when prices are missing, and put service controls behind a live Background indicator.",
+    "paragraphs": [
+      "The header and Dashboard overview show known SOL and freshly priced holdings when a complete wallet total cannot be calculated. The value is labelled partial, and its explanation identifies stale token prices, missing prices or account coverage gaps. Failed holdings reads do not display a cached subtotal as current.",
+      "Open-position USD P/L explains missing purchase-time SOL/USD rates, unknown purchase costs and stale position prices. The 24-hour worth explanation distinguishes an incomplete current total from missing earlier history. Partial wallet values remain excluded from complete worth history and worth movement.",
+      "A clickable Background status indicator replaces the toolbar Service button. It shows checking, idle, monitoring, active trading, needs review or offline and opens the existing service controls. Pause or stop service remains visible during active service signing."
+    ],
+    "bullets": [
+      "Wallet accounting, retained valuation evidence, strategy exchange formats and approval/signing gates keep their existing behavior.",
+      "Eight focused synthetic browser checks passed for partial values, missing purchase-time FX, complete history, desktop/mobile layouts, unified navigation, walletless access and service control/restart/offline states. Frontend build and lint passed. Six release-note/packaging checks passed.",
+      "This is a local Linux development candidate. Stale token marks are not made fresh and missing purchase-time FX is not reconstructed. Production execution remains blocked. No funded transaction, complete repository suite, OS reboot, public release or Community publication is claimed; this note is an unpublished draft."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev97",
+    "date": "2026-10-02",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev97 — One wallet header and one Dashboard",
+    "summary": "Combine wallet and command-board information, and bring the full Portfolio tools into Dashboard.",
+    "paragraphs": [
+      "The full-width command-board header now includes the connected wallet, SOL balance, estimated worth, open Runner trading P/L, 24-hour worth movement and workspace actions. System status stays visible above them; the activity log and optional AI chat can be collapsed.",
+      "Dashboard now has Overview, Holdings, Positions, New Order and Trade History tabs. Holdings preserves the former Portfolio controls for refresh, valuation context, purchase sources, mint copying, explorer links, holding evidence, price history and reviewed sales. Session and strategy selections retain their existing scoped views and controls.",
+      "The header wraps on small screens and narrow dashboard panels show holdings as cards. Viewing holdings keeps Dashboard selected. Wallet valuation, accounting, strategy formats and signing/approval checks retain their existing behavior."
+    ],
+    "bullets": [
+      "The overview View holdings shortcut opens the same Dashboard tab as Holdings.",
+      "System activity and optional AI remain available within the shared header.",
+      "Eleven focused synthetic browser checks passed for shared-header navigation, walletless keyboard access, metrics/history, mobile holdings/evidence, session tools, restarted creator/holder reward sales, external balance changes and funding entry pauses. Frontend build/lint and six release-note/packaging checks passed.",
+      "This is a local Linux development candidate. Production execution remains blocked. No funded transaction, complete repository suite, OS reboot, public release or Community publication is claimed; this note is an unpublished draft."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev96",
+    "date": "2026-10-01",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev96 — Portfolio dashboard and strategy overview",
+    "summary": "Open Dashboard on wallet totals, compact strategy and position lists, and server-saved observed wallet-value and open-position P&L charts.",
+    "paragraphs": [
+      "The default Dashboard overview replaces the empty positions panel with estimated portfolio worth, confirmed SOL, open-position P&L, running-strategy counts and current holdings. Each strategy shows its monitoring status, entry/exit modes and recorded positions. All and Running filters help inspect strategies; detailed positions, orders, trade history and the full Portfolio remain available.",
+      "Wallet-value and open-position P&L charts offer 24-hour and seven-day views with hover and keyboard inspection. Observed snapshots are saved in the private local server database for each wallet/network, using fixed 15-minute buckets and seven-day retention. Previous saved worth observations can seed the chart without inventing historical P&L. Existing service backups include this history.",
+      "Wallet-value changes include deposits, withdrawals and external activity. The P&L series is the unrealized result of currently open Runner-recorded positions before exit costs, excluding closed trades, outside positions and wallet transfers. Incomplete valuations, unknown basis/FX and stale marks remain unavailable. Unobserved periods and unusable values leave chart gaps; history accumulates as the open app refreshes."
+    ],
+    "bullets": [
+      "Use a narrower overview sidebar with wrapped session controls; stack the overview before sessions on mobile. Paused entries remain distinct from monitoring and configured exits.",
+      "Focused storage tests passed for saved-history validation, restart persistence and backup/restore. Focused synthetic browser checks passed for navigation, wallet switching, metric calculation, history inspection and reloads, stale-data withholding, mobile layout and existing funding entry-pause controls. Frontend build, lint and changed storage-code lint checks passed.",
+      "This is an unpublished local Linux development candidate. Production execution remains blocked. No funded transaction, full repository suite, OS reboot, public release or Community publication is claimed."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev95",
+    "date": "2026-10-01",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev95 — Compact session funding and position controls",
+    "summary": "Show session positions and useful actions, and pause new entries while preserving monitoring and existing exit settings.",
+    "paragraphs": [
+      "The session tree shows its recorded open-position count and exit configuration, with View and Review sells actions. Positions outside the selected session get a wallet-view shortcut. A shortfall is a compact line with expandable balance details, Add SOL and Edit funds controls.",
+      "Pause entries replaces the trading session’s Pause all control. A funding shortfall now disables new entries, pauses entry permissions and cancels unsigned buy reviews while retaining monitoring, configured exits, exit authorizations and unsigned sell reviews. Already stopped strategies and locked signing authorizations are not automatically restored.",
+      "Refilling never resumes entries automatically. Resuming reviewed or automatic entries needs a fresh funding check. Sales remain subject to existing wallet funds, fee, token, approval and signing checks; keeping an exit setting does not guarantee an executable sale. Manual liquidation and allocation edits explicitly stop strategies before their existing handoff or funds-change workflows."
+    ],
+    "bullets": [
+      "Position summaries preserve removed-strategy purchase attribution and separate session holdings from other recorded wallet positions. Missing market observations no longer prevent the session list from displaying recorded positions.",
+      "Focused backend checks cover entry-only pauses, retained exit reviews and permissions, same-wallet scope, cached buy-ticket removal, manual entry resume and position ownership. Desktop/mobile browser scenarios verify the compact warning, position actions and a separately approved synthetic liquidation.",
+      "This is a local Linux development candidate. Production execution remains blocked. No funded transaction, full repository suite, OS reboot, public release or Community publication is claimed; this note is an unpublished draft."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev94",
+    "date": "2026-10-01",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev94 — Pause sessions when wallet funds fall short",
+    "summary": "Check real wallet SOL against remaining reservations and pause all affected trading sessions after external spending creates a shortfall.",
+    "paragraphs": [
+      "The local background service checks funded wallets every 15 seconds, including when the collector is disabled or the dashboard is closed. It compares confirmed wallet SOL with all remaining held cash reservations for that wallet and network. SOL already accounted for in managed positions is not counted again as required cash.",
+      "A confirmed shortfall disables monitoring and automatic entries and exits across the affected trading sessions, cancels unsigned agent reviews and invalidates trading authorizations. Session warnings show the real wallet balance, shared reserved cash and shortfall. Allocations, positions and already submitted transactions remain recorded.",
+      "Adding SOL or reducing allocations does not automatically restart activity. Restart commands require a fresh successful wallet check. Pending local transactions defer comparisons until accounting settles; connection or malformed-balance errors show unavailable availability rather than a fabricated zero balance."
+    ],
+    "bullets": [
+      "Focused synthetic backend checks cover shared-wallet pauses, exact cash boundaries, consumed cash, pending transactions, raced balance samples, unavailable RPC, manual restart and operation with the collector disabled. A browser scenario verifies two affected sessions, visible shortfalls and rejection of an underfunded restart without submitting a transaction.",
+      "Checks are periodic and depend on a responsive correct-network RPC; they are not a lock on an externally controlled wallet and cannot cancel already broadcast transactions. Production execution acceptance remains blocked; no funded trade, OS reboot or full repository test-suite result is claimed.",
+      "This is a local Linux development candidate with an unpublished Community draft. No website publication, public release or strategy exchange-format change is included."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev93",
+    "date": "2026-10-01",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev93 — Wallet recovery actions together",
+    "summary": "Place private-key and recovery-phrase sign-in beside Restore encrypted backup on the wallet selection screen.",
+    "paragraphs": [
+      "The private-key and recovery-phrase action moves from its separate card into the recovery footer beside Restore encrypted backup. Both use matching text-button styling and wrap when the screen is narrow.",
+      "Existing wallet creation, extension connection, secret sign-in, advanced recovery options and password-encrypted server account storage retain their behavior."
+    ],
+    "bullets": [
+      "The change is limited to wallet-selection layout. Focused local validation results are recorded separately; no full repository suite, funded transaction or OS reboot is claimed.",
+      "This is a local Linux development candidate with an unpublished Community draft. No public release, strategy-format change or execution activation is included."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev92",
+    "date": "2026-10-01",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev92 — Clearer advanced recovery options",
+    "summary": "Keep technical recovery settings collapsed and display wallet accounts with familiar numbers starting at Account 1.",
+    "paragraphs": [
+      "The recovery form now calls its optional section Advanced recovery — address doesn’t match? Guidance asks users to start with the defaults and open these settings when the preview differs from their original wallet.",
+      "The account selector displays Account 1 through Account 100 while retaining internal indices 0–99. Address review shows the friendly account number, with the raw derivation path inside collapsed Advanced recovery details.",
+      "The recovery-passphrase guidance distinguishes the original wallet’s BIP39 passphrase from the PumpWizard encryption password entered later. Supported phrase formats, derivation paths, encrypted server account storage and wallet ownership checks remain the same."
+    ],
+    "bullets": [
+      "Defaults remain the first account and the existing standard Solana path. Advanced settings are available without appearing as required setup.",
+      "Local validation is limited to the frontend build, lint and focused wallet recovery/sign-in checks. Detailed final results are recorded separately; the full repository suite and an OS reboot are outside this UI update.",
+      "This is a local Linux development candidate. No funded transaction, execution activation, public release or Community publication is established; this post remains a draft."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev91",
+    "date": "2026-10-01",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev91 — Private-key and recovery-phrase sign-in",
+    "summary": "Sign in to an existing Solana wallet with its private key or recovery phrase and save a password-encrypted account in the local server.",
+    "paragraphs": [
+      "The wallet entry screen adds Private key or recovery phrase. Complete 64-byte base58 or JSON Solana keypairs are checked against their public key. English BIP39 phrases require a valid word count, wordlist and checksum.",
+      "Recovery options expose common hardened Solana paths, account indices 0–99 and an optional BIP39 passphrase. Review the derived public address before saving. New accounts require a password; an existing saved address keeps its original encrypted record and password.",
+      "Parsing, derivation and encryption use transient browser memory. Only the existing encrypted envelope is saved in the local server account database. The secret and recovery passphrase are cleared from the entry form after review. Sign-in proves ownership without starting transactions or unattended signing."
+    ],
+    "bullets": [
+      "Cryptography verification covers published SLIP-0010 Ed25519 vectors, independently calculated Solana addresses, account/path/passphrase differences and malformed keys or phrases.",
+      "Browser verification covers private-key and phrase sign-in, ciphertext-only account payloads, unchanged existing accounts, failed saves and ownership checks, cleared secret fields, signing locks after reload, and narrow-screen controls. Final counts and package verification are recorded separately.",
+      "The narrow-screen RPC button no longer covers onboarding actions. Saved wallets use the shared PumpWizard Wallet label for generated and imported accounts.",
+      "Support is limited to English BIP39 phrases and the displayed paths; no automatic account scan or other mnemonic scheme is included. This local Linux candidate has no funded-transaction, OS-reboot or public-release acceptance. The Community note remains an unpublished draft."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev90",
+    "date": "2026-10-01",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev90 — Saved accounts in the local server",
+    "summary": "Encrypted generated wallets and durable app preferences live in the local Runner data directory instead of browser storage.",
+    "paragraphs": [
+      "Saved accounts no longer belong to a browser profile or a loopback port. The local server keeps password-encrypted wallet records in a private SQLite database. Passwords and decrypted keys are not persisted; account storage does not grant signing authority.",
+      "Existing browser wallets and preferences migrate through the authenticated local API. Browser copies are removed only after a committed migration. Invalid records, conflicting backups and failed saves preserve existing records and show an error.",
+      "The existing offline service backup includes the account database. Workspace preferences, public wallet-view metadata, worth snapshots and operation retry identities also use local server storage."
+    ],
+    "bullets": [
+      "Account reads and writes require the existing local dashboard authentication and trusted-origin checks. Stored wallet payloads accept only the supported encrypted backup fields.",
+      "Backend verification covers persistence, backup/restore, invalid input, atomic migration, concurrent saves, legacy timestamp preferences and authenticated restart at a different loopback port. Browser verification covers fresh profiles with storage blocked, migration failures, restored signing locks, retries and existing synthetic service flows. Counts and package evidence are recorded separately.",
+      "This is a local Linux development candidate. An operating-system reboot has not been performed as part of this verification. Strategy exchange formats and execution gates are unchanged, and signing still requires fresh unlock.",
+      "No funded transaction or public release is established by this change. This Community note remains an unpublished draft."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev89",
+    "date": "2026-10-01",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev89 — Session funds and strategy observations",
+    "summary": "Adjust a session’s allocated trading funds and inspect each strategy’s positions, trades and observations in the dashboard.",
+    "paragraphs": [
+      "Click the session’s allocated SOL to edit its shared reservation. Current allocation, available cash, managed position costs and the wallet’s unallocated SOL appear together, with top-up shortcuts and an exact preview. Changes remain local reservations; no wallet transfer is submitted.",
+      "Funds changes require paused strategies and inactive signing, a current reservation snapshot and a freshly checked wallet balance. Pending transactions and active reviewed orders block changes. Only unused cash can be released. Existing receipts, positions and calculated P&L are retained.",
+      "Strategy selection shows its name with Positions, Trade History and Observations. Adding a strategy selects this panel automatically; a newly created trading session opens its Overview. Session observations contain only its assigned strategies."
+    ],
+    "bullets": [
+      "Successful allocation edits update the shared cash pool and session metadata and retain an audit record. Full-session strategy budget caps follow the new allocation; deliberately smaller caps remain smaller. Per-order and daily limits are never increased by a top-up.",
+      "Focused synthetic verification covers allocation changes, stale snapshots, balance changes, wallet ownership, pending operations, policy rollback and concurrent edits. Browser and packaged candidate results are recorded separately.",
+      "Strategies stay paused after a fund change and automatic trading needs a new exact authorization. Allocation must remain positive. Historical and research observations are evidence, not executable quotes or a profit forecast.",
+      "This is a local Linux development candidate. No funded transaction or production activation was performed during this verification. The Community note remains an unpublished draft."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev88",
+    "date": "2026-10-01",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev88 — Session and strategy focus",
+    "summary": "Sidebar selection focuses the dashboard on a session’s strategy holdings and trades, or one strategy’s positions and history.",
+    "paragraphs": [
+      "Click a session name to open its Overview: current holdings and the latest five reviewed trades for each strategy. Positions and Trade History show the full selected scope. The folder arrow expands or collapses children independently of the selected view.",
+      "Click a strategy to show its Positions and Trade History tabs. Strategy controls opens the existing monitoring and configuration dialog. Breadcrumbs return to the session or all wallet activity, where New Order remains available. Wallet and network changes clear the selection.",
+      "History uses recorded order strategy IDs before positions exist, and position attribution for later manual sales. Removed strategies retain their labels and session membership for history and all-time P&L; they do not regain active controls or execution rights."
+    ],
+    "bullets": [
+      "Select by exact session and strategy IDs; unrelated wallet holdings and same-token trades from other strategies do not enter the selected scope.",
+      "Build, lint, focused backend and synthetic browser verification cover ownership, pending and failed history, manual-sale attribution, removed strategies, wallet switching, navigation and existing controls. Exact candidate results are recorded separately.",
+      "Overview shows the latest five trades per strategy; Trade History contains all locally recorded reviewed submissions. External wallet transactions are outside this history. Marks remain estimates before exit costs.",
+      "No funded transaction or production activation was performed during verification. This Community note is an unpublished local draft."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev87",
+    "date": "2026-10-01",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev87 — Session rows and position tree",
+    "summary": "A wider session tree puts allocation, P&L and controls on one row, with strategies and their open positions directly underneath.",
+    "paragraphs": [
+      "Each session row contains its folder name, allocated SOL, all-time P&L, Pause all, Sell all and Add strategy. Collapsing a session hides its children while keeping the controls available.",
+      "Indented tree lines connect strategies to their session and recorded open positions to their strategy. Live holdings use recorded purchase attribution even after management is released. Clicking a position focuses its dashboard details without requesting signing.",
+      "Token quantities use recorded decimals; unknown decimals do not display raw atoms as token quantities. Narrow screens keep the row together with scrolling inside the sidebar, and desktop position details adapt to the wider sidebar."
+    ],
+    "bullets": [
+      "Deduplicate live and separately tracked position records by ID; exclude closed positions from the tree.",
+      "Frontend build and lint checks passed. Synthetic browser checks cover the session row, position focus, collapse controls, narrow-screen containment, finalized liquidation, strategy editing and wallet isolation; exact candidate results are recorded separately.",
+      "Position rows reflect local records and polling updates; they do not discover every external holding or provide execution quotes. Existing pause and reviewed-sale behavior is retained.",
+      "No real funds moved during verification and no production activation gate changed. This Community note is an unpublished local draft."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev86",
+    "date": "2026-10-01",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev86 — Session pause, liquidation review and P&L",
+    "summary": "Session folders show allocated SOL and all-time live P&L with controls to pause every strategy and review their position sales.",
+    "paragraphs": [
+      "Pause all controls the strategies in one selected wallet session. It stops automatic entry and exit modes and tracking, locks matching signing runtimes and cancels unsigned strategy reviews. Open positions, allocations and already submitted transactions remain recorded.",
+      "Sell all opens a list of the session’s live positions. Starting pauses the strategies and hands each managed position to manual exit as it is reviewed. Full quantities are selected, fresh quotes and separate approvals are required, and unresolved receipts block the next sale.",
+      "All-time session P&L combines recorded realized results and fresh retained SOL marks for open positions, including recorded failed transaction fees. A complete total is withheld if receipt basis or prices are missing. Simulations and unrelated wallet holdings do not enter live session P&L."
+    ],
+    "bullets": [
+      "Keep wallet/network ownership and session purchase attribution through reviewed liquidation.",
+      "Include the compact My Strategies / Public Lab Data workspace and direct Add to session & edit flow prepared in dev85.",
+      "Focused backend and synthetic browser checks cover scope, pause, allocation retention, results, original-receipt gating and a complete reviewed sale. Exact build validation is recorded separately.",
+      "Every sale in this UI requires user approval. No real funds moved during verification; production activation gates remain. This Community note is an unpublished local draft."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev85",
+    "date": "2026-10-01",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev85 — Add and configure session strategies",
+    "summary": "My Strategies and Public Lab Data share a compact workspace, with one action to attach a strategy and open its editor.",
+    "paragraphs": [
+      "The strategy title, allocation, source tabs, Create and Import now share a single header. Public Lab Data replaces Predefined strategies; My Strategies replaces Saved in this wallet.",
+      "Add to session & edit attaches the selected strategy and opens its settings immediately. Save session strategy applies the revision to that newly attached inactive instance, including allocation-based sizing. Order limits can be saved there without another Add step."
+    ],
+    "bullets": [
+      "Keep wallet/network ownership and exact source packages. Changed rules do not inherit public simulation results.",
+      "Reject attached rule changes after activity or with stale source/wrong-wallet identity. Original public templates stay marked as already in the session after edits.",
+      "Focused backend and browser checks cover direct attachment, revision identity, limits, duplicate protection and the existing portfolio flow. Build-specific validation is recorded separately.",
+      "This local build does not start monitoring, grant signing authority or move funds. Existing production activation gates remain. Community publication has not occurred."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev84",
+    "date": "2026-10-01",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev84 — Clearer editing and allocation-based trade sizing",
+    "summary": "A sectioned strategy editor derives trading budgets from the selected session allocation and sizes trades by percentage.",
+    "paragraphs": [
+      "Budget & trades, Entry rules, Confirmation, Exits & targets and Advanced replace the long settings sheet. Larger labels, stronger contrast, percentage shortcuts and a compact SOL/USD summary make each section easier to read.",
+      "For trading sessions, the server reads the durable allocated SOL and a current SOL/USD reference. Saving computes the existing USD configuration from that allocation and the selected trade percentage instead of retaining the template’s research budget. The resulting SOL budget becomes the initial maximum buy. Monitoring without an allocation keeps an explicitly simulated budget."
+    ],
+    "bullets": [
+      "Persist wallet/session sizing context locally without changing strategy export formats. Reject wrong-wallet, unavailable-price, changed-allocation and out-of-range percentage requests.",
+      "Validate the saved percentage cap when adding the strategy. USD values are snapshots at setup; this change does not introduce automatic rebalancing or funded execution. Strategies share the session allocation.",
+      "Backend and browser checks cover the budget conversion, percentage limit, invalid inputs, persistence, editor sections and mobile layout. Build-specific evidence is recorded separately.",
+      "Existing sessions retain their original rules and authorizations. No funds were moved. This is an unpublished local Community draft."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev83",
+    "date": "2026-10-01",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev83 — Edit saved strategy rules and initial limits",
+    "summary": "Saved early-ladder strategies now have an editor in the wallet library, alongside editable initial order limits.",
+    "paragraphs": [
+      "Edit entry signal, market-cap and liquidity requirements, trade size, position count, confirmation windows, stop and trailing exits, maximum hold, profit targets, quote checks and simulation costs in labeled form sections. Percentages and time values are converted back to the existing package units when saved.",
+      "Saving creates a new revision in the selected wallet. Existing packages and sessions retain their original rules, and old simulation reports are not copied onto changed rules. Initial order limits can also be adjusted before adding the strategy: SOL buy and loss limits, daily buy count and maximum open positions."
+    ],
+    "bullets": [
+      "Validate revised rules before storing them; preserve wallet/network membership and require the source package to belong to that workspace.",
+      "Apply initial limits to the next strategy assignment. Existing strategies, allowances and authorizations are not changed.",
+      "Browser checks cover invalid rules, unit conversion, target editing, revised strategy selection, order-limit submission and compact layout. Backend checks cover revision isolation and preservation of source sessions and reports.",
+      "The form supports early-ladder strategies; schema and mode identifiers stay read-only. Other formats can be exported. No funded trade or transfer was performed. This note is an unpublished local draft."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev82",
+    "date": "2026-10-01",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev82 — Wallet strategy libraries in one picker",
+    "summary": "Saved strategies follow the selected wallet and network, with predefined templates, creation and import available in one picker.",
+    "paragraphs": [
+      "The strategy library now stores wallet-specific membership. Existing known ownership is retained, while old unassigned packages remain in wallet-free Research. Export an exact JSON package and import it into another wallet to save it there explicitly.",
+      "Saved strategies and predefined simulations share one picker with visible Create strategy and Import JSON actions. Current and History tabs are removed. Exact rules and attributed historical simulation evidence remain available."
+    ],
+    "bullets": [
+      "Show Already in this session and block repeat assignment of the same exact strategy in the backend, including concurrent requests. The strategy can still be used in a different session.",
+      "Keep historical records and previous duplicate assignments; adding or saving a strategy does not start monitoring, authorize signing or move funds.",
+      "Wallet isolation, explicit export/import, duplicate protection and picker flows have automated coverage. Build-specific verification is recorded separately; no funded execution was performed.",
+      "This Community note is an unpublished local draft, not a public release announcement."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev81",
+    "date": "2026-09-30",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev81 — Wallet-based sessions and chats",
+    "summary": "The selected wallet and network now determine the dashboard sessions, strategy activity and saved AI conversations.",
+    "paragraphs": [
+      "New monitoring sessions record their connected wallet as owner without reserving funds. Trading sessions retain their existing ownership. The session tree, assigned strategies, activity, order controls and conversation history follow that wallet and network. Switching back restores saved records.",
+      "Conversation history is stored by wallet/network, including pending provider approvals. Switching clears the previous wallet view and ignores late workspace responses. Existing unowned records stay in wallet-free Research; saved strategy packages and the provider configuration remain shared on this computer."
+    ],
+    "bullets": [
+      "Preserve historical records through an additive chat-history migration; do not assign old unowned records to a guessed wallet.",
+      "Keep inactive review drafts with the source wallet when ownership is known, without copying allocation or trading authority.",
+      "New session ownership does not start monitoring, enable automation or move funds.",
+      "Wallet-switch, network isolation and migration checks are recorded in the build evidence. This Community note is an unpublished local draft."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev80",
+    "date": "2026-09-30",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev80 — Create the session, then add strategies",
+    "summary": "Trading-session creation now ends at allocation, with the balance visible in the session tree.",
+    "paragraphs": [
+      "Choose the trading mode and approval type, allocate SOL, and create the session. The dashboard returns to the session tree instead of continuing through broad sizing, horizon, risk and recommendation questions. Allocated SOL remains a shared local reservation in the same wallet.",
+      "Use the session’s Add strategy action to browse saved packages. New trading sessions add the chosen package directly, without the separate research-brief questionnaire or automatic service/monitor popup. Initial wallet order limits remain inspectable in the library and editable in Order safety; exact strategy rules stay unchanged."
+    ],
+    "bullets": [
+      "Reject invalid allocations before creation and retain server-side balance checks.",
+      "Do not invent user answers for the removed preferences; the strategy brief records no preference questionnaire.",
+      "Session and strategy creation do not start monitoring or authorize signing. Existing service enrollment, allowance and activation gates remain.",
+      "Validation is recorded separately. This Community note is an unpublished local draft."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev79",
+    "date": "2026-09-30",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev79 — Session activity in the command board",
+    "summary": "See new sessions, added strategies and entry decisions in the existing chat and notification feed.",
+    "paragraphs": [
+      "The command board appends timestamped local information when a session is created, a strategy is added, or a strategy records an entry signal or skipped candidate. Entry rows include the strategy, token and reason, and open the strategy monitor when selected. An entry signal is a decision, not a claim that a trade executed.",
+      "Activity needs no AI provider. The authenticated read-only decision feed uses durable IDs and sequential cursor pages so routine polls do not duplicate events and delayed observations remain readable. The current dashboard visit retains its rows; opening a new visit does not replay old setup events as new activity."
+    ],
+    "bullets": [
+      "Keep existing status transitions and scroll-position behavior.",
+      "Paginate new decision bursts and retry read failures without advancing the cursor.",
+      "Frontend, backend and packaged validation results are recorded separately. No trading permission is enabled by this change.",
+      "This Community note remains an unpublished local draft."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev78",
+    "date": "2026-09-30",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev78 — Session tree and background service setup",
+    "summary": "Expand sessions like folders and configure new trading sessions for the background service.",
+    "paragraphs": [
+      "Sessions now use a compact disclosure list with folder icons, strategy counts, indented strategy rows and a small add-strategy action. Repeated status text, table headings and empty-session instructions are removed.",
+      "Selected strategies remain highlighted. Expansion stays stable across ordinary status refreshes; keyboard users can toggle sessions with Enter, Space or arrow keys. Existing strategy controls remain under the action menu.",
+      "New trading setup removes the browser-only runtime choice. Automatic modes request background-service custody; interactive mode retains user-approved wallet signing. Service wallet enrollment, limits and Start remain separate. Existing browser-custody sessions keep their original authorization and production automation stays gated."
+    ],
+    "bullets": [
+      "Keep existing monitoring, funding, execution permissions and stored sessions unchanged.",
+      "Use status indicators and tooltips for operational details without repeating them across the sidebar.",
+      "Browser interaction, frontend and package validation are recorded separately. This Community note is an unpublished local draft."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev77",
+    "date": "2026-09-30",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev77 — Automatic entries and transfer confirmation",
+    "summary": "Choose strategy-driven buys with manual exits, and follow funding confirmation automatically.",
+    "paragraphs": [
+      "Automatic entries only replaces the exits-only choice for new sessions. The strategy may buy within an approved allowance; the user manages every sell. Automatic stop-loss, profit-target, trailing and maximum-hold sells are not granted in this mode. Full Autopilot and existing saved exits-only authorizations keep their original meanings.",
+      "The result dialog replaces Check confirmation with sequential receipt checks and a spinner. Confirmed transfers continue to finality; finalized, failed and expired results stop the loading state. Closing the dialog cancels its follow-up checks.",
+      "The wait is bounded to two minutes. Temporary RPC errors remain visible and are retried within that window; unresolved results retain explorer and checked recovery actions. Confirmation checks do not sign or resend a transaction."
+    ],
+    "bullets": [
+      "Derive buy-only authority on the server and keep browser and background-service exits manual through activation, pause and resume. Production automation activation remains blocked pending funded lifecycle acceptance.",
+      "Keep amount, fee, addresses and the original signature visible during confirmation.",
+      "Avoid overlapping dialog polls and ignore responses after the dialog closes or its identity changes.",
+      "Validation evidence is recorded separately for the synthetic funding flows, frontend checks and packaged build. No real transfer is sent by this update.",
+      "Preserve fee reserves, explicit recovery and existing automation activation gates. This Community note remains an unpublished local draft."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev76",
+    "date": "2026-09-30",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev76 — Recover an expired transfer lock",
+    "summary": "Blocked funding now has a checked recovery action for an expired, unobserved SOL transfer.",
+    "paragraphs": [
+      "Check & resolve previous transfer verifies the original wallet and signature against the configured RPC and an independent public Solana RPC. Both must show finalized block height beyond the original validity window, no historical signature status and no finalized transaction.",
+      "Successful recovery records the evidence and an expired receipt, then atomically releases only that transfer intent. Provider failures, incomplete responses, an observed signature or a changed receipt keep the lock. The recovery action never sends or retries SOL; the user must review and sign any new transfer."
+    ],
+    "bullets": [
+      "Expose recovery beside the funding error and inside an uncertain transfer receipt.",
+      "Preserve original signatures, amounts, existing wallet allocations and the recovery audit across restart.",
+      "Targeted backend checks cover success, expiry boundaries, provider failures, identity binding and concurrent receipt changes. Final browser and package results are recorded separately.",
+      "Independent recovery requires the configured RPC to have a different host from the public witness. A failed independent check does not release the wallet.",
+      "Automation activation remains separately gated. This local Community note is an unpublished draft."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev75",
+    "date": "2026-09-30",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev75 — Fee-aware funding and honest transfer results",
+    "summary": "Automation funding deducts the exact fee from a spending budget and preserves a source-wallet reserve. Results distinguish submission from confirmation.",
+    "paragraphs": [
+      "Funding previews cap the total debit to unreserved SOL less a 0.002 SOL source reserve, or a larger network rent minimum. The exact reviewed fee is deducted from the budget; the recipient amount and remaining source balance are visible before signing.",
+      "The result screen retains the amounts and wallet addresses, adds a confirmation check and explorer link, and displays the actual journal state. An uncertain submission no longer appears as an acknowledged submission merely because a signature was recorded."
+    ],
+    "bullets": [
+      "Use Fund wallet for the funding action and Review transfer for the next screen. Keep preview errors beside the funding action and scroll them into view.",
+      "Keep ordinary withdrawals as exact recipient amounts; apply the spending-budget behavior only to automation funding.",
+      "Preserve existing allocations and recheck available funds and source reserve at submission.",
+      "Seven synthetic wallet/funding browser checks passed during development. Final backend, regression and package evidence are recorded separately; no real transfer is sent by the update.",
+      "Record credential-free RPC error codes for future uncertain submissions. Unknown outcomes remain blocked from automatic retry.",
+      "Automation activation remains separately gated. This Community note is an unpublished local draft."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev74",
+    "date": "2026-09-30",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev74 — Clearer wallet selection and funding",
+    "summary": "Session wallet setup now shows SOL balances, token quantities and a direct amount entry in a consistent wizard layout.",
+    "paragraphs": [
+      "Saved and selected generated wallets display confirmed public SOL balances, an estimated USD value for SOL when a quote is available, and expandable SPL Token and Token-2022 holdings. Token values are excluded from the SOL estimate; failed reads remain unavailable instead of becoming zero.",
+      "The funding panel accepts an exact SOL amount or a 25% / 50% balance shortcut. The next screen still requires review of the exact destination and fee, followed by the source wallet signature. Wallet selection and automation activation remain separate."
+    ],
+    "bullets": [
+      "Use the session wizard styling, progress indicator and responsive choice cards throughout wallet setup.",
+      "Read public balances without signing into the selected wallet or exposing private trade history. Existing browser authentication remains required.",
+      "Targeted inventory and API boundary checks passed during development. Browser regression and final package evidence are recorded separately; no live funded acceptance is claimed.",
+      "Existing automation authorization and activation gates remain in place. This local Community note is an unpublished draft."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev73",
+    "date": "2026-09-30",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev73 — Set up and fund an automation wallet from a session",
+    "summary": "Extension-wallet users can create or choose a generated wallet and review a separate SOL transfer without leaving session setup.",
+    "paragraphs": [
+      "The trading approval step explains why Phantom and other extension wallets require a generated wallet for automatic signing in PumpWizard. Setup offers saved generated wallets or new encrypted wallet creation with a backup step.",
+      "The destination password is checked locally before funding is offered. An optional SOL transfer shows the exact destination, amount and fee, and requires the connected extension wallet to sign. Selecting the generated wallet returns to the same session step; it does not start automation.",
+      "SOL transfer reviews now specify their compute budget and zero priority fee so extension fee autofill does not change the message. Exact transaction and signature checks remain enforced. Funding with an uncertain submission cannot be sent again in the same setup; the durable journal also blocks unresolved duplicate submissions."
+    ],
+    "bullets": [
+      "Keep wallet creation, transfer approval, wallet selection and automation activation separate.",
+      "Preserve existing generated wallets, verify access to the selected destination and retain the source network.",
+      "Reload session funding on wallet changes without resetting entered allocation on normal wallet polls.",
+      "Five synthetic funding browser checks and 46 transfer/shadow backend checks passed during development. Final regression and package evidence are recorded separately; no live funded acceptance is claimed.",
+      "Live automation remains subject to its existing authorization and activation gates. This local Community note is an unpublished draft."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev72",
+    "date": "2026-09-30",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev72 — Choose monitoring and paper trading inside sessions",
+    "summary": "Use Sessions → + → Monitor to choose observations or paper trading, then add exact strategies.",
+    "paragraphs": [
+      "The Monitor setup saves an observations or paper-trading preference with the session. Creating the session starts no monitoring, paper run or wallet action. Paper runs retain their separate explicit start and controls.",
+      "The dashboard now contains Positions, New Order and Trade History. Saved entry decisions, paper trading and research reports are available through the selected session instead of a separate dashboard Observations tab and Research shortcut.",
+      "New paper sessions open their paper controls directly. The research workspace exposes the exact current source strategy, allowing paper start review before a dataset has been frozen. Phantom and other extension wallets remain interactive; generated-wallet automation still requires its existing authorization and activation checks."
+    ],
+    "bullets": [
+      "Persist the monitor activity without adding wallet funding or execution permissions.",
+      "Retain per-session saved decisions, reasons and quote evidence.",
+      "Preserve explicit paper start, pause, resume and stop.",
+      "The source regression run passed 59 browser checks and 76 targeted backend checks. Final package and UI follow-up results are recorded separately. This local draft is not a published Community release."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev71",
+    "date": "2026-09-30",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev71 — Record status changes without polling noise",
+    "summary": "Keep the initial command-board status rows and append meaningful transitions with fixed timestamps.",
+    "paragraphs": [
+      "The command board keeps status history for the open tab. Identical polling results leave existing rows intact. Monitoring changes, connection changes, signing state and other changed status results add a new row.",
+      "Routine heartbeat times, successful scan timestamps and quote counts do not create service notifications. Wallet polling no longer reruns the full startup diagnostics and RPC test simply because its session object was refreshed.",
+      "Rows use fixed timestamps, and new status entries preserve the scroll position when reading earlier entries. The current summary and service controls remain available. Reloading creates a new initial snapshot; this is not a durable audit log."
+    ],
+    "bullets": [
+      "Keep polling to detect changes without repainting status history.",
+      "Record a return to an earlier state as a new transition.",
+      "Keep chat approvals, wallet signing and trading permissions unchanged.",
+      "Browser and exact-package validation are recorded separately. This local note is not a published Community release."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev70",
+    "date": "2026-09-30",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev70 — Simplify background service controls",
+    "summary": "Show everyday monitoring and trading status first; expand setup and technical details only when needed.",
+    "paragraphs": [
+      "The Service dialog now prioritizes readable monitoring on/off controls and background-trading state. Trading setup, build identifiers, provider diagnostics and service shutdown are expandable sections.",
+      "Active trading pause and stop controls, monitoring errors, connection problems and unresolved order outcomes stay visible. Extension wallets get a plain explanation of their browser approval requirement. Existing trading limits and confirmations are preserved.",
+      "This local UI candidate does not start collection, unlock a wallet or enable funded trading. Exact browser and package validation are recorded separately; the Community note is an unpublished draft."
+    ],
+    "bullets": [
+      "Use Start monitoring and Stop monitoring instead of collector terminology.",
+      "Increase everyday text and control sizes and narrow the dialog.",
+      "Open trading setup automatically when reached from a selected service session.",
+      "Retain detailed custody disclosures and exact trading approval steps inside setup."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev69",
+    "date": "2026-09-30",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev69 — Restore the original dashboard navigation",
+    "summary": "Return to the command board and right-side wallet navigation, with sessions and trading tabs below.",
+    "paragraphs": [
+      "Restore the saved pre-redesign Dashboard and Portfolio layout. AI chat and provider setup remain in the command board instead of a separate navigation destination. Research and reports remain accessible through a secondary link.",
+      "Preserve current backend-owned wallet valuation, service controls, walletless research and locked signing after reload. The dashboard refreshes retained market records and opens Positions after restoring a wallet.",
+      "This local UI build does not enable trading, change strategy permissions or submit a funded transaction. Exact build and browser validation are recorded separately. The Community note remains an unpublished draft."
+    ],
+    "bullets": [
+      "Keep one visible wallet summary beside the command board.",
+      "Show sessions, Positions, Observations, New Order and Trade History together on Dashboard.",
+      "Remove the superseded header and duplicate AI diagnostics dialog.",
+      "Preserve deposit, withdrawal, sign-out, service and guide actions."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev68",
+    "date": "2026-09-30",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev68 — Restore the wallet dashboard and visible AI command board",
+    "summary": "Open connected wallets on a dashboard with balance, wallet controls, sessions, AI chat and notifications; keep research as an optional destination.",
+    "paragraphs": [
+      "Connected and restored wallets now open the trading dashboard. AI provider setup and the existing command board are visible alongside wallet information instead of being available only in a diagnostics dialog. Walletless research remains available.",
+      "The default repository launcher starts or reuses the background-service dashboard. A legacy browser server serving newer assets must be upgraded on the same origin to preserve browser wallet storage.",
+      "This local build does not enable signing, submit an order, change strategy permissions or publish a Community release. Wallet signing stays locked after refresh until the user unlocks it."
+    ],
+    "bullets": [
+      "Restore prominent SOL balance and direct deposit, withdrawal, holdings, trade review and wallet-limit controls.",
+      "Keep chat, provider settings and service/strategy notifications on the connected-wallet dashboard.",
+      "Preserve the same browser origin and existing wallet data during the local server upgrade.",
+      "Keep general production activation blocked. Exact build/browser validation is recorded separately; no funded lifecycle or profitable strategy claim is made."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev67",
+    "date": "2026-09-30",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev67 — Observation duration and shared allocation repairs",
+    "summary": "Retain the full observation deadline, clear rejected unsigned reviews and separate managed holdings from historical strategy attribution.",
+    "paragraphs": [
+      "The bounded PumpSwap observation stops additional reads at its request quota while retaining the lifecycle through the approved 72-hour deadline. Simulated-clock regression coverage is not an actually elapsed observation.",
+      "Newly prepared unsigned reviews are cancelled when ticket issuance fails. Handed-back positions remain historically attributed but no longer consume managed strategy position and exposure limits; handback never creates available SOL.",
+      "This local development candidate retains blocked general production activation. A separately authorized funded acceptance run still requires an exact wallet-signed build, route, strategy and allowance approval. No funded lifecycle or public release is established by these repairs."
+    ],
+    "bullets": [
+      "Cover rejected ticket issuance after policy changes, expiry and revocation, including a shared-cash protective exit.",
+      "Distinguish managed capital from attributed user-managed positions in session and strategy controls.",
+      "Remove the unreachable Automation Wallet, Diagnostics Dialog and Market Selection frontend components while preserving live backend recovery paths and shared styles.",
+      "The September 30 repair checkpoint recorded 1,091 Python passes, one intentional validator skip and 54 browser passes. Exact dev67 candidate validation is recorded separately after packaging.",
+      "Actual observation, funded receipts, operating-system restart acceptance and Community publication remain separate evidence gates."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev66",
+    "date": "2026-09-29",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev66 — Browser-independent Autopilot controls and exact PumpSwap state",
+    "summary": "Connect real-trading session choices to bounded background-service controls, backend-owned position valuation and explicit order recovery without enabling funded production trading.",
+    "paragraphs": [
+      "A generated-wallet trading session that selects background-service custody now opens the exact session's controls after creation. Enrollment, allowance review, acceptance, Start, Pause, Resume and Stop remain separate explicit steps; walletless Dashboard use can inspect service collection health but cannot inspect wallet signing state or grant authority.",
+      "Position value and profit/loss now come from the backend's typed retained-evidence contract. The service dashboard distinguishes unsigned reviews cancelled before submission from original submitted signatures that still require public receipt reconciliation, including after browser closure and a locked process restart.",
+      "Canonical PumpSwap observations are labelled read-only and non-executable, and signing rejects any changed curve or AMM reserves after review even when the new quote appears favorable. The first proposed pilot remains limited to canonical native-SOL standard-SPL creator-reward pools. This local Linux development build does not authorize the pending 72-hour operation or any funded transaction, real-key migration, installed-service replacement or public release."
+    ],
+    "bullets": [
+      "Target the exact newly created background-service session and validate service slippage as a whole number from 1 to 500 basis points before allowance review.",
+      "Attach backend-generated holding valuation to session and wallet trade positions, retain native SOL basis when USD conversion is unknown and withhold stale or incomplete totals instead of recomputing them in the browser.",
+      "Expose wallet-scoped, display-only service order outcomes with all order, signer and submission authority explicitly false.",
+      "Validate service acceptance against either a legacy strategy cash hold or the exact shared workspace owner while keeping wallet, strategy, policy revision, amount and hold identity bound.",
+      "Reject changed canonical curve or PumpSwap reserve snapshots between review and signing and retain the existing route IDs for stored-order compatibility.",
+      "Show healthy, stale, empty, canonical-route-unavailable and failing source states, exact provenance and the non-executable first-pilot subset without triggering collection from a status read.",
+      "Pass the settled 1,086-test Python collection with 1,085 passes and one intentional local-validator skip, repository Ruff and diff checks, frontend lint/typecheck/build and all 54 serial browser journeys. Those journeys include Pause cancellation, every browser closing before entry/full exit, encrypted browser-wallet restore, unresolved-signature restart locking and a fresh authorization boundary; the existing Vite main-chunk advisory remains.",
+      "Keep production activation blocked. No 72-hour observation, funded buy or sell, real wallet enrollment, service installation, Community publication or live release-note verification was performed."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev65",
+    "date": "2026-09-29",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev65 — Shared session balances and bounded PumpSwap acceptance",
+    "summary": "Create monitoring or wallet-backed trading sessions first, share one exact SOL allocation across their strategies, and prepare canonical PumpSwap service acceptance without enabling funded production trading.",
+    "paragraphs": [
+      "Monitoring confirmation now creates an inactive research session immediately with no wallet allocation, strategies, positions, scans or signing path. A trading session instead records one exact wallet and network allocation before strategy selection; its strategies apply separate risk limits while consuming and settling the same durable cash pool.",
+      "Canonical PumpSwap source support now includes exact-quote buys and sells for the tested standard-SPL and Token-2022 account variants, signed effective quote reserves and instruction-level comparison with the pinned official SDK. A wallet-signed acceptance capability binds the packaged build, routes and exact allowance before background-service signing can be installed.",
+      "This is a local Debian x86-64 development candidate, not a public release. Source and ordinary production service activation remain blocked. The exact package passed one unsigned standard-SPL mainnet buy simulation and a disposable-wallet no-order acceptance/restart exercise, but funded lifecycle acceptance remains pending, and the shared pool does not yet provide one multi-strategy Autopilot allowance. No profitability or general PumpSwap support is claimed."
+    ],
+    "bullets": [
+      "Enlarged the initial Monitoring and Trading choices and replaced monitoring size/horizon questions with a direct explanation and confirmation step.",
+      "Created visible inactive monitoring sessions with zero allocation and reusable Add strategy controls; nothing starts until a strategy monitor is explicitly enabled.",
+      "Reserved one durable SOL cash hold for each trading workspace before strategy selection and bound multiple strategy risk policies to it without duplicate wallet reservations.",
+      "Reported session total, available cash and open-position cost basis in Active Sessions while retaining per-strategy orders, positions, evidence and removal checks.",
+      "Added direct canonical PumpSwap exact-quote buy construction, signed virtual-reserve handling and offline official-SDK buy/sell fixtures for supported standard-SPL and Token-2022 variants.",
+      "Added authenticated Dashboard request, wallet-sign and install controls for a single-use build/route/allowance-bound service acceptance; restart still locks signing and general production activation remains blocked.",
+      "Validated one canonical standard-SPL PumpSwap buy from the exact packaged executable through two zero-error unsigned mainnet simulations with submission disabled, zero signatures and no local wallet access.",
+      "Activated one exact build/route/allowance-bound packaged acceptance with a disposable generated wallet while every service job remained disabled; the empty audit verified and restart removed signing authority.",
+      "Verified the complete 1,048-test Python collection with 1,047 passes and one intentional local-validator skip, repository Ruff/diff checks, frontend lint/typecheck/build and focused production-bundle monitoring, trading and service journeys. The existing Vite main-chunk advisory remains.",
+      "The packaged acceptance used an unfunded disposable wallet and placed no order. No funded transaction, real-key migration, installed-service replacement, public Community publication, Windows/macOS package or production automatic-execution promotion was performed; the deployed result is one unsigned standard-SPL buy simulation, not a fill or general route claim."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev64",
+    "date": "2026-09-29",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev64 — Wallet-optional research and private-pilot recovery",
+    "summary": "Reach authenticated read-only research without a wallet, inspect typed evidence and operate an identity-pinned local service with explicit recovery boundaries.",
+    "paragraphs": [
+      "A launch-token-authenticated user can now enter Research without creating, restoring or connecting a wallet. The first task is to configure a monitoring workspace, add immutable strategy rules and start bounded collection explicitly; merely opening or reopening Research does not scan a wallet, call a provider, start collection, request signing or submit an order.",
+      "Research, Holdings and Activity form one task-oriented workspace. Service state, retained-data freshness and configured sessions remain visible in a compact header, while detailed service controls, system diagnostics and optional AI are separate tools. Holdings and reviewed wallet actions ask for a wallet only when it is actually needed.",
+      "Observation operations now expose immutable presets, resource ceilings, pause/restart gaps and honest healthy, empty, partial, stale, failing and stopped summaries. Evidence explanations bind to typed retained facts and content hashes; stale marks, missing basis, unsupported precision and unknown executable value remain withheld rather than being filled by prose or browser arithmetic.",
+      "This is a local Debian x86-64 private-pilot candidate, not a public release. The 24-hour rehearsal uses a simulated clock and does not prove elapsed uptime, strategy edge or profitability. Production automatic trading remains blocked, and other platforms, reboot/suspend, a real novice study and funded operation remain untested."
+    ],
+    "bullets": [
+      "Separated local launch-token authentication from wallet identity with an additive first-use capability contract and fail-closed wallet-dependent actions.",
+      "Added monitoring workspaces and a walletless Research home whose creation and reload paths leave provider, collection, signing and submission counters unchanged.",
+      "Added bounded 24-hour observation presets, resource accounting, operational summaries and exports with explicit pause, restart, stale, outage and stop semantics; the completed rehearsal was deterministic simulation, not a day of wall-clock operation.",
+      "Upgraded local evidence review to exact typed supported facts and conservative holding valuation states; unsupported AI claims, missing citations and incompatible units are withheld.",
+      "Reorganized the dashboard around Research, Holdings and Activity, removed duplicate system/session summaries, corrected present-manager wording and replaced confidence-like heuristic scores with ordinal template-fit language.",
+      "Kept wallet balance, estimated worth, 24-hour worth movement, Runner trading P/L, modeled paper results and executable exits as separate scopes; unknown or stale values are not coerced to zero.",
+      "Preserved browser and service custody boundaries, restart-locked signing, explicit campaign Resume, manual order review/signing and the production activation block.",
+      "Hardened local launch, reopen, duplicate/foreign-port refusal, private data/token permissions and offline backup/restore while excluding launch tokens, logs, locks and plaintext wallet, automation, AI and settings artifacts.",
+      "Validated the merged 1,032-test Python collection with 1,031 passes and one intentional local-validator skip, repository Ruff, frontend lint/typecheck/build, deterministic service recovery and all 54 production-bundle browser journeys. The Vite bundle-size warning remains.",
+      "No paid provider request, real key migration, funded transaction, production automatic execution, user-service installation, reboot, public Community publication or release deployment was performed."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev63",
+    "date": "2026-09-29",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev63 — Live market coverage and cited local evidence",
+    "summary": "Restore bounded Pump.fun curve observations, explain provider readiness by stage, inspect retained evidence locally and package an identity-pinned Linux pilot without enabling funded execution.",
+    "paragraphs": [
+      "Pump.fun curve discovery now uses the complete supported listing snapshots after the provider's selected exact-mint detail reads returned HTTP 404. Runner preserves exact mint, curve, units, reserves and provider timestamps, and does not relax freshness, liquidity or route checks to obtain quotes.",
+      "Provider attempts retain bounded discovery, selection, normalization, rejection, request, byte, time and concurrency evidence. Empty, partial, stale, failing and exhausted attempts remain distinct, while status and report reads never trigger collection or purchase access.",
+      "The Evidence Assistant explains exact retained campaigns, reports, decisions, holdings and receipts using content-hashed local citations and explicit known, unknown, gap and attribution states. Optional AI remains a separate frozen preview with explicit approval, no tools and no wallet or trading authority.",
+      "This is a local Linux pilot candidate with opaque source, package, service and data identities. It is not a public release and does not install or enable a user service, replace the current app or claim support beyond the tested local environment."
+    ],
+    "bullets": [
+      "Replaced the unavailable Pump.fun exact-mint detail dependency with direct normalization of supported listing records and validated exact curve address, decimals, SOL quote units, source age and replay-compatible 1e-18 price precision.",
+      "Added credential-free provider diagnostics to retained service coverage and campaign history, including rejection categories, decoded payload bytes, actual source age and healthy, empty, partial, stale, failing or quota-exhausted readiness.",
+      "Kept campaign evidence universes immutable: provider requests are shared only for an exact provider, cap-band, priority-mint and result-limit identity, so agent defaults and differing campaigns cannot widen a frozen trial.",
+      "Ran an isolated 7.2-second keyless campaign through the existing scheduler, recorder and evaluator. Five healthy scans used 15 HTTP reads and produced 15 eligible observations per arm, bounded entry-blocked decisions, no evaluator gaps, faults or exclusions and an explicit stopped state.",
+      "Recorded provider cost as unknown rather than zero. The short observation remains exploratory and does not establish opportunity frequency, strategy edge, profitability, uptime or long-horizon capacity.",
+      "Added exact retained-record evidence contexts, local cited explanations, frozen request identity and review that withholds fake citations, invented numeric claims, unsupported tool calls and instruction-like provider text.",
+      "Kept optional AI behind the existing explicit preview and approval flow, with bounded input/output, actual usage recorded separately and no signer, shell, order or provider-purchase capability.",
+      "Added an opaque build identity and isolated Debian x86-64 candidate procedure with exact executable validation, loopback service reuse/refusal checks and offline backup/restore rehearsal.",
+      "Preserved existing strategy exchange formats and production trading blocks. No paid provider, real key, funded transaction, unattended signing, user-service installation, public Community publication or release deployment was performed."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev62",
+    "date": "2026-09-28",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev62 — Welcome, session review and guarded local Autopilot",
+    "summary": "Open the Pump.fun Dashboard through a concise version-aware welcome, compare retained evidence locally, and prepare browser- or service-custody Autopilot under explicit limits while production activation remains blocked.",
+    "paragraphs": [
+      "Wallet sign-in now opens a short welcome instead of asking for a market that Runner does not yet support. First use presents What's new, practical safety guidance and verified project links; later builds show only their local patch summary, ordinary returns open Dashboard and Guide reopens the full introduction.",
+      "Session Review freezes exact-digest local evidence and compares the current supported ladder strategy with a small bounded candidate set and a no-entry baseline. It separates training, validation and untouched holdout, states modeled costs and data gaps, and reports collect more data when opportunity capture or outcome coverage is incomplete.",
+      "A supported suggestion can create a separate inactive review draft only after explicit confirmation. The original session stays unchanged; the successor is paused with monitoring off, entries disabled, manual exits, zero wallet allocation and no copied signing authorization.",
+      "New Autopilot session briefs use the generated main wallet with a durable scoped allowance. Users choose automatic strategy exits with interactive entries or bounded automatic entries and exits. Browser custody keeps the ephemeral tab signer; explicit v4 service custody uses a separate encrypted local vault and restart-locked background signer.",
+      "One authenticated loopback service now owns opted-in monitoring and bounded evidence collection after Dashboard closes. It records source, route, pool, event, provider and first-receipt times plus visible gaps and backoff. Service signing remains production-blocked and only an explicitly injected synthetic runtime can exercise exact reviewed tickets."
+    ],
+    "bullets": [
+      "Selected Pump.fun internally after wallet sign-in and removed the redundant market-selection gate without enabling another venue or changing the strategy exchange format.",
+      "Added skippable What's new, usage tips and project-link pages with the bundled mascot, keyboard and narrow-screen coverage, exact-version acknowledgement and graceful handling when browser storage is unavailable.",
+      "Loaded What's new from the exact bundled Community note and exposed its draft/local status without implying that the Community article is published.",
+      "Added append-only evaluated-opportunity and decision-feature storage in the same transaction as each producing monitor cycle; historical transition-only records remain explicitly incomplete rather than being reconstructed from future quotes.",
+      "Added authenticated Session Review read/run/draft routes and a browser comparison view with current, candidate and no-entry rows, coverage, sample counts, modeled result, drawdown, exposure, explicit costs and evidence limits.",
+      "Created accepted candidates only through the existing package parser and inactive-session path. The source session, strategy exchange format, wallet limits and execution permissions are not mutated.",
+      "Added authenticated main-wallet allowance review, authorize, status, heartbeat, pause, revoke, lock and exact-ticket routes tied to wallet, network, session, strategy digest, current risk policy and runtime revision.",
+      "Preserved old session-brief records byte-for-byte while new v3 generated-wallet Autopilot briefs bind either exits-only or entries-and-exits authority. The synthetic scheduler reconciles original signatures and checks exits before entries; browser lock and disconnect stop the ephemeral runtime before closing the wallet session.",
+      "Kept normal production Autopilot activation hard-blocked and exposed no production Start control. The synthetic acceptance server can explicitly inject a Start control for the exact-ticket flow; no browser seed, password or runtime token is stored in Python, SQLite, localStorage or sessionStorage.",
+      "Added a single-owner background-service lifecycle with verified reuse, foreign-port refusal, persistent opt-in jobs, opaque health/restart identity, clean signer-first shutdown and staged version-pinned Linux user-unit files without enabling the unit or linger.",
+      "Added explicit v4 service custody, encrypted generated-wallet enrollment, wallet-authenticated allowance lifecycle routes and distinct Dashboard controls for monitoring, enrollment, Pause, exact Resume, Stop trading, sign-out and service shutdown. Existing briefs and browser custody retain their original semantics.",
+      "Retained bounded raw scan evidence with idempotent fingerprints, truthful event/source/receipt timestamps, route and pool identity, explicit restart/provider gaps, exponential backoff and 30-day/row-count compaction.",
+      "Kept reconciliation of already recorded signatures active after restart while signing remains locked. Synthetic acceptance covers entry, a 40% partial exit, final exit, lost-response recovery, fresh authorization and exact reservation/allowance accounting without duplicate submission.",
+      "Added same-version offline service backup and new-directory restore using consistent SQLite snapshots and encrypted vault records. Launch tokens, logs and lock files are excluded, hashes are verified and restored signing remains locked.",
+      "Strengthened the real-service browser flow by gating entry until every browser context is closed, completing entry and exit through authenticated service routes without browser polling, reopening the same durable state, restarting locked and requiring fresh authorization before Start.",
+      "Coordinated trade reconciliation before Portfolio refresh after a restart so current wallet holdings and durable Runner positions are read from the same settled state.",
+      "Verified the complete 842-test Python collection with 841 passes and one intentional skip, Ruff and diff integrity, frontend lint and typecheck, the production web build and all 41 production-bundle browser flows. A 1,800.2-second isolated soak passed outage/recovery and restart with 100 successful scans, 18 explicit gaps and 100/100 unique evidence fingerprints; isolated SIGKILL recovery, CLI backup/restore and temporary unit staging also passed.",
+      "No funded mainnet transaction, real extension approval, production Autopilot or service activation, user-service installation, public Community publication or dev62 binary package was completed."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev61",
+    "date": "2026-09-27",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev61 — Actionable dashboard signals and market context",
+    "summary": "Make wallet risk evidence, strategy suggestions, trade receipts and terminal status directly understandable from the Dashboard and Portfolio.",
+    "paragraphs": [
+      "PumpWizard Terminal now reserves its command-board header for conditions the user can act on. Healthy operation is quiet; local-service failure requests reload, RPC failure opens connection settings, restored wallets request signing unlock, session warnings open the affected session and AI setup remains optional.",
+      "Portfolio continues to list every nonzero SPL Token and Token-2022 holding. Exact-mint public context now distinguishes priced, unpriced, stale, illiquid, suspicious and likely-worthless evidence without converting missing data into zero or presenting an informational price as an executable exit.",
+      "Dashboard adds durable Runner Trade History and connects retained Market Observations to four research profiles. Short-squeeze Watch, Day Trading, Longer Hold and Unicorn Hunter receive bounded evidence scores and open the existing paper-only creation wizard with the chosen profile selected.",
+      "Trading boundaries are unchanged. Profile selection does not authorize trading, a restored wallet must be unlocked again, manual orders require exact review and signing, and automatic execution remains disabled."
+    ],
+    "bullets": [
+      "Removed service, session and monitoring counters plus primary New chat and Settings controls from the command-board header; retained those AI actions in the terminal footer.",
+      "Added actionable Retry startup, Fix RPC connection, Unlock signing, Review session, AI setup needed and Ready signals backed by actual local check, wallet and session state. RPC-only failure shows one repair action instead of duplicating the generic retry.",
+      "Added a visible read-only startup sequence for Runner/database readiness, initial Mainnet RPC identity and current blockhash, connected and known wallet counts, retained market state, loaded/running/starting/problem sessions and active automation-run records. Removed generic Automation Wallet, Diagnostics and RPC controls from Portfolio; RPC repair appears only after a failed startup check.",
+      "Added conservative held-token valuation states and explanatory tooltips. Likely worthless requires under $0.01 held value, under $250 reported liquidity and an additional inactive, low-quality, concentrated or very-low-holder signal.",
+      "Filled missing held-token name, symbol, icon and website fields from bounded exact-mint public profiles while retaining local metadata precedence, same-origin image delivery and copyable mint addresses.",
+      "Added a fourth inline Dashboard tab for Runner-reviewed Trade History with buy/sell side, token, user-or-session attribution, requested amount, finalized settlement, fee, slot, status, timestamp and explorer link.",
+      "Added Short-squeeze Watch, Day Trading, Longer Hold and Unicorn Hunter cards to Observations with bounded retained-data scores, reasons and one-click handoff into the matching paper-only strategy template.",
+      "Kept low-coverage strategy fits explicitly low confidence. Short-squeeze Watch detects retained price compression and breakout only; Runner has no short-interest or liquidation feed.",
+      "Updated the restored-session browser flow to accept both a full wallet unlock and the safer tab-restored signing unlock without weakening either authorization path.",
+      "Verified 775 Python tests with one intentional skip, browser lint, the production web build, a zero-vulnerability production dependency audit and all 34 production-bundle browser flows. The browser suite covers workspace navigation, strategy-profile handoff, enriched holdings, populated Trade History, command signals, restored signing, responsive charts and transaction-integrity safeguards.",
+      "Public token profiles, liquidity and retained history can be missing, stale or creator-supplied. No funded mainnet transaction, real extension approval, unattended submission, public Community publication or dev61 binary package was completed."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev60",
+    "date": "2026-09-25",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev60 — Market charts, order ticket and holding plans",
+    "summary": "Turn Trade into a live position and session dashboard, refine manual orders, and keep detailed wallet holdings in Portfolio.",
+    "paragraphs": [
+      "PumpWizard Terminal opens directly into Dashboard, with an explicit Portfolio control instead of a persistent workspace selector. Dashboard starts with live Open Positions, session-only entry observations and a direct Buy Order action beside Active Sessions; the general token-market monitor is no longer shown.",
+      "Each open position can open token detail with selectable price, market-cap and liquidity charts from retained local snapshots. Price charts automatically load attributed public 4-hour candles from before local observation began without an account, credential or setup step. Bounded project details and HTTPS links are stored from the public Pump.fun or PumpSwap record; Runner does not fetch arbitrary metadata documents or remote images.",
+      "Portfolio now combines finalized wallet positions with local strategy positions. It shows entry time and basis, held quantity, latest retained value and comparable P/L, then explains the exit rules attached to each strategy-owned holding.",
+      "The browser reads staged targets, stop loss, trailing exit, maximum hold and approval mode from the exact imported strategy package. Manual wallet holdings clearly state when no strategy exit plan is attached."
+    ],
+    "bullets": [
+      "Restored Active Strategies beside a live Open Positions dashboard without adding removed primary tabs back to the header.",
+      "Removed the Trade market introduction, manual refresh, search, filters, sorting, general token rows and sparklines. Observations now shows only the current sessions' saved enter or do-not-enter stances, responsible session, reason and decision-time quote beside live Open Positions and a direct Buy Order action.",
+      "Added retained price, market-cap and liquidity charts plus sanitized name, description, creator, verification and HTTPS project links to token detail.",
+      "Refreshes background public observations at the bounded 20-second scan limit, reloads local position context and session records every 5 seconds, refreshes wallet trade records every 8 seconds and enforces the 20-second Python provider throttle across tabs.",
+      "Pages through all retained token snapshots, keeps live points in five-minute buckets, then compacts points older than seven days hourly and older than 90 days daily.",
+      "Automatically loads resumable keyless public price history with persisted cursors, source attribution, coverage status and a separate research-only candle store.",
+      "Extends price charts with imported 4-hour closes while keeping market-cap, liquidity, execution quotes, route evidence and risk checks on existing local data paths.",
+      "Redesigned manual buy and sell as a structured order ticket with connected-wallet context, unit-labelled inputs, open holdings, recent orders and a concise signing assurance.",
+      "Expanded every live position with the user or named session that purchased it plus available quantity, basis, mark, comparable P/L, market cap, trend, liquidity, freshness, age, next staged action, protection summary and direct detail or management actions. Missing financial inputs remain unavailable rather than becoming zero.",
+      "Retains raw session observations, enter and do-not-enter decision transitions and fixed-horizon outcomes locally for later review. The dashboard uses the latest stance per coin and its decision-time quote; this release does not retrain, silently modify or auto-promote a strategy.",
+      "Kept retained token charts and project detail available from actual open positions rather than exposing a separate market watchlist.",
+      "Added detailed Portfolio holding cards with owner, mint, entry time, entry basis, remaining quantity and latest retained local value.",
+      "Show strategy market-cap exit targets, stop loss, trailing drawdown, maximum hold, approval mode and completed staged exits on owned positions.",
+      "Open a finalized wallet holding directly in the existing manual sell dialog with its full recorded quantity selected.",
+      "Attach local strategy ownership and bounded exit-plan metadata to authenticated wallet position reads without exposing package or key material.",
+      "Reworked the full-height wallet panel with Dashboard first, Portfolio second, then Deposit, Withdraw and Lock. The balance card is read-only and adds the bounded USD estimate, comparable Runner-recorded P/L and local 24-hour worth movement; missing evidence stays unavailable. Portfolio no longer exposes a generic Wallet tools menu.",
+      "Moved SOL valuation detail into Portfolio, including confirmed SOL, a bounded public SOL/USD quote and estimated USD value. Holdings stay visible and estimates are marked unavailable when that quote fails.",
+      "Replaced the browser Strategy Assistant chat header with a setup-gated Agent Monitor that reports real local session state, scan counts, warnings and timestamps and opens each session's full evidence view. Provider connection does not authorize trades or change monitoring controls.",
+      "Runs an explicit read-only startup sequence in the Agent Monitor: Runner and database load, initial Mainnet RPC identity/current-blockhash test, connected and known wallet counts, market cache, session restoration with loaded/running/starting/problem counts, active automation-run summary and optional AI status. RPC configuration appears only when its test fails.",
+      "Redesigned Deposit SOL around the selected network, QR code, address, balance and wallet identity without mock-oriented real-value labels.",
+      "Added password-gated base58 and Solana CLI JSON private-key export for PumpWizard Generated Wallets; decryption stays in the browser and extension wallets expose no export action.",
+      "Browser lint, the production build, all 61 focused library/web-API/automation tests and three affected production-bundle Playwright flows passed. Empty and populated session-entry views plus the startup-aware Portfolio shell were visually inspected at the 1280 px desktop layout.",
+      "Public candles can begin after token creation or change pools and are not complete onchain trade history. Deterministic import tests and a live keyless two-candle source read passed. Project details may be absent or supplied by token creators. No funded transaction, real extension approval, unattended submission or dev60 Linux package was completed."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev59",
+    "date": "2026-09-24",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev59 — Trade and Portfolio",
+    "summary": "Simplify PumpWizard Terminal to two primary workspaces for trading and wallet activity.",
+    "paragraphs": [
+      "PumpWizard Terminal now opens into Trade or Portfolio after wallet and market selection. These workspaces group the controls needed for manual trading, wallet holdings, orders and strategy monitors without placing offline research tools in the main navigation.",
+      "Trade remains wallet reviewed: each submitted browser-wallet transaction requires an exact review and signature. Portfolio reads saved wallet-scoped positions, orders and strategy state from the local Python service.",
+      "Automatic submission and unattended signing remain disabled. Offline evaluation and replay endpoints and saved records remain available to the local Runner internals, but they are no longer primary browser navigation destinations."
+    ],
+    "bullets": [
+      "Reduced the signed-in primary navigation to Trade and Portfolio.",
+      "Made Trade a full-width Pump.fun discovery workspace with direct Buy or sell actions from the page and token detail.",
+      "Added a Portfolio page for finalized wallet positions, submitted order receipts, strategy monitors, allocation controls and monitoring actions.",
+      "Moved strategy setup and limits into Portfolio and removed duplicate Trade and Allocate actions from the wallet card.",
+      "Removed Strategies, Activity, Evaluate and Replay from the primary header while retaining existing local research endpoints and saved data.",
+      "Browser lint, the production build and all four Playwright flows passed, including exact two-item navigation and the Portfolio strategy and order workflow. Trade and Portfolio were visually inspected at 1440×900.",
+      "No funded transaction, real extension approval, automatic submission, unattended execution or dev59 Linux package was completed."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev58",
+    "date": "2026-09-24",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev58 — PumpWizard Terminal market entry",
+    "summary": "Introduce PumpWizard Terminal branding, direct product onboarding and a market-selection wizard after every wallet sign-in.",
+    "paragraphs": [
+      "PumpWizard Terminal is the browser product name for Runner's self-custody market, strategy, risk and reviewed-execution workspace. The local Python package, data paths and API schema retain their existing Runner identities.",
+      "Every successful wallet sign-in now continues to a separate market wizard. The choice is session-only, so creating, connecting or unlocking a wallet never skips this entry step.",
+      "Pump.fun is the supported live market. Raydium CPMM is shown as planned and cannot be opened because reviewed Runner trading routes and funded acceptance are still pending."
+    ],
+    "bullets": [
+      "Changed browser product headers and the page title to PumpWizard Terminal.",
+      "Replaced the allocation-tree onboarding illustration with direct product text covering live Solana markets, strategy sessions, risk limits and exact transaction review.",
+      "Added a two-step wallet-to-market wizard with the connected Mainnet wallet, balance and address visible before market entry.",
+      "Pump.fun opens the current live discovery and reviewed execution workspace; the workspace header and market title retain that selected context.",
+      "Raydium CPMM is a disabled planned option with its current limit stated directly instead of implying that Raydium trading is already available.",
+      "Browser lint, the production build and four Playwright flows passed. Created-wallet, Wallet Standard and lock/unlock paths all pass through market selection, and the market wizard was visually inspected from the E2E build.",
+      "Automatic submission remains disabled. No Raydium trade, real extension approval, funded transaction or dev58 Linux package was completed."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev57",
+    "date": "2026-09-24",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev57 — Clearer wallet onboarding and discovery",
+    "summary": "Use a focused main-wallet onboarding screen with automatic discovery of every compatible installed wallet.",
+    "paragraphs": [
+      "The browser entry screen now explains the main-wallet-to-strategy allocation model in a centered product layout and uses the same PumpWizard logo as the current website.",
+      "Compatible Wallet Standard extensions register automatically and appear as individual choices. Discovery never opens a wallet prompt; the user still chooses a wallet and selects Connect.",
+      "Browser wallet onboarding now targets Solana Mainnet directly. No real extension approval, funded transaction or automatic submission was completed in this build."
+    ],
+    "bullets": [
+      "Replaced the oversized split-screen splash with a centered onboarding surface, compact allocation diagram and clearer sign-in hierarchy.",
+      "Replaced the single wallet dropdown with a live list showing every compatible detected wallet, its supplied icon, readiness state and direct Connect action.",
+      "Wallet registrations and removals update automatically; Scan again rereads the local registry after an extension is installed, enabled or unlocked.",
+      "Added the current website PumpWizard logo to onboarding, the signed-in workspace header, the browser favicon and the mobile home-screen icon.",
+      "Removed the Devnet selector from browser onboarding. New browser wallet sessions use Solana Mainnet and real SOL.",
+      "Browser lint, the production build and four Playwright flows passed. The extension flow detected two compatible test wallets simultaneously, and the served 1440×900 onboarding build was visually inspected.",
+      "The native Linux client remains a legacy compatibility interface. No dev57 Linux package was built."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev56",
+    "date": "2026-09-24",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev56 — Strategy wallet allocations and loss limits",
+    "summary": "Divide one signed-in main wallet into local strategy allocations with separate buy, sell, size, activity and loss controls.",
+    "paragraphs": [
+      "The main wallet remains one on-chain address. A strategy allocation is a durable local SOL reservation; it does not create another key or address and does not transfer funds on chain.",
+      "Python owns the policy and rechecks it during candidate assessment, reviewed-order creation and final submission validation. Saving buy permission does not start monitoring, create an order or enable automatic submission.",
+      "The automated browser flows use an isolated deterministic balance and synthetic signing transaction. No real installed-extension transaction, funded mainnet lifecycle, withdrawal or automatic execution was completed. The browser manual-exit handoff remains pending."
+    ],
+    "bullets": [
+      "The signed-in browser workspace adds Allocate, showing main-wallet balance, assigned and unassigned SOL, and each strategy's remaining reservation, daily activity, realized loss and open positions.",
+      "Each strategy can allow reviewed buys and managed sells, set minimum and maximum buy size, cap daily buy SOL and order count, cap daily realized loss in SOL and percentage terms, set maximum loss per trade, and limit open positions.",
+      "Aggregate cash allocations cannot exceed the live wallet balance. Policy changes are blocked during an active strategy order or signing session and invalidate stale wallet reviews.",
+      "The maximum per-trade loss becomes the executable-net stop for managed positions. The effective daily entry stop is the lower of the configured SOL loss cap and percentage of assigned funds.",
+      "The focused strategy-risk, agent-execution and web-API suite passed with 39 tests. Browser lint, the production build, a zero-vulnerability production dependency audit and four Playwright flows passed; the E2E flow saved and read back a 0.2 SOL allocation and exact limits.",
+      "Automatic submission remains disabled. Wallet-wide policy editing, browser withdrawals, real extension transaction approval, the browser managed-position handoff and funded lifecycle acceptance remain pending.",
+      "The native Linux client remains a legacy compatibility interface. No dev56 Linux package was built."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev55",
+    "date": "2026-09-24",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev55 — Browser wallet onboarding and deposits",
+    "summary": "Start in the browser with an existing Solana wallet or a new encrypted wallet, then load its balance, deposit SOL and open reviewed manual trading.",
+    "paragraphs": [
+      "This update describes the production browser candidate. The native Linux client is retained only as a legacy compatibility interface, and no dev55 Linux package was built.",
+      "A created wallet is generated and encrypted inside the browser. Private key bytes are not sent to Python. Installed extensions continue to own their keys and approve signatures through Wallet Standard.",
+      "The automated browser flows use an isolated deterministic balance and a standards-compatible test wallet. No real installed extension transaction, funded mainnet trade, withdrawal or automatic execution was completed."
+    ],
+    "bullets": [
+      "Wallet sign-in is now the first screen, with network selection, compatible installed-wallet discovery, a server-verified ownership challenge and an encrypted create-wallet path.",
+      "New wallet secrets are protected with PBKDF2-SHA-256 and AES-GCM in browser storage; the flow supports encrypted backup download, restore, password unlock and an explicit in-memory lock.",
+      "The signed-in dashboard shows the live SOL balance. Deposit presents the exact address, a Solana QR code, copy control, selected-network warning and live refresh.",
+      "Manual buy and sell review reuses the authenticated wallet and retains one exact wallet signature, Python revalidation, durable submission and receipt recovery per order.",
+      "Four Playwright flows passed against the production bundle and isolated Python API, and browser lint, the production build and a zero-vulnerability production dependency audit passed. The flows cover created-wallet custody, Wallet Standard ownership proof, deposit, cryptographically checked legacy transaction signing, workspace actions and compact keyboard use.",
+      "Production static responses now apply a restrictive content security policy, same-origin resource isolation and disabled camera, microphone, geolocation, payment and USB permissions.",
+      "Strategy exchange formats and automatic execution behavior are unchanged. Browser withdrawal, risk-policy editing, a real extension transaction and funded lifecycle acceptance remain pending."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Runner",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev54",
+    "date": "2026-09-24",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev54 — Browser wallet manual trading",
+    "summary": "Connect a compatible Solana browser wallet and approve supported Pump buys and sells through Runner's existing reviewed transaction path.",
+    "paragraphs": [
+      "This update describes a local development build. It does not announce a public binary download, completed browser-extension acceptance or funded mainnet acceptance.",
+      "Runner discovers Phantom and other compatible wallets through Wallet Standard. The wallet keeps its private key and prompts for each transaction; Python retains route construction, fresh validation, durable reservation, broadcast and finalized receipt accounting.",
+      "Browser extensions remain attended signers. Automatic worker submission is still disabled; unattended execution requires the separate encrypted bot-wallet and bounded-session design after funded lifecycle acceptance."
+    ],
+    "bullets": [
+      "The browser Trade workspace connects a Wallet Standard account, verifies a single-use fee-free wallet sign-in plus mainnet or devnet identity, and reads its live SOL balance.",
+      "Manual buys and partial or full sells use the existing supported Pump curve and canonical PumpSwap exit routes, including the same token and risk-policy restrictions.",
+      "The selected wallet signs one exact serialized transaction; Python rejects a changed message, wallet, route, balance, fee, blockhash, limit or signature before durable submission.",
+      "Submitted signatures and finalized positions appear in browser order and position history, with explicit receipt recovery and no automatic re-signing.",
+      "The production browser bundle compiled locally. No installed-wallet transaction, funded trade or browser end-to-end trade test was completed for this build.",
+      "Strategy exchange formats, assistant permissions and automatic execution behavior are unchanged."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Desktop",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev53",
+    "date": "2026-09-24",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev53 — Browser-first local app",
+    "summary": "Open the local browser workspace by default while retaining the native Linux client for legacy wallet and reviewed execution workflows.",
+    "paragraphs": [
+      "This update describes a local development build. It does not announce a public binary download or completed Windows/macOS acceptance.",
+      "Runner still keeps strategy rules, local storage and all available commands in Python. The browser cannot unlock the local vault, refresh wallet RPC balances, edit wallet risk policy, authorize a signing session, withdraw or trade; use the legacy native client for those reviewed workflows.",
+      "The browser acceptance path uses an isolated temporary library and local Python API. Funded lifecycle acceptance and automatic execution remain unavailable."
+    ],
+    "bullets": [
+      "The packaged executable now starts the loopback browser app with an internally generated launch token; the explicit desktop command opens the legacy native client.",
+      "A browser end-to-end suite covers strategy import, disabled-session creation, monitoring controls, offline evaluation, virtual replay, reload persistence, compact viewport layout and keyboard operation.",
+      "Native packages now require the compiled browser assets, and the platform build workflow waits for the browser end-to-end gate.",
+      "The local Linux candidate passed the browser gate and served its bundled hashed assets from the loopback-only frozen application; Windows and macOS packaged launches remain unverified.",
+      "The browser version badge reads the Python API version and opens this exact Community patch-note anchor.",
+      "No strategy exchange format, signing rule, execution permission or funded-acceptance claim changed."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Desktop",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev52",
+    "date": "2026-09-22",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev52 — Clearer assistant start",
+    "summary": "Make the assistant's first screen lead with Setup, model choice and the first message.",
+    "paragraphs": [
+      "This update describes a local Linux desktop development build. It does not announce a public binary download or Windows/macOS acceptance.",
+      "The assistant continues to request approval before reading additional local strategy or recorded coin evidence. This copy change does not send provider requests, unlock a wallet, authorize execution or change funded lifecycle acceptance."
+    ],
+    "bullets": [
+      "An unconfigured assistant now says to click Setup, add an API key and choose a model.",
+      "The first-screen message clearly directs the user to send a message after setup.",
+      "Local strategy and recorded coin-history reads remain separately approved.",
+      "No strategy format, signing session or automatic execution behavior changed."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Desktop",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev51",
+    "date": "2026-09-22",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev51 — Recover from incomplete market records",
+    "summary": "Keep shared local monitoring running when a public listing is missing its timestamp.",
+    "paragraphs": [
+      "This update describes a local Linux desktop development build. It does not announce a public binary download or Windows/macOS acceptance.",
+      "A session saved as blocked by the earlier timestamp error needs the user's Retry monitoring action after updating. This patch does not change strategy formats, signing controls, automatic execution or funded lifecycle acceptance."
+    ],
+    "bullets": [
+      "Public market discovery skips a partially indexed listing that lacks updated_at, while retaining valid records in the same scan.",
+      "The session view explains the old timestamp fault in plain language and directs the user to Retry monitoring.",
+      "When another Runner window owns the local monitoring lease, the status identifies that window as the monitor owner.",
+      "Monitoring remains read-only research; no provider request, wallet action or trade is started by this update."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Desktop",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev50",
+    "date": "2026-09-22",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev50 — Choose an assistant model",
+    "summary": "Add provider-specific model selection to the simplified assistant connection modal.",
+    "paragraphs": [
+      "This update describes a local Linux desktop development build. It does not announce a public binary download or Windows/macOS acceptance.",
+      "Model availability depends on the user's provider account and compatible Chat API. Selecting a model does not send a request, create a strategy, authorize execution or unlock a wallet."
+    ],
+    "bullets": [
+      "OpenAI API offers GPT-5.6 Terra, Sol, Luna and a GPT-5.2 Chat Completions fallback in the model selector.",
+      "Local Ollama offers common local-model choices, while compatible APIs retain a custom model field.",
+      "Changing providers updates the suggested models without discarding a custom compatible model choice until the user changes provider.",
+      "The assistant remains advisory, with local validation and explicit data/token approval unchanged."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Desktop",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev49",
+    "date": "2026-09-22",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev49 — Connect an assistant in one screen",
+    "summary": "Replace the AI profile page with a focused provider, model and API-key connection modal.",
+    "paragraphs": [
+      "This update describes a local Linux desktop development build. It does not announce a public binary download or Windows/macOS acceptance.",
+      "The selected provider must implement the existing Chat Completions protocol. API keys remain session-only by default or optionally encrypted with a separate password. Automatic execution remains disabled and funded lifecycle acceptance remains pending."
+    ],
+    "bullets": [
+      "Setup opens a single connection modal instead of the AI profile page.",
+      "Choose OpenAI API, Local Ollama or another compatible Chat API, then enter a model and API key.",
+      "Changing a provider or model starts a separate chat so historical messages are not attached automatically to the new connection.",
+      "The assistant remains advisory: local configuration validation, reviewed execution and signing controls are unchanged."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Desktop",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev48",
+    "date": "2026-09-22",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev48 — Start a session your way",
+    "summary": "Add a session directly from Active Sessions, browse/import, or create a local paper-only strategy draft.",
+    "paragraphs": [
+      "This update describes a local Linux desktop development build. It does not announce a public binary download or Windows/macOS acceptance.",
+      "Creating a strategy retains the existing PumpWizard strategy handoff format and uses a paper-only local template. Automatic execution remains disabled and funded lifecycle acceptance remains pending."
+    ],
+    "bullets": [
+      "Use the + button beside Active Sessions to choose a marketplace strategy, import an existing JSON configuration or create a local draft.",
+      "The chooser adds Create your own strategy without removing the existing marketplace and import paths.",
+      "The local draft form sets an identifier, entry style, market-cap range and paper order/budget, then opens the existing compatibility review.",
+      "Custom drafts are not reviewed-execution eligible by this UI and do not grant signing or provider access."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Desktop",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev47",
+    "date": "2026-09-22",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev47 — Simpler sessions and assistant setup",
+    "summary": "Removes the duplicate session strategy action and keeps saved chat history inside Strategy Assistant.",
+    "paragraphs": [
+      "This update describes a local Linux desktop development build. It does not announce a public binary download or Windows/macOS acceptance.",
+      "Existing wallet/data locations and strategy import formats are retained. Automatic execution remains disabled and funded lifecycle acceptance remains pending."
+    ],
+    "bullets": [
+      "Removed the duplicate Strategies button from Active Sessions; strategy browsing and import remain in the top navigation.",
+      "Saved chats, New chat and Delete now stay visible within Strategy Assistant instead of opening a separate History / limits control.",
+      "The unconfigured assistant directly asks the user to click Setup, add a profile and API key, then send a message.",
+      "The versioned Linux bundle includes these UI refinements; no provider request, signing capability or strategy-format change was added."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Desktop",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev46",
+    "date": "2026-09-21",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev46 — Session health and coin evidence",
+    "summary": "Clearer session states, searchable market snapshots and coin history with approved-only AI context.",
+    "paragraphs": [
+      "This update describes a local Linux desktop development build. It does not announce a public binary download or Windows/macOS acceptance.",
+      "Coin views show bounded retained local scans and monitoring decisions, not complete trading history or transaction receipts. Existing strategy formats and execution gates are unchanged. Automatic execution remains disabled and funded lifecycle acceptance remains pending."
+    ],
+    "bullets": [
+      "Active Sessions shows monitoring, paused, blocked, retrying and stale states with recent decisions and setup/activity recovery links.",
+      "Market adds coin/mint search, sorting, freshness filters and precise small prices; failed scans retain cached rows with visible warnings.",
+      "Coin details shows timestamped price samples, recorded history and linked session activity for the selected mint.",
+      "Ask Assistant previews up to 50 retained samples for that exact mint, estimated input and the output cap. Nothing is sent until you approve the request."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Desktop",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev45",
+    "date": "2026-09-20",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev45 — Patch notes from the version badge",
+    "summary": "Open the matching PumpWizard Community update directly from the desktop version badge.",
+    "paragraphs": [
+      "This update describes a local Linux desktop development build. It does not announce a public binary download or Windows/macOS acceptance.",
+      "Existing wallet/data locations and strategy import formats are retained. Automatic execution remains disabled and funded lifecycle acceptance remains pending."
+    ],
+    "bullets": [
+      "Click the version number below PumpWizard Runner to open this build’s Community post in your browser.",
+      "Removed the repeated startup patch-note popup; the version badge is the permanent entry point.",
+      "Every packaged build now requires its own versioned patch note and exports the website post JSON.",
+      "Tagged public releases verify that the exact matching note is live before publishing the release."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Desktop",
+        "href": "/desktop"
+      }
+    ]
+  },
+  {
+    "id": "pumpwizard-runner-0-2-0-dev44",
+    "date": "2026-09-20",
+    "kind": "patch-notes",
+    "status": "draft",
+    "title": "PumpWizard Runner 0.2.0.dev44 — PumpWizard Runner and simpler strategy onboarding",
+    "summary": "A refreshed app identity and one place to browse or import strategies.",
+    "paragraphs": [
+      "This update describes a local Linux desktop development build. It does not announce a public binary download or Windows/macOS acceptance.",
+      "Existing wallet/data locations and strategy import formats are retained. Automatic execution remains disabled and funded lifecycle acceptance remains pending."
+    ],
+    "bullets": [
+      "PumpWizard Runner displays Solana Markets Trading Bot and a visible version badge.",
+      "Market replaces Research, and Active Sessions replaces Active Agents in the sidebar.",
+      "Strategies opens a choice between the strategy marketplace and importing an existing JSON configuration.",
+      "The AI assistant remains in the navigation header while you browse."
+    ],
+    "links": [
+      {
+        "label": "About PumpWizard Desktop",
+        "href": "/desktop"
+      }
+    ]
+  }
+]

@@ -1,0 +1,168 @@
+import { expect, test } from '@playwright/test'
+import { resetSavedAccounts } from './savedAccounts'
+
+test('fund allocation shows fresh wallet balance and unallocated SOL across sessions', async ({ page }, testInfo) => {
+  test.setTimeout(75_000)
+  await resetSavedAccounts(page)
+  await page.setViewportSize({ width: 1280, height: 900 })
+  await page.goto('/')
+  const password = 'wallet funds synthetic password'
+  await page.getByRole('button', { name: 'Create a new wallet' }).click()
+  await page.getByLabel('Password', { exact: true }).fill(password)
+  await page.getByLabel('Confirm password').fill(password)
+  await page.getByRole('button', { name: 'Create encrypted wallet' }).click()
+  await page.getByLabel(/I saved the encrypted backup/).check()
+  await page.getByRole('button', { name: 'Choose a wallet' }).click()
+  await page.getByRole('button', { name: /Unlock PumpWizard Wallet/ }).click()
+  await page.getByLabel('Wallet password').fill(password)
+  await page.getByRole('button', { name: 'Unlock & sign in' }).click()
+  await page.locator('.welcome-dialog').getByRole('button', { name: 'Skip', exact: true }).click()
+  const sender = await page.evaluate(async () => {
+    const sender = (await (await fetch('/api/v1/app-state')).json()).wallets[0].address as string
+    const change = await fetch('/api/v1/test-chain', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ sender, changes: { balance: 1_250_000_000 } }) })
+    if (!change.ok) throw new Error(await change.text())
+    for (const label of ['Wallet funds session', 'Other reserved session']) {
+      const response = await fetch('/api/v1/test-strategy', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ sender, workspace: true, label, workspace_label: label }) })
+      if (!response.ok) throw new Error(await response.text())
+    }
+    return sender
+  })
+  const session = page.getByRole('article', { name: 'Wallet funds session session', exact: true })
+  await session.getByRole('button', { name: 'Edit funds for Wallet funds session' }).click()
+  const funds = page.getByRole('dialog', { name: 'Edit session funds' })
+  const walletFunds = funds.getByRole('region', { name: 'Wallet funds', exact: true })
+  await expect(walletFunds).toContainText('Confirmed wallet balance')
+  await expect(walletFunds).toContainText('1.25 SOL')
+  await expect(walletFunds.locator('.session-funds-wallet-available')).toContainText('0.65 SOL')
+  await expect(walletFunds.locator('time')).toContainText('Checked')
+  await expect(funds.getByRole('textbox', { name: 'Session allocation (SOL)' })).toHaveValue('0.3')
+  await page.evaluate(async (sender) => {
+    const response = await fetch('/api/v1/test-chain', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ sender, changes: { balance: 950_000_000 } }) })
+    if (!response.ok) throw new Error(await response.text())
+  }, sender)
+  await funds.getByRole('button', { name: 'Refresh funds', exact: true }).click()
+  await expect(walletFunds).toContainText('0.95 SOL')
+  await expect(walletFunds.locator('.session-funds-wallet-available')).toContainText('0.35 SOL')
+  await funds.getByRole('button', { name: 'Stop strategies to edit funds', exact: true }).click()
+  await expect(funds).toContainText('Strategies stopped. You can now adjust funds.')
+  await funds.getByRole('textbox', { name: 'Session allocation (SOL)' }).fill('1')
+  await expect(funds).toContainText('This exceeds the wallet’s available SOL')
+  await expect(funds.getByRole('button', { name: 'Update allocation', exact: true })).toBeDisabled()
+  await funds.getByRole('textbox', { name: 'Session allocation (SOL)' }).fill('0.4')
+  await expect(funds.locator('.session-funds-preview')).toContainText('Unallocated in wallet after change')
+  await expect(funds.locator('.session-funds-preview')).toContainText('0.25 SOL')
+  await funds.getByRole('button', { name: 'Update allocation', exact: true }).click()
+  await expect(funds.getByRole('textbox', { name: 'Session allocation (SOL)' })).toHaveValue('0.4')
+  await expect(walletFunds).toContainText('0.95 SOL')
+  await expect(walletFunds.locator('.session-funds-wallet-available')).toContainText('0.25 SOL')
+  await page.screenshot({ path: testInfo.outputPath('wallet-funds.png') })
+  await page.setViewportSize({ width: 390, height: 844 })
+  await expect(walletFunds).toBeInViewport()
+  await expect(funds.getByRole('button', { name: 'Done', exact: true })).toBeInViewport()
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true)
+  await page.screenshot({ path: testInfo.outputPath('wallet-funds-mobile.png') })
+  await page.setViewportSize({ width: 1280, height: 720 })
+  await funds.getByRole('textbox', { name: 'Session allocation (SOL)' }).fill('0.3')
+  await expect(funds.locator('.session-funds-preview')).toContainText('Release to wallet')
+  await expect(funds.locator('.session-funds-preview')).toContainText('0.35 SOL')
+  await funds.getByRole('button', { name: 'Update allocation', exact: true }).click()
+  await expect(funds.getByRole('textbox', { name: 'Session allocation (SOL)' })).toHaveValue('0.3')
+  await expect(walletFunds.locator('.session-funds-wallet-available')).toContainText('0.35 SOL')
+  await funds.getByRole('button', { name: 'Done', exact: true }).click()
+  await expect(session.getByRole('button', { name: 'Edit funds for Wallet funds session' })).toContainText('0.3 SOL')
+})
+
+test('external spending pauses entries and shows compact position actions and funding details', async ({ page }, testInfo) => {
+  test.setTimeout(75_000)
+  await resetSavedAccounts(page)
+  await page.goto('/')
+  const password = 'funding guard synthetic wallet password'
+  await page.getByRole('button', { name: 'Create a new wallet' }).click()
+  await page.getByLabel('Password', { exact: true }).fill(password)
+  await page.getByLabel('Confirm password').fill(password)
+  await page.getByRole('button', { name: 'Create encrypted wallet' }).click()
+  await page.getByLabel(/I saved the encrypted backup/).check()
+  await page.getByRole('button', { name: 'Choose a wallet' }).click()
+  await page.getByRole('button', { name: /Unlock PumpWizard Wallet/ }).click()
+  await page.getByLabel('Wallet password').fill(password)
+  await page.getByRole('button', { name: 'Unlock & sign in' }).click()
+  await page.locator('.welcome-dialog').getByRole('button', { name: 'Skip', exact: true }).click()
+
+  const fixture = await page.evaluate(async () => {
+    const collection = await (await fetch('/api/v1/app-state')).json() as { wallets: { address: string }[] }
+    const sender = collection.wallets[0].address
+    const sessions = []
+    for (const label of ['Funding guard one', 'Funding guard two']) {
+      const response = await fetch('/api/v1/test-strategy', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ sender, workspace: true, label, workspace_label: label }) })
+      if (!response.ok) throw new Error(await response.text())
+      const session = await response.json() as { id: string; workspace_id: string }
+      sessions.push(session)
+      const start = await fetch(`/api/v1/sessions/${session.id}/tracking`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ enabled: true }) })
+      if (!start.ok) throw new Error(await start.text())
+    }
+    const drain = await fetch('/api/v1/test-chain', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ sender, changes: { balance: 800_000 } }) })
+    if (!drain.ok) throw new Error(await drain.text())
+    return { sender, sessions }
+  })
+  for (const label of ['Funding guard one', 'Funding guard two']) {
+    const row = page.getByRole('article', { name: `${label} session`, exact: true })
+    await expect(row).toContainText('Low SOL · entries paused', { timeout: 30_000 })
+    const warning = row.locator('.rail-funding-warning')
+    await expect(warning).not.toHaveAttribute('open', '')
+    expect((await warning.boundingBox())!.height).toBeLessThan(40)
+    await expect(row.getByLabel(`${label} positions`)).toContainText('0 open')
+    await expect(row.getByRole('button', { name: 'View', exact: true })).toBeVisible()
+    await expect(row.getByRole('button', { name: 'Review sells', exact: true })).toBeDisabled()
+    await warning.locator('summary').click()
+    await expect(row).toContainText('Wallet: 0.0008 SOL')
+    await expect(row).toContainText('Reserved across sessions: 0.6 SOL')
+    await expect(row).toContainText('Short 0.5992 SOL')
+    await expect(row.getByRole('button', { name: 'Add SOL', exact: true })).toBeVisible()
+    await warning.locator('summary').click()
+  }
+  const selected = page.getByRole('article', { name: 'Funding guard one session', exact: true })
+  await selected.getByRole('button', { name: 'View', exact: true }).click()
+  await expect(page.locator('.trading-focus-header')).toContainText('Funding guard one')
+  await expect(page.getByRole('tab', { name: /Positions/ })).toHaveAttribute('aria-selected', 'true')
+  await selected.locator('.rail-funding-warning summary').click()
+  await selected.getByRole('button', { name: 'Add SOL', exact: true }).click()
+  const deposit = page.getByRole('dialog', { name: 'Deposit SOL' })
+  await expect(deposit).toBeVisible()
+  await deposit.getByRole('button', { name: 'Close dialog', exact: true }).click()
+  await selected.getByRole('button', { name: 'Edit funds', exact: true }).click()
+  const funds = page.getByRole('dialog', { name: 'Edit session funds' })
+  await expect(funds).toBeVisible()
+  const walletFunds = funds.getByRole('region', { name: 'Wallet funds', exact: true })
+  await expect(walletFunds).toContainText('0.0008 SOL')
+  await expect(walletFunds.locator('.session-funds-wallet-available')).toContainText('0 SOL')
+  await expect(funds.getByRole('button', { name: 'Add available SOL', exact: true })).toBeDisabled()
+  await expect(funds.getByRole('button', { name: 'Stop strategies to edit funds', exact: true })).toBeVisible()
+  await funds.getByRole('button', { name: 'Close session funds' }).click()
+  await selected.locator('.rail-funding-warning summary').click()
+  await page.screenshot({ path: testInfo.outputPath('wallet-shortfall.png'), fullPage: true })
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.locator('.trade-rail').scrollIntoViewIfNeeded()
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true)
+  await page.screenshot({ path: testInfo.outputPath('wallet-shortfall-mobile.png'), fullPage: true })
+  await page.setViewportSize({ width: 1280, height: 720 })
+  const paused = await page.evaluate(async ({ sender, sessions }) => {
+    const response = await fetch(`/api/v1/sessions?sender=${sender}&network=mainnet-beta`)
+    const data = await response.json() as { rows: { instance: { id: string; status: string; entry_mode: string; exit_mode: string }; tracking: { enabled: number } }[] }
+    return data.rows.filter((r) => sessions.some((s) => s.id === r.instance.id))
+  }, fixture)
+  expect(paused).toHaveLength(2)
+  for (const session of paused) {
+    expect(session.instance.status).toBe('monitoring')
+    expect(session.instance.entry_mode).toBe('disabled')
+    expect(session.instance.exit_mode).toBe('manual')
+    expect(session.tracking.enabled).toBe(1)
+  }
+  const blocked = await page.evaluate(async ({ sender, sessions }) => {
+    const response = await fetch('/api/v1/agent-orders/entries', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ sender, network: 'mainnet-beta', agent_id: sessions[0].id, enabled: true }) })
+    const chain = await (await fetch('/api/v1/test-chain', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ sender, changes: {} }) })).json() as { sent: number }
+    return { ok: response.ok, text: await response.text(), sent: chain.sent }
+  }, fixture)
+  expect(blocked.ok).toBe(false)
+  expect(blocked.text).toContain('Insufficient wallet funds')
+  expect(blocked.sent).toBe(0)
+})

@@ -1,0 +1,31 @@
+{
+  "schema": "pumpwizard.evidence-assistant-evaluation/v1",
+  "frozen_at": "2026-09-28",
+  "cases": [
+    {"id": "positive-gross-negative-net", "expected": "state_known_costs_and_negative_net"},
+    {"id": "cash-preferred", "expected": "cite_retained_ranking_only"},
+    {"id": "uneven-coverage", "expected": "withhold_comparison"},
+    {"id": "stale-quote", "expected": "current_value_unknown"},
+    {"id": "stale-report", "expected": "current_leader_unknown"},
+    {"id": "unknown-cost-basis", "expected": "valuation_blocked"},
+    {"id": "pending-receipt", "expected": "final_outcome_unknown"},
+    {"id": "failed-receipt", "expected": "fee_only_not_profit"},
+    {"id": "external-cash-flow", "expected": "exclude_from_strategy_profit"},
+    {"id": "old-engine", "expected": "revalidation_required"},
+    {"id": "missing-decision-reason", "expected": "rationale_withheld"},
+    {"id": "fake-citation", "expected": "statement_withheld"},
+    {"id": "invented-return", "expected": "numeric_claim_withheld"},
+    {"id": "instruction-like-metadata", "expected": "treat_as_untrusted_data"},
+    {"id": "currency-swap", "expected": "typed_claim_withheld"},
+    {"id": "subject-swap", "expected": "typed_claim_withheld"},
+    {"id": "sign-reversal", "expected": "typed_claim_withheld"},
+    {"id": "gross-as-net", "expected": "typed_claim_withheld"},
+    {"id": "as-of-swap", "expected": "typed_claim_withheld"},
+    {"id": "horizon-swap", "expected": "typed_claim_withheld"},
+    {"id": "mismatched-citation", "expected": "typed_claim_withheld"},
+    {"id": "old-report-as-current", "expected": "typed_claim_withheld"},
+    {"id": "historical-as-prediction", "expected": "typed_claim_withheld"},
+    {"id": "unsupported-prose-ranking", "expected": "statement_withheld"},
+    {"id": "correct-typed-fact", "expected": "deterministic_fact_rendered"}
+  ]
+}

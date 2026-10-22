@@ -1,0 +1,454 @@
+{
+  "schema": "pumpwizard.portfolio-recording/v1",
+  "configuration": {
+    "entry_policy": "simulation_unverified",
+    "version": "early-ladder-v1",
+    "mode": "paper_only",
+    "budget_usd": 500,
+    "order_usd": 10,
+    "max_positions": 20,
+    "entry_cap_min": 10000,
+    "entry_cap_max": 25000,
+    "observation_seconds": 30,
+    "minimum_samples": 4,
+    "minimum_price_changes": 2,
+    "minimum_growth_fraction": 0.01,
+    "minimum_reserve_growth_usd": 10,
+    "maximum_peak_drawdown": 0.35,
+    "max_sample_gap_seconds": 20,
+    "quote_max_age_seconds": 30,
+    "entry_expiry_seconds": 30,
+    "fill_delay_seconds": 2,
+    "ownership_ttl_seconds": 120,
+    "min_curve_liquidity_usd": 1000,
+    "min_amm_liquidity_usd": 10000,
+    "max_entry_reserve_fraction": 0.01,
+    "max_roundtrip_loss_fraction": 0.15,
+    "fee_fraction": 0.025,
+    "adverse_fraction": 0.01,
+    "fixed_fee_usd": 0.1,
+    "entry_rent_usd": 0.35,
+    "failed_attempt_probability": 0.05,
+    "stop_loss_fraction": -0.3,
+    "trailing_drawdown_fraction": 0.35,
+    "quote_gap_exit_seconds": 600,
+    "max_hold_seconds": 864000,
+    "targets": [
+      {
+        "market_cap_usd": 30000,
+        "initial_fraction": 0.4
+      },
+      {
+        "market_cap_usd": 60000,
+        "initial_fraction": 0.3
+      },
+      {
+        "market_cap_usd": 100000,
+        "initial_fraction": 0.2
+      }
+    ],
+    "entry_style": "momentum"
+  },
+  "batches": [
+    {
+      "at": 1000,
+      "quotes": [
+        {
+          "mint": "TestMint",
+          "symbol": "TestMint",
+          "route": "pump_bonding_curve_sol",
+          "curve_address": "CurveTestMint",
+          "observed_at": 1000,
+          "source_at": 1000,
+          "fx_at": 1000,
+          "x": 1000000000,
+          "y": 110,
+          "real_x": 500000000,
+          "real_y": 40,
+          "supply": 1000000000,
+          "quote_usd": 100,
+          "market_cap_usd": 11000,
+          "decimals": 6,
+          "complete": false,
+          "mayhem": false
+        }
+      ],
+      "evidence": {}
+    },
+    {
+      "at": 1010,
+      "quotes": [
+        {
+          "mint": "TestMint",
+          "symbol": "TestMint",
+          "route": "pump_bonding_curve_sol",
+          "curve_address": "CurveTestMint",
+          "observed_at": 1010,
+          "source_at": 1010,
+          "fx_at": 1010,
+          "x": 1000000000,
+          "y": 111,
+          "real_x": 500000000,
+          "real_y": 41,
+          "supply": 1000000000,
+          "quote_usd": 100,
+          "market_cap_usd": 11100,
+          "decimals": 6,
+          "complete": false,
+          "mayhem": false
+        }
+      ],
+      "evidence": {}
+    },
+    {
+      "at": 1020,
+      "quotes": [
+        {
+          "mint": "TestMint",
+          "symbol": "TestMint",
+          "route": "pump_bonding_curve_sol",
+          "curve_address": "CurveTestMint",
+          "observed_at": 1020,
+          "source_at": 1020,
+          "fx_at": 1020,
+          "x": 1000000000,
+          "y": 112,
+          "real_x": 500000000,
+          "real_y": 42,
+          "supply": 1000000000,
+          "quote_usd": 100,
+          "market_cap_usd": 11200,
+          "decimals": 6,
+          "complete": false,
+          "mayhem": false
+        }
+      ],
+      "evidence": {}
+    },
+    {
+      "at": 1030,
+      "quotes": [
+        {
+          "mint": "TestMint",
+          "symbol": "TestMint",
+          "route": "pump_bonding_curve_sol",
+          "curve_address": "CurveTestMint",
+          "observed_at": 1030,
+          "source_at": 1030,
+          "fx_at": 1030,
+          "x": 1000000000,
+          "y": 113,
+          "real_x": 500000000,
+          "real_y": 43,
+          "supply": 1000000000,
+          "quote_usd": 100,
+          "market_cap_usd": 11300,
+          "decimals": 6,
+          "complete": false,
+          "mayhem": false
+        }
+      ],
+      "evidence": {}
+    },
+    {
+      "at": 1031,
+      "quotes": [
+        {
+          "mint": "TestMint",
+          "symbol": "TestMint",
+          "route": "pump_bonding_curve_sol",
+          "curve_address": "CurveTestMint",
+          "observed_at": 1031,
+          "source_at": 1031,
+          "fx_at": 1031,
+          "x": 1000000000,
+          "y": 115,
+          "real_x": 500000000,
+          "real_y": 50,
+          "supply": 1000000000,
+          "quote_usd": 100,
+          "market_cap_usd": 11500,
+          "decimals": 6,
+          "complete": false,
+          "mayhem": false
+        }
+      ],
+      "evidence": {}
+    },
+    {
+      "at": 1032,
+      "quotes": [
+        {
+          "mint": "TestMint",
+          "symbol": "TestMint",
+          "route": "pump_bonding_curve_sol",
+          "curve_address": "CurveTestMint",
+          "observed_at": 1032,
+          "source_at": 1032,
+          "fx_at": 1032,
+          "x": 1000000000,
+          "y": 115,
+          "real_x": 500000000,
+          "real_y": 50,
+          "supply": 1000000000,
+          "quote_usd": 100,
+          "market_cap_usd": 11500,
+          "decimals": 6,
+          "complete": false,
+          "mayhem": false
+        }
+      ],
+      "evidence": {}
+    },
+    {
+      "at": 1040,
+      "quotes": [
+        {
+          "mint": "TestMint",
+          "symbol": "TestMint",
+          "route": "pump_bonding_curve_sol",
+          "curve_address": "CurveTestMint",
+          "observed_at": 1040,
+          "source_at": 1040,
+          "fx_at": 1040,
+          "x": 1000000000,
+          "y": 320,
+          "real_x": 500000000,
+          "real_y": 50,
+          "supply": 1000000000,
+          "quote_usd": 100,
+          "market_cap_usd": 32000,
+          "decimals": 6,
+          "complete": false,
+          "mayhem": false
+        }
+      ],
+      "evidence": {}
+    },
+    {
+      "at": 1041,
+      "quotes": [
+        {
+          "mint": "TestMint",
+          "symbol": "TestMint",
+          "route": "pump_bonding_curve_sol",
+          "curve_address": "CurveTestMint",
+          "observed_at": 1041,
+          "source_at": 1041,
+          "fx_at": 1041,
+          "x": 1000000000,
+          "y": 320,
+          "real_x": 500000000,
+          "real_y": 50,
+          "supply": 1000000000,
+          "quote_usd": 100,
+          "market_cap_usd": 32000,
+          "decimals": 6,
+          "complete": false,
+          "mayhem": false
+        }
+      ],
+      "evidence": {}
+    },
+    {
+      "at": 1042,
+      "quotes": [
+        {
+          "mint": "TestMint",
+          "symbol": "TestMint",
+          "route": "pump_bonding_curve_sol",
+          "curve_address": "CurveTestMint",
+          "observed_at": 1042,
+          "source_at": 1042,
+          "fx_at": 1042,
+          "x": 1000000000,
+          "y": 320,
+          "real_x": 500000000,
+          "real_y": 50,
+          "supply": 1000000000,
+          "quote_usd": 100,
+          "market_cap_usd": 32000,
+          "decimals": 6,
+          "complete": false,
+          "mayhem": false
+        }
+      ],
+      "evidence": {}
+    },
+    {
+      "at": 1050,
+      "quotes": [
+        {
+          "mint": "TestMint",
+          "symbol": "TestMint",
+          "route": "pump_bonding_curve_sol",
+          "curve_address": "CurveTestMint",
+          "observed_at": 1050,
+          "source_at": 1050,
+          "fx_at": 1050,
+          "x": 1000000000,
+          "y": 170,
+          "real_x": 500000000,
+          "real_y": 50,
+          "supply": 1000000000,
+          "quote_usd": 100,
+          "market_cap_usd": 17000,
+          "decimals": 6,
+          "complete": false,
+          "mayhem": false
+        }
+      ],
+      "evidence": {}
+    },
+    {
+      "at": 1052,
+      "quotes": [
+        {
+          "mint": "TestMint",
+          "symbol": "TestMint",
+          "route": "pump_bonding_curve_sol",
+          "curve_address": "CurveTestMint",
+          "observed_at": 1052,
+          "source_at": 1052,
+          "fx_at": 1052,
+          "x": 1000000000,
+          "y": 170,
+          "real_x": 500000000,
+          "real_y": 50,
+          "supply": 1000000000,
+          "quote_usd": 100,
+          "market_cap_usd": 17000,
+          "decimals": 6,
+          "complete": false,
+          "mayhem": false
+        }
+      ],
+      "evidence": {}
+    },
+    {
+      "at": 1060,
+      "quotes": [
+        {
+          "mint": "TestMint",
+          "symbol": "TestMint",
+          "route": "pump_bonding_curve_sol",
+          "curve_address": "CurveTestMint",
+          "observed_at": 1060,
+          "source_at": 1060,
+          "fx_at": 1060,
+          "x": 1000000000,
+          "y": 110,
+          "real_x": 500000000,
+          "real_y": 40,
+          "supply": 1000000000,
+          "quote_usd": 100,
+          "market_cap_usd": 11000,
+          "decimals": 6,
+          "complete": false,
+          "mayhem": false
+        }
+      ],
+      "evidence": {}
+    },
+    {
+      "at": 1070,
+      "quotes": [
+        {
+          "mint": "TestMint",
+          "symbol": "TestMint",
+          "route": "pump_bonding_curve_sol",
+          "curve_address": "CurveTestMint",
+          "observed_at": 1070,
+          "source_at": 1070,
+          "fx_at": 1070,
+          "x": 1000000000,
+          "y": 111,
+          "real_x": 500000000,
+          "real_y": 41,
+          "supply": 1000000000,
+          "quote_usd": 100,
+          "market_cap_usd": 11100,
+          "decimals": 6,
+          "complete": false,
+          "mayhem": false
+        }
+      ],
+      "evidence": {}
+    },
+    {
+      "at": 1080,
+      "quotes": [
+        {
+          "mint": "TestMint",
+          "symbol": "TestMint",
+          "route": "pump_bonding_curve_sol",
+          "curve_address": "CurveTestMint",
+          "observed_at": 1080,
+          "source_at": 1080,
+          "fx_at": 1080,
+          "x": 1000000000,
+          "y": 112,
+          "real_x": 500000000,
+          "real_y": 42,
+          "supply": 1000000000,
+          "quote_usd": 100,
+          "market_cap_usd": 11200,
+          "decimals": 6,
+          "complete": false,
+          "mayhem": false
+        }
+      ],
+      "evidence": {}
+    },
+    {
+      "at": 1090,
+      "quotes": [
+        {
+          "mint": "TestMint",
+          "symbol": "TestMint",
+          "route": "pump_bonding_curve_sol",
+          "curve_address": "CurveTestMint",
+          "observed_at": 1090,
+          "source_at": 1090,
+          "fx_at": 1090,
+          "x": 1000000000,
+          "y": 113,
+          "real_x": 500000000,
+          "real_y": 43,
+          "supply": 1000000000,
+          "quote_usd": 100,
+          "market_cap_usd": 11300,
+          "decimals": 6,
+          "complete": false,
+          "mayhem": false
+        }
+      ],
+      "evidence": {}
+    },
+    {
+      "at": 1100,
+      "quotes": [
+        {
+          "mint": "TestMint",
+          "symbol": "TestMint",
+          "route": "pump_bonding_curve_sol",
+          "curve_address": "CurveTestMint",
+          "observed_at": 1100,
+          "source_at": 1100,
+          "fx_at": 1100,
+          "x": 1000000000,
+          "y": 114,
+          "real_x": 500000000,
+          "real_y": 44,
+          "supply": 1000000000,
+          "quote_usd": 100,
+          "market_cap_usd": 11400,
+          "decimals": 6,
+          "complete": false,
+          "mayhem": false
+        }
+      ],
+      "evidence": {}
+    }
+  ]
+}

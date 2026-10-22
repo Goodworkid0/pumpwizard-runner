@@ -17,6 +17,9 @@ release-artifacts/
 *.key
 *.pem
 wallet*.json
+solanamarket-wallet.json
+solanamarket-wallet.json-*
+ai-credentials/
 
 # Local coding-assistant configuration
 AGENTS.md
@@ -33,3 +36,13 @@ GEMINI.md
 .github/copilot-instructions.md
 .github/instructions/
 .github/prompts/
+output/
+docs/NEXT-SESSION-HANDOFF.md
+docs/HANDOFF-*.md
+docs/*WORK-RULES.md
+docs/archive/
+docs/audits/
+docs/evidence/
+
+# Synthetic unsigned-message fixture used by the wallet compiler tests
+!tests/fixtures/pump-route/wallet-message-layout.json

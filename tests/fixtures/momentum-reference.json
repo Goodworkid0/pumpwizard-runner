@@ -1,0 +1,3503 @@
+{
+  "schema": "pumpwizard.reference-decisions/v1",
+  "scope": "momentum curve decision screens; no fills or scheduling parity",
+  "source_hashes": {
+    "ladder.py": "c2f00ecf4154965c9beeac19fc5419c633325ea085a6a178b4688cb263c170f7",
+    "model.py": "f26246b19f39d8b3bb53b8584afbe668d2d67247de88e7ebe4c9ac0146e50d6c"
+  },
+  "configuration": {
+    "entry_policy": "simulation_unverified",
+    "version": "early-ladder-v1",
+    "mode": "paper_only",
+    "budget_usd": 500,
+    "order_usd": 10,
+    "max_positions": 20,
+    "entry_cap_min": 10000,
+    "entry_cap_max": 25000,
+    "observation_seconds": 30,
+    "minimum_samples": 4,
+    "minimum_price_changes": 2,
+    "minimum_growth_fraction": 0.01,
+    "minimum_reserve_growth_usd": 10,
+    "maximum_peak_drawdown": 0.35,
+    "max_sample_gap_seconds": 20,
+    "quote_max_age_seconds": 30,
+    "entry_expiry_seconds": 30,
+    "fill_delay_seconds": 2,
+    "ownership_ttl_seconds": 120,
+    "min_curve_liquidity_usd": 1000,
+    "min_amm_liquidity_usd": 10000,
+    "max_entry_reserve_fraction": 0.01,
+    "max_roundtrip_loss_fraction": 0.15,
+    "fee_fraction": 0.025,
+    "adverse_fraction": 0.01,
+    "fixed_fee_usd": 0.1,
+    "entry_rent_usd": 0.35,
+    "failed_attempt_probability": 0.05,
+    "stop_loss_fraction": -0.3,
+    "trailing_drawdown_fraction": 0.35,
+    "quote_gap_exit_seconds": 600,
+    "max_hold_seconds": 864000,
+    "targets": [
+      {
+        "market_cap_usd": 30000,
+        "initial_fraction": 0.4
+      },
+      {
+        "market_cap_usd": 60000,
+        "initial_fraction": 0.3
+      },
+      {
+        "market_cap_usd": 100000,
+        "initial_fraction": 0.2
+      }
+    ],
+    "entry_style": "momentum"
+  },
+  "entries": [
+    {
+      "name": "growing",
+      "frames": [
+        {
+          "at": 1000,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1000,
+            "source_at": 1000,
+            "fx_at": 1000,
+            "x": 1000000000,
+            "y": 110,
+            "real_x": 500000000,
+            "real_y": 40,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11000,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1010,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1010,
+            "source_at": 1010,
+            "fx_at": 1010,
+            "x": 1000000000,
+            "y": 111,
+            "real_x": 500000000,
+            "real_y": 41,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11100,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.11e-07,
+              "real_sol": 41,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1020,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1020,
+            "source_at": 1020,
+            "fx_at": 1020,
+            "x": 1000000000,
+            "y": 112,
+            "real_x": 500000000,
+            "real_y": 42,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11200,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.11e-07,
+              "real_sol": 41,
+              "fx": 100
+            },
+            {
+              "at": 1020,
+              "price": 1.12e-07,
+              "real_sol": 42,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1030,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1030,
+            "source_at": 1030,
+            "fx_at": 1030,
+            "x": 1000000000,
+            "y": 113,
+            "real_x": 500000000,
+            "real_y": 43,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11300,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": null,
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.11e-07,
+              "real_sol": 41,
+              "fx": 100
+            },
+            {
+              "at": 1020,
+              "price": 1.12e-07,
+              "real_sol": 42,
+              "fx": 100
+            },
+            {
+              "at": 1030,
+              "price": 1.13e-07,
+              "real_sol": 43,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1040,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1040,
+            "source_at": 1040,
+            "fx_at": 1040,
+            "x": 1000000000,
+            "y": 114,
+            "real_x": 500000000,
+            "real_y": 44,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11400,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": null,
+          "history": [
+            {
+              "at": 1010,
+              "price": 1.11e-07,
+              "real_sol": 41,
+              "fx": 100
+            },
+            {
+              "at": 1020,
+              "price": 1.12e-07,
+              "real_sol": 42,
+              "fx": 100
+            },
+            {
+              "at": 1030,
+              "price": 1.13e-07,
+              "real_sol": 43,
+              "fx": 100
+            },
+            {
+              "at": 1040,
+              "price": 1.14e-07,
+              "real_sol": 44,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1050,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1050,
+            "source_at": 1050,
+            "fx_at": 1050,
+            "x": 1000000000,
+            "y": 115,
+            "real_x": 500000000,
+            "real_y": 45,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11500,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": null,
+          "history": [
+            {
+              "at": 1020,
+              "price": 1.12e-07,
+              "real_sol": 42,
+              "fx": 100
+            },
+            {
+              "at": 1030,
+              "price": 1.13e-07,
+              "real_sol": 43,
+              "fx": 100
+            },
+            {
+              "at": 1040,
+              "price": 1.14e-07,
+              "real_sol": 44,
+              "fx": 100
+            },
+            {
+              "at": 1050,
+              "price": 1.15e-07,
+              "real_sol": 45,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1060,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1060,
+            "source_at": 1060,
+            "fx_at": 1060,
+            "x": 1000000000,
+            "y": 116,
+            "real_x": 500000000,
+            "real_y": 46,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11600,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": null,
+          "history": [
+            {
+              "at": 1030,
+              "price": 1.13e-07,
+              "real_sol": 43,
+              "fx": 100
+            },
+            {
+              "at": 1040,
+              "price": 1.14e-07,
+              "real_sol": 44,
+              "fx": 100
+            },
+            {
+              "at": 1050,
+              "price": 1.15e-07,
+              "real_sol": 45,
+              "fx": 100
+            },
+            {
+              "at": 1060,
+              "price": 1.16e-07,
+              "real_sol": 46,
+              "fx": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "window_rollover",
+      "frames": [
+        {
+          "at": 1000,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1000,
+            "source_at": 1000,
+            "fx_at": 1000,
+            "x": 1000000000,
+            "y": 110,
+            "real_x": 500000000,
+            "real_y": 40,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11000,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1010,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1010,
+            "source_at": 1010,
+            "fx_at": 1010,
+            "x": 1000000000,
+            "y": 114,
+            "real_x": 500000000,
+            "real_y": 41,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11400,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.14e-07,
+              "real_sol": 41,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1020,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1020,
+            "source_at": 1020,
+            "fx_at": 1020,
+            "x": 1000000000,
+            "y": 118,
+            "real_x": 500000000,
+            "real_y": 42,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11800,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.14e-07,
+              "real_sol": 41,
+              "fx": 100
+            },
+            {
+              "at": 1020,
+              "price": 1.18e-07,
+              "real_sol": 42,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1030,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1030,
+            "source_at": 1030,
+            "fx_at": 1030,
+            "x": 1000000000,
+            "y": 122,
+            "real_x": 500000000,
+            "real_y": 43,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 12200,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": null,
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.14e-07,
+              "real_sol": 41,
+              "fx": 100
+            },
+            {
+              "at": 1020,
+              "price": 1.18e-07,
+              "real_sol": 42,
+              "fx": 100
+            },
+            {
+              "at": 1030,
+              "price": 1.22e-07,
+              "real_sol": 43,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1040,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1040,
+            "source_at": 1040,
+            "fx_at": 1040,
+            "x": 1000000000,
+            "y": 120,
+            "real_x": 500000000,
+            "real_y": 44,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 12000,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": null,
+          "history": [
+            {
+              "at": 1010,
+              "price": 1.14e-07,
+              "real_sol": 41,
+              "fx": 100
+            },
+            {
+              "at": 1020,
+              "price": 1.18e-07,
+              "real_sol": 42,
+              "fx": 100
+            },
+            {
+              "at": 1030,
+              "price": 1.22e-07,
+              "real_sol": 43,
+              "fx": 100
+            },
+            {
+              "at": 1040,
+              "price": 1.2e-07,
+              "real_sol": 44,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1050,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1050,
+            "source_at": 1050,
+            "fx_at": 1050,
+            "x": 1000000000,
+            "y": 118,
+            "real_x": 500000000,
+            "real_y": 45,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11800,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "No positive reserve-implied price trend yet",
+          "history": [
+            {
+              "at": 1020,
+              "price": 1.18e-07,
+              "real_sol": 42,
+              "fx": 100
+            },
+            {
+              "at": 1030,
+              "price": 1.22e-07,
+              "real_sol": 43,
+              "fx": 100
+            },
+            {
+              "at": 1040,
+              "price": 1.2e-07,
+              "real_sol": 44,
+              "fx": 100
+            },
+            {
+              "at": 1050,
+              "price": 1.18e-07,
+              "real_sol": 45,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1060,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1060,
+            "source_at": 1060,
+            "fx_at": 1060,
+            "x": 1000000000,
+            "y": 116,
+            "real_x": 500000000,
+            "real_y": 46,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11600,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "No positive reserve-implied price trend yet",
+          "history": [
+            {
+              "at": 1030,
+              "price": 1.22e-07,
+              "real_sol": 43,
+              "fx": 100
+            },
+            {
+              "at": 1040,
+              "price": 1.2e-07,
+              "real_sol": 44,
+              "fx": 100
+            },
+            {
+              "at": 1050,
+              "price": 1.18e-07,
+              "real_sol": 45,
+              "fx": 100
+            },
+            {
+              "at": 1060,
+              "price": 1.16e-07,
+              "real_sol": 46,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1070,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1070,
+            "source_at": 1070,
+            "fx_at": 1070,
+            "x": 1000000000,
+            "y": 114,
+            "real_x": 500000000,
+            "real_y": 47,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11400,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "No positive reserve-implied price trend yet",
+          "history": [
+            {
+              "at": 1040,
+              "price": 1.2e-07,
+              "real_sol": 44,
+              "fx": 100
+            },
+            {
+              "at": 1050,
+              "price": 1.18e-07,
+              "real_sol": 45,
+              "fx": 100
+            },
+            {
+              "at": 1060,
+              "price": 1.16e-07,
+              "real_sol": 46,
+              "fx": 100
+            },
+            {
+              "at": 1070,
+              "price": 1.14e-07,
+              "real_sol": 47,
+              "fx": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "flat",
+      "frames": [
+        {
+          "at": 1000,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1000,
+            "source_at": 1000,
+            "fx_at": 1000,
+            "x": 1000000000,
+            "y": 110,
+            "real_x": 500000000,
+            "real_y": 40,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11000,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1010,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1010,
+            "source_at": 1010,
+            "fx_at": 1010,
+            "x": 1000000000,
+            "y": 110,
+            "real_x": 500000000,
+            "real_y": 40,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11000,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1020,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1020,
+            "source_at": 1020,
+            "fx_at": 1020,
+            "x": 1000000000,
+            "y": 110,
+            "real_x": 500000000,
+            "real_y": 40,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11000,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1020,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1030,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1030,
+            "source_at": 1030,
+            "fx_at": 1030,
+            "x": 1000000000,
+            "y": 110,
+            "real_x": 500000000,
+            "real_y": 40,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11000,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Not enough distinct reserve-implied price changes",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1020,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1030,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1040,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1040,
+            "source_at": 1040,
+            "fx_at": 1040,
+            "x": 1000000000,
+            "y": 110,
+            "real_x": 500000000,
+            "real_y": 40,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11000,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Not enough distinct reserve-implied price changes",
+          "history": [
+            {
+              "at": 1010,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1020,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1030,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1040,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "fx_only",
+      "frames": [
+        {
+          "at": 1000,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1000,
+            "source_at": 1000,
+            "fx_at": 1000,
+            "x": 1000000000,
+            "y": 110,
+            "real_x": 500000000,
+            "real_y": 40,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11000,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1010,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1010,
+            "source_at": 1010,
+            "fx_at": 1010,
+            "x": 1000000000,
+            "y": 110,
+            "real_x": 500000000,
+            "real_y": 40,
+            "supply": 1000000000,
+            "quote_usd": 101,
+            "market_cap_usd": 11110,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 101
+            }
+          ]
+        },
+        {
+          "at": 1020,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1020,
+            "source_at": 1020,
+            "fx_at": 1020,
+            "x": 1000000000,
+            "y": 110,
+            "real_x": 500000000,
+            "real_y": 40,
+            "supply": 1000000000,
+            "quote_usd": 102,
+            "market_cap_usd": 11220,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 101
+            },
+            {
+              "at": 1020,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 102
+            }
+          ]
+        },
+        {
+          "at": 1030,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1030,
+            "source_at": 1030,
+            "fx_at": 1030,
+            "x": 1000000000,
+            "y": 110,
+            "real_x": 500000000,
+            "real_y": 40,
+            "supply": 1000000000,
+            "quote_usd": 103,
+            "market_cap_usd": 11330,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Not enough distinct reserve-implied price changes",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 101
+            },
+            {
+              "at": 1020,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 102
+            },
+            {
+              "at": 1030,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 103
+            }
+          ]
+        },
+        {
+          "at": 1040,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1040,
+            "source_at": 1040,
+            "fx_at": 1040,
+            "x": 1000000000,
+            "y": 110,
+            "real_x": 500000000,
+            "real_y": 40,
+            "supply": 1000000000,
+            "quote_usd": 104,
+            "market_cap_usd": 11440,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Not enough distinct reserve-implied price changes",
+          "history": [
+            {
+              "at": 1010,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 101
+            },
+            {
+              "at": 1020,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 102
+            },
+            {
+              "at": 1030,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 103
+            },
+            {
+              "at": 1040,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 104
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "no_reserve_growth",
+      "frames": [
+        {
+          "at": 1000,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1000,
+            "source_at": 1000,
+            "fx_at": 1000,
+            "x": 1000000000,
+            "y": 110,
+            "real_x": 500000000,
+            "real_y": 40,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11000,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1010,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1010,
+            "source_at": 1010,
+            "fx_at": 1010,
+            "x": 1000000000,
+            "y": 111,
+            "real_x": 500000000,
+            "real_y": 40,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11100,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.11e-07,
+              "real_sol": 40,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1020,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1020,
+            "source_at": 1020,
+            "fx_at": 1020,
+            "x": 1000000000,
+            "y": 112,
+            "real_x": 500000000,
+            "real_y": 40,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11200,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.11e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1020,
+              "price": 1.12e-07,
+              "real_sol": 40,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1030,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1030,
+            "source_at": 1030,
+            "fx_at": 1030,
+            "x": 1000000000,
+            "y": 113,
+            "real_x": 500000000,
+            "real_y": 40,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11300,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Real SOL reserve growth is insufficient",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.11e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1020,
+              "price": 1.12e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1030,
+              "price": 1.13e-07,
+              "real_sol": 40,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1040,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1040,
+            "source_at": 1040,
+            "fx_at": 1040,
+            "x": 1000000000,
+            "y": 114,
+            "real_x": 500000000,
+            "real_y": 40,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11400,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Real SOL reserve growth is insufficient",
+          "history": [
+            {
+              "at": 1010,
+              "price": 1.11e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1020,
+              "price": 1.12e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1030,
+              "price": 1.13e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1040,
+              "price": 1.14e-07,
+              "real_sol": 40,
+              "fx": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gap_reset",
+      "frames": [
+        {
+          "at": 1000,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1000,
+            "source_at": 1000,
+            "fx_at": 1000,
+            "x": 1000000000,
+            "y": 110,
+            "real_x": 500000000,
+            "real_y": 40,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11000,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1010,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1010,
+            "source_at": 1010,
+            "fx_at": 1010,
+            "x": 1000000000,
+            "y": 111,
+            "real_x": 500000000,
+            "real_y": 41,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11100,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.11e-07,
+              "real_sol": 41,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1020,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1020,
+            "source_at": 1020,
+            "fx_at": 1020,
+            "x": 1000000000,
+            "y": 112,
+            "real_x": 500000000,
+            "real_y": 42,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11200,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.11e-07,
+              "real_sol": 41,
+              "fx": 100
+            },
+            {
+              "at": 1020,
+              "price": 1.12e-07,
+              "real_sol": 42,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1100,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1100,
+            "source_at": 1100,
+            "fx_at": 1100,
+            "x": 1000000000,
+            "y": 113,
+            "real_x": 500000000,
+            "real_y": 43,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11300,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1100,
+              "price": 1.13e-07,
+              "real_sol": 43,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1110,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1110,
+            "source_at": 1110,
+            "fx_at": 1110,
+            "x": 1000000000,
+            "y": 114,
+            "real_x": 500000000,
+            "real_y": 44,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11400,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1100,
+              "price": 1.13e-07,
+              "real_sol": 43,
+              "fx": 100
+            },
+            {
+              "at": 1110,
+              "price": 1.14e-07,
+              "real_sol": 44,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1120,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1120,
+            "source_at": 1120,
+            "fx_at": 1120,
+            "x": 1000000000,
+            "y": 115,
+            "real_x": 500000000,
+            "real_y": 45,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11500,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1100,
+              "price": 1.13e-07,
+              "real_sol": 43,
+              "fx": 100
+            },
+            {
+              "at": 1110,
+              "price": 1.14e-07,
+              "real_sol": 44,
+              "fx": 100
+            },
+            {
+              "at": 1120,
+              "price": 1.15e-07,
+              "real_sol": 45,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1130,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1130,
+            "source_at": 1130,
+            "fx_at": 1130,
+            "x": 1000000000,
+            "y": 116,
+            "real_x": 500000000,
+            "real_y": 46,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11600,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": null,
+          "history": [
+            {
+              "at": 1100,
+              "price": 1.13e-07,
+              "real_sol": 43,
+              "fx": 100
+            },
+            {
+              "at": 1110,
+              "price": 1.14e-07,
+              "real_sol": 44,
+              "fx": 100
+            },
+            {
+              "at": 1120,
+              "price": 1.15e-07,
+              "real_sol": 45,
+              "fx": 100
+            },
+            {
+              "at": 1130,
+              "price": 1.16e-07,
+              "real_sol": 46,
+              "fx": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "low_liquidity",
+      "frames": [
+        {
+          "at": 1000,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1000,
+            "source_at": 1000,
+            "fx_at": 1000,
+            "x": 1000000000,
+            "y": 110,
+            "real_x": 500000000,
+            "real_y": 2.0,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11000,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 2.0,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1010,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1010,
+            "source_at": 1010,
+            "fx_at": 1010,
+            "x": 1000000000,
+            "y": 111,
+            "real_x": 500000000,
+            "real_y": 2.01,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11100,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 2.0,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.11e-07,
+              "real_sol": 2.01,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1020,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1020,
+            "source_at": 1020,
+            "fx_at": 1020,
+            "x": 1000000000,
+            "y": 112,
+            "real_x": 500000000,
+            "real_y": 2.02,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11200,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 2.0,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.11e-07,
+              "real_sol": 2.01,
+              "fx": 100
+            },
+            {
+              "at": 1020,
+              "price": 1.12e-07,
+              "real_sol": 2.02,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1030,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1030,
+            "source_at": 1030,
+            "fx_at": 1030,
+            "x": 1000000000,
+            "y": 113,
+            "real_x": 500000000,
+            "real_y": 2.03,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11300,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Real SOL reserve growth is insufficient",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 2.0,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.11e-07,
+              "real_sol": 2.01,
+              "fx": 100
+            },
+            {
+              "at": 1020,
+              "price": 1.12e-07,
+              "real_sol": 2.02,
+              "fx": 100
+            },
+            {
+              "at": 1030,
+              "price": 1.13e-07,
+              "real_sol": 2.03,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1040,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1040,
+            "source_at": 1040,
+            "fx_at": 1040,
+            "x": 1000000000,
+            "y": 114,
+            "real_x": 500000000,
+            "real_y": 2.04,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11400,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Real SOL reserve growth is insufficient",
+          "history": [
+            {
+              "at": 1010,
+              "price": 1.11e-07,
+              "real_sol": 2.01,
+              "fx": 100
+            },
+            {
+              "at": 1020,
+              "price": 1.12e-07,
+              "real_sol": 2.02,
+              "fx": 100
+            },
+            {
+              "at": 1030,
+              "price": 1.13e-07,
+              "real_sol": 2.03,
+              "fx": 100
+            },
+            {
+              "at": 1040,
+              "price": 1.14e-07,
+              "real_sol": 2.04,
+              "fx": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "recorded_peak",
+      "frames": [
+        {
+          "at": 1000,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1000,
+            "source_at": 1000,
+            "fx_at": 1000,
+            "x": 1000000000,
+            "y": 110,
+            "real_x": 500000000,
+            "real_y": 40,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11000,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1010,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1010,
+            "source_at": 1010,
+            "fx_at": 1010,
+            "x": 1000000000,
+            "y": 111,
+            "real_x": 500000000,
+            "real_y": 41,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11100,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.11e-07,
+              "real_sol": 41,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1020,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1020,
+            "source_at": 1020,
+            "fx_at": 1020,
+            "x": 1000000000,
+            "y": 112,
+            "real_x": 500000000,
+            "real_y": 42,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11200,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.11e-07,
+              "real_sol": 41,
+              "fx": 100
+            },
+            {
+              "at": 1020,
+              "price": 1.12e-07,
+              "real_sol": 42,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1030,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1030,
+            "source_at": 1030,
+            "fx_at": 1030,
+            "x": 1000000000,
+            "y": 113,
+            "real_x": 500000000,
+            "real_y": 43,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11300,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": null,
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.11e-07,
+              "real_sol": 41,
+              "fx": 100
+            },
+            {
+              "at": 1020,
+              "price": 1.12e-07,
+              "real_sol": 42,
+              "fx": 100
+            },
+            {
+              "at": 1030,
+              "price": 1.13e-07,
+              "real_sol": 43,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1030,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1030,
+            "source_at": 1030,
+            "fx_at": 1030,
+            "x": 1000000000,
+            "y": 113,
+            "real_x": 500000000,
+            "real_y": 43,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11300,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {
+            "peak_cap": 50000
+          },
+          "reason": "Too far below its recorded peak",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.11e-07,
+              "real_sol": 41,
+              "fx": 100
+            },
+            {
+              "at": 1020,
+              "price": 1.12e-07,
+              "real_sol": 42,
+              "fx": 100
+            },
+            {
+              "at": 1030,
+              "price": 1.13e-07,
+              "real_sol": 43,
+              "fx": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "outside_band",
+      "frames": [
+        {
+          "at": 1000,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1000,
+            "source_at": 1000,
+            "fx_at": 1000,
+            "x": 1000000000,
+            "y": 110,
+            "real_x": 500000000,
+            "real_y": 40,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11000,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1010,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1010,
+            "source_at": 1010,
+            "fx_at": 1010,
+            "x": 1000000000,
+            "y": 111,
+            "real_x": 500000000,
+            "real_y": 41,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11100,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.11e-07,
+              "real_sol": 41,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1020,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1020,
+            "source_at": 1020,
+            "fx_at": 1020,
+            "x": 1000000000,
+            "y": 112,
+            "real_x": 500000000,
+            "real_y": 42,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11200,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.11e-07,
+              "real_sol": 41,
+              "fx": 100
+            },
+            {
+              "at": 1020,
+              "price": 1.12e-07,
+              "real_sol": 42,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1030,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1030,
+            "source_at": 1030,
+            "fx_at": 1030,
+            "x": 1000000000,
+            "y": 113,
+            "real_x": 500000000,
+            "real_y": 43,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11300,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": null,
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.11e-07,
+              "real_sol": 41,
+              "fx": 100
+            },
+            {
+              "at": 1020,
+              "price": 1.12e-07,
+              "real_sol": 42,
+              "fx": 100
+            },
+            {
+              "at": 1030,
+              "price": 1.13e-07,
+              "real_sol": 43,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1040,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1040,
+            "source_at": 1040,
+            "fx_at": 1040,
+            "x": 1000000000,
+            "y": 300,
+            "real_x": 500000000,
+            "real_y": 40,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 30000,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Outside this strategy\u2019s market-cap range",
+          "history": [
+            {
+              "at": 1010,
+              "price": 1.11e-07,
+              "real_sol": 41,
+              "fx": 100
+            },
+            {
+              "at": 1020,
+              "price": 1.12e-07,
+              "real_sol": 42,
+              "fx": 100
+            },
+            {
+              "at": 1030,
+              "price": 1.13e-07,
+              "real_sol": 43,
+              "fx": 100
+            },
+            {
+              "at": 1040,
+              "price": 3e-07,
+              "real_sol": 40,
+              "fx": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "stale",
+      "frames": [
+        {
+          "at": 1000,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1000,
+            "source_at": 1000,
+            "fx_at": 1000,
+            "x": 1000000000,
+            "y": 110,
+            "real_x": 500000000,
+            "real_y": 40,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11000,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1010,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1010,
+            "source_at": 1010,
+            "fx_at": 1010,
+            "x": 1000000000,
+            "y": 111,
+            "real_x": 500000000,
+            "real_y": 41,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11100,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.11e-07,
+              "real_sol": 41,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1020,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1020,
+            "source_at": 1020,
+            "fx_at": 1020,
+            "x": 1000000000,
+            "y": 112,
+            "real_x": 500000000,
+            "real_y": 42,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11200,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.11e-07,
+              "real_sol": 41,
+              "fx": 100
+            },
+            {
+              "at": 1020,
+              "price": 1.12e-07,
+              "real_sol": 42,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1030,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1030,
+            "source_at": 1030,
+            "fx_at": 1030,
+            "x": 1000000000,
+            "y": 113,
+            "real_x": 500000000,
+            "real_y": 43,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11300,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": null,
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.11e-07,
+              "real_sol": 41,
+              "fx": 100
+            },
+            {
+              "at": 1020,
+              "price": 1.12e-07,
+              "real_sol": 42,
+              "fx": 100
+            },
+            {
+              "at": 1030,
+              "price": 1.13e-07,
+              "real_sol": 43,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1070,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1030,
+            "source_at": 1030,
+            "fx_at": 1030,
+            "x": 1000000000,
+            "y": 113,
+            "real_x": 500000000,
+            "real_y": 43,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11300,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "No fresh supported bonding-curve quote",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.11e-07,
+              "real_sol": 41,
+              "fx": 100
+            },
+            {
+              "at": 1020,
+              "price": 1.12e-07,
+              "real_sol": 42,
+              "fx": 100
+            },
+            {
+              "at": 1030,
+              "price": 1.13e-07,
+              "real_sol": 43,
+              "fx": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "stale_fx",
+      "frames": [
+        {
+          "at": 1000,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1000,
+            "source_at": 1000,
+            "fx_at": 1000,
+            "x": 1000000000,
+            "y": 110,
+            "real_x": 500000000,
+            "real_y": 40,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11000,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1010,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1010,
+            "source_at": 1010,
+            "fx_at": 1010,
+            "x": 1000000000,
+            "y": 111,
+            "real_x": 500000000,
+            "real_y": 41,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11100,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.11e-07,
+              "real_sol": 41,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1020,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1020,
+            "source_at": 1020,
+            "fx_at": 1020,
+            "x": 1000000000,
+            "y": 112,
+            "real_x": 500000000,
+            "real_y": 42,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11200,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "Building a 60-second observation window",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.11e-07,
+              "real_sol": 41,
+              "fx": 100
+            },
+            {
+              "at": 1020,
+              "price": 1.12e-07,
+              "real_sol": 42,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1030,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1030,
+            "source_at": 1030,
+            "fx_at": 1030,
+            "x": 1000000000,
+            "y": 113,
+            "real_x": 500000000,
+            "real_y": 43,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11300,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": null,
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.11e-07,
+              "real_sol": 41,
+              "fx": 100
+            },
+            {
+              "at": 1020,
+              "price": 1.12e-07,
+              "real_sol": 42,
+              "fx": 100
+            },
+            {
+              "at": 1030,
+              "price": 1.13e-07,
+              "real_sol": 43,
+              "fx": 100
+            }
+          ]
+        },
+        {
+          "at": 1040,
+          "quote": {
+            "mint": "TestMint",
+            "symbol": "TEST",
+            "route": "pump_bonding_curve_sol",
+            "curve_address": "TestCurve",
+            "observed_at": 1040,
+            "source_at": 1040,
+            "fx_at": 1,
+            "x": 1000000000,
+            "y": 110,
+            "real_x": 500000000,
+            "real_y": 40,
+            "supply": 1000000000,
+            "quote_usd": 100,
+            "market_cap_usd": 11000,
+            "decimals": 6,
+            "complete": false,
+            "mayhem": false
+          },
+          "evidence": {},
+          "reason": "No fresh supported bonding-curve quote",
+          "history": [
+            {
+              "at": 1000,
+              "price": 1.1e-07,
+              "real_sol": 40,
+              "fx": 100
+            },
+            {
+              "at": 1010,
+              "price": 1.11e-07,
+              "real_sol": 41,
+              "fx": 100
+            },
+            {
+              "at": 1020,
+              "price": 1.12e-07,
+              "real_sol": 42,
+              "fx": 100
+            },
+            {
+              "at": 1030,
+              "price": 1.13e-07,
+              "real_sol": 43,
+              "fx": 100
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exits": [
+    {
+      "name": "hold",
+      "at": 1010,
+      "quote": {
+        "mint": "TestMint",
+        "symbol": "TEST",
+        "route": "pump_bonding_curve_sol",
+        "curve_address": "TestCurve",
+        "observed_at": 1010,
+        "source_at": 1010,
+        "fx_at": 1010,
+        "x": 1000000000,
+        "y": 110,
+        "real_x": 500000000,
+        "real_y": 40,
+        "supply": 1000000000,
+        "quote_usd": 100,
+        "market_cap_usd": 11000,
+        "decimals": 6,
+        "complete": false,
+        "mayhem": false
+      },
+      "position": {
+        "quantity": 837826.940374,
+        "initial_quantity": 837826.940374,
+        "entry_pool": "TestCurve",
+        "entry_supply": 1000000000,
+        "cost_usd": 10,
+        "remaining_cost_usd": 10,
+        "entry_price_usd": 1.193563911365284e-05,
+        "entry_fees_usd": 0.6829268292682927,
+        "mint": "TestMint",
+        "symbol": "TEST",
+        "entry_at": 1000,
+        "last_usable_at": 1000,
+        "peak_price_usd": 1.1e-05,
+        "proceeds_usd": 0,
+        "sold_stages": [],
+        "status": "open"
+      },
+      "evidence": {},
+      "expected": null,
+      "net_sell_usd": 8.803296417752966
+    },
+    {
+      "name": "fee_adjusted_stop",
+      "at": 1010,
+      "quote": {
+        "mint": "TestMint",
+        "symbol": "TEST",
+        "route": "pump_bonding_curve_sol",
+        "curve_address": "TestCurve",
+        "observed_at": 1010,
+        "source_at": 1010,
+        "fx_at": 1010,
+        "x": 1000000000,
+        "y": 84,
+        "real_x": 500000000,
+        "real_y": 40,
+        "supply": 1000000000,
+        "quote_usd": 100,
+        "market_cap_usd": 8400,
+        "decimals": 6,
+        "complete": false,
+        "mayhem": false
+      },
+      "position": {
+        "quantity": 837826.940374,
+        "initial_quantity": 837826.940374,
+        "entry_pool": "TestCurve",
+        "entry_supply": 1000000000,
+        "cost_usd": 10,
+        "remaining_cost_usd": 10,
+        "entry_price_usd": 1.193563911365284e-05,
+        "entry_fees_usd": 0.6829268292682927,
+        "mint": "TestMint",
+        "symbol": "TEST",
+        "entry_at": 1000,
+        "last_usable_at": 1000,
+        "peak_price_usd": 1.1e-05,
+        "proceeds_usd": 0,
+        "sold_stages": [],
+        "status": "open"
+      },
+      "evidence": {},
+      "expected": {
+        "at": 1010,
+        "reason": "stop_loss",
+        "stages": []
+      },
+      "net_sell_usd": 6.698880900829538
+    },
+    {
+      "name": "stop",
+      "at": 1010,
+      "quote": {
+        "mint": "TestMint",
+        "symbol": "TEST",
+        "route": "pump_bonding_curve_sol",
+        "curve_address": "TestCurve",
+        "observed_at": 1010,
+        "source_at": 1010,
+        "fx_at": 1010,
+        "x": 1000000000,
+        "y": 60,
+        "real_x": 500000000,
+        "real_y": 40,
+        "supply": 1000000000,
+        "quote_usd": 100,
+        "market_cap_usd": 6000,
+        "decimals": 6,
+        "complete": false,
+        "mayhem": false
+      },
+      "position": {
+        "quantity": 837826.940374,
+        "initial_quantity": 837826.940374,
+        "entry_pool": "TestCurve",
+        "entry_supply": 1000000000,
+        "cost_usd": 10,
+        "remaining_cost_usd": 10,
+        "entry_price_usd": 1.193563911365284e-05,
+        "entry_fees_usd": 0.6829268292682927,
+        "mint": "TestMint",
+        "symbol": "TEST",
+        "entry_at": 1000,
+        "last_usable_at": 1000,
+        "peak_price_usd": 1.1e-05,
+        "proceeds_usd": 0,
+        "sold_stages": [],
+        "status": "open"
+      },
+      "evidence": {},
+      "expected": {
+        "at": 1010,
+        "reason": "stop_loss",
+        "stages": []
+      },
+      "net_sell_usd": 4.756343500592527
+    },
+    {
+      "name": "target",
+      "at": 1010,
+      "quote": {
+        "mint": "TestMint",
+        "symbol": "TEST",
+        "route": "pump_bonding_curve_sol",
+        "curve_address": "TestCurve",
+        "observed_at": 1010,
+        "source_at": 1010,
+        "fx_at": 1010,
+        "x": 1000000000,
+        "y": 320,
+        "real_x": 500000000,
+        "real_y": 40,
+        "supply": 1000000000,
+        "quote_usd": 100,
+        "market_cap_usd": 32000,
+        "decimals": 6,
+        "complete": false,
+        "mayhem": false
+      },
+      "position": {
+        "quantity": 837826.940374,
+        "initial_quantity": 837826.940374,
+        "entry_pool": "TestCurve",
+        "entry_supply": 1000000000,
+        "cost_usd": 10,
+        "remaining_cost_usd": 10,
+        "entry_price_usd": 1.193563911365284e-05,
+        "entry_fees_usd": 0.6829268292682927,
+        "mint": "TestMint",
+        "symbol": "TEST",
+        "entry_at": 1000,
+        "last_usable_at": 1000,
+        "peak_price_usd": 1.1e-05,
+        "proceeds_usd": 0,
+        "sold_stages": [],
+        "status": "open"
+      },
+      "evidence": {},
+      "expected": {
+        "at": 1010,
+        "reason": "market_cap_target",
+        "stages": [
+          0
+        ]
+      },
+      "net_sell_usd": 25.800498669826816
+    },
+    {
+      "name": "multiple_targets",
+      "at": 1010,
+      "quote": {
+        "mint": "TestMint",
+        "symbol": "TEST",
+        "route": "pump_bonding_curve_sol",
+        "curve_address": "TestCurve",
+        "observed_at": 1010,
+        "source_at": 1010,
+        "fx_at": 1010,
+        "x": 1000000000,
+        "y": 650,
+        "real_x": 500000000,
+        "real_y": 500,
+        "supply": 1000000000,
+        "quote_usd": 100,
+        "market_cap_usd": 65000,
+        "decimals": 6,
+        "complete": false,
+        "mayhem": false
+      },
+      "position": {
+        "quantity": 837826.940374,
+        "initial_quantity": 837826.940374,
+        "entry_pool": "TestCurve",
+        "entry_supply": 1000000000,
+        "cost_usd": 10,
+        "remaining_cost_usd": 10,
+        "entry_price_usd": 1.193563911365284e-05,
+        "entry_fees_usd": 0.6829268292682927,
+        "mint": "TestMint",
+        "symbol": "TEST",
+        "entry_at": 1000,
+        "last_usable_at": 1000,
+        "peak_price_usd": 1.1e-05,
+        "proceeds_usd": 0,
+        "sold_stages": [],
+        "status": "open"
+      },
+      "evidence": {},
+      "expected": {
+        "at": 1010,
+        "reason": "market_cap_target",
+        "stages": [
+          0,
+          1
+        ]
+      },
+      "net_sell_usd": 52.51038792308572
+    },
+    {
+      "name": "trail",
+      "at": 1010,
+      "quote": {
+        "mint": "TestMint",
+        "symbol": "TEST",
+        "route": "pump_bonding_curve_sol",
+        "curve_address": "TestCurve",
+        "observed_at": 1010,
+        "source_at": 1010,
+        "fx_at": 1010,
+        "x": 1000000000,
+        "y": 170,
+        "real_x": 500000000,
+        "real_y": 40,
+        "supply": 1000000000,
+        "quote_usd": 100,
+        "market_cap_usd": 17000,
+        "decimals": 6,
+        "complete": false,
+        "mayhem": false
+      },
+      "position": {
+        "quantity": 837826.940374,
+        "initial_quantity": 837826.940374,
+        "entry_pool": "TestCurve",
+        "entry_supply": 1000000000,
+        "cost_usd": 10,
+        "remaining_cost_usd": 10,
+        "entry_price_usd": 1.193563911365284e-05,
+        "entry_fees_usd": 0.6829268292682927,
+        "mint": "TestMint",
+        "symbol": "TEST",
+        "entry_at": 1000,
+        "last_usable_at": 1000,
+        "peak_price_usd": 0.0003,
+        "proceeds_usd": 0,
+        "sold_stages": [
+          0
+        ],
+        "status": "open"
+      },
+      "evidence": {},
+      "expected": {
+        "at": 1010,
+        "reason": "trailing_exit",
+        "stages": []
+      },
+      "net_sell_usd": 13.659639918345494
+    },
+    {
+      "name": "ownership",
+      "at": 1010,
+      "quote": {
+        "mint": "TestMint",
+        "symbol": "TEST",
+        "route": "pump_bonding_curve_sol",
+        "curve_address": "TestCurve",
+        "observed_at": 1010,
+        "source_at": 1010,
+        "fx_at": 1010,
+        "x": 1000000000,
+        "y": 110,
+        "real_x": 500000000,
+        "real_y": 40,
+        "supply": 1000000000,
+        "quote_usd": 100,
+        "market_cap_usd": 11000,
+        "decimals": 6,
+        "complete": false,
+        "mayhem": false
+      },
+      "position": {
+        "quantity": 837826.940374,
+        "initial_quantity": 837826.940374,
+        "entry_pool": "TestCurve",
+        "entry_supply": 1000000000,
+        "cost_usd": 10,
+        "remaining_cost_usd": 10,
+        "entry_price_usd": 1.193563911365284e-05,
+        "entry_fees_usd": 0.6829268292682927,
+        "mint": "TestMint",
+        "symbol": "TEST",
+        "entry_at": 1000,
+        "last_usable_at": 1000,
+        "peak_price_usd": 1.1e-05,
+        "proceeds_usd": 0,
+        "sold_stages": [],
+        "status": "open"
+      },
+      "evidence": {
+        "ownership": {
+          "mint": "TestMint",
+          "status": "blocked"
+        }
+      },
+      "expected": {
+        "at": 1010,
+        "reason": "ownership_flag",
+        "stages": []
+      },
+      "net_sell_usd": 8.803296417752966
+    },
+    {
+      "name": "wrong_mint_ownership",
+      "at": 1010,
+      "quote": {
+        "mint": "TestMint",
+        "symbol": "TEST",
+        "route": "pump_bonding_curve_sol",
+        "curve_address": "TestCurve",
+        "observed_at": 1010,
+        "source_at": 1010,
+        "fx_at": 1010,
+        "x": 1000000000,
+        "y": 110,
+        "real_x": 500000000,
+        "real_y": 40,
+        "supply": 1000000000,
+        "quote_usd": 100,
+        "market_cap_usd": 11000,
+        "decimals": 6,
+        "complete": false,
+        "mayhem": false
+      },
+      "position": {
+        "quantity": 837826.940374,
+        "initial_quantity": 837826.940374,
+        "entry_pool": "TestCurve",
+        "entry_supply": 1000000000,
+        "cost_usd": 10,
+        "remaining_cost_usd": 10,
+        "entry_price_usd": 1.193563911365284e-05,
+        "entry_fees_usd": 0.6829268292682927,
+        "mint": "TestMint",
+        "symbol": "TEST",
+        "entry_at": 1000,
+        "last_usable_at": 1000,
+        "peak_price_usd": 1.1e-05,
+        "proceeds_usd": 0,
+        "sold_stages": [],
+        "status": "open"
+      },
+      "evidence": {
+        "ownership": {
+          "mint": "Other",
+          "status": "blocked"
+        }
+      },
+      "expected": null,
+      "net_sell_usd": 8.803296417752966
+    },
+    {
+      "name": "missing_quote",
+      "at": 1700,
+      "quote": null,
+      "position": {
+        "quantity": 837826.940374,
+        "initial_quantity": 837826.940374,
+        "entry_pool": "TestCurve",
+        "entry_supply": 1000000000,
+        "cost_usd": 10,
+        "remaining_cost_usd": 10,
+        "entry_price_usd": 1.193563911365284e-05,
+        "entry_fees_usd": 0.6829268292682927,
+        "mint": "TestMint",
+        "symbol": "TEST",
+        "entry_at": 1000,
+        "last_usable_at": 1000,
+        "peak_price_usd": 1.1e-05,
+        "proceeds_usd": 0,
+        "sold_stages": [],
+        "status": "open"
+      },
+      "evidence": {},
+      "expected": {
+        "at": 1700,
+        "reason": "quote_gap",
+        "stages": []
+      },
+      "net_sell_usd": null
+    },
+    {
+      "name": "wrong_pool",
+      "at": 1700,
+      "quote": {
+        "mint": "TestMint",
+        "symbol": "TEST",
+        "route": "pump_bonding_curve_sol",
+        "curve_address": "OtherCurve",
+        "observed_at": 1700,
+        "source_at": 1700,
+        "fx_at": 1700,
+        "x": 1000000000,
+        "y": 110,
+        "real_x": 500000000,
+        "real_y": 40,
+        "supply": 1000000000,
+        "quote_usd": 100,
+        "market_cap_usd": 11000,
+        "decimals": 6,
+        "complete": false,
+        "mayhem": false
+      },
+      "position": {
+        "quantity": 837826.940374,
+        "initial_quantity": 837826.940374,
+        "entry_pool": "TestCurve",
+        "entry_supply": 1000000000,
+        "cost_usd": 10,
+        "remaining_cost_usd": 10,
+        "entry_price_usd": 1.193563911365284e-05,
+        "entry_fees_usd": 0.6829268292682927,
+        "mint": "TestMint",
+        "symbol": "TEST",
+        "entry_at": 1000,
+        "last_usable_at": 1000,
+        "peak_price_usd": 1.1e-05,
+        "proceeds_usd": 0,
+        "sold_stages": [],
+        "status": "open"
+      },
+      "evidence": {},
+      "expected": {
+        "at": 1700,
+        "reason": "quote_gap",
+        "stages": []
+      },
+      "net_sell_usd": null
+    },
+    {
+      "name": "holding_limit",
+      "at": 865000,
+      "quote": {
+        "mint": "TestMint",
+        "symbol": "TEST",
+        "route": "pump_bonding_curve_sol",
+        "curve_address": "TestCurve",
+        "observed_at": 865000,
+        "source_at": 865000,
+        "fx_at": 865000,
+        "x": 1000000000,
+        "y": 110,
+        "real_x": 500000000,
+        "real_y": 40,
+        "supply": 1000000000,
+        "quote_usd": 100,
+        "market_cap_usd": 11000,
+        "decimals": 6,
+        "complete": false,
+        "mayhem": false
+      },
+      "position": {
+        "quantity": 837826.940374,
+        "initial_quantity": 837826.940374,
+        "entry_pool": "TestCurve",
+        "entry_supply": 1000000000,
+        "cost_usd": 10,
+        "remaining_cost_usd": 10,
+        "entry_price_usd": 1.193563911365284e-05,
+        "entry_fees_usd": 0.6829268292682927,
+        "mint": "TestMint",
+        "symbol": "TEST",
+        "entry_at": 1000,
+        "last_usable_at": 1000,
+        "peak_price_usd": 1.1e-05,
+        "proceeds_usd": 0,
+        "sold_stages": [],
+        "status": "open"
+      },
+      "evidence": {},
+      "expected": {
+        "at": 865000,
+        "reason": "ten_day_limit",
+        "stages": []
+      },
+      "net_sell_usd": 8.803296417752966
+    },
+    {
+      "name": "partial_remaining_hold",
+      "at": 1010,
+      "quote": {
+        "mint": "TestMint",
+        "symbol": "TEST",
+        "route": "pump_bonding_curve_sol",
+        "curve_address": "TestCurve",
+        "observed_at": 1010,
+        "source_at": 1010,
+        "fx_at": 1010,
+        "x": 1000000000,
+        "y": 170,
+        "real_x": 500000000,
+        "real_y": 40,
+        "supply": 1000000000,
+        "quote_usd": 100,
+        "market_cap_usd": 17000,
+        "decimals": 6,
+        "complete": false,
+        "mayhem": false
+      },
+      "position": {
+        "quantity": 502696.16422439995,
+        "initial_quantity": 837826.940374,
+        "entry_pool": "TestCurve",
+        "entry_supply": 1000000000,
+        "cost_usd": 10,
+        "remaining_cost_usd": 6.0,
+        "entry_price_usd": 1.193563911365284e-05,
+        "entry_fees_usd": 0.6829268292682927,
+        "mint": "TestMint",
+        "symbol": "TEST",
+        "entry_at": 1000,
+        "last_usable_at": 1000,
+        "peak_price_usd": 1.1e-05,
+        "proceeds_usd": 0,
+        "sold_stages": [
+          0
+        ],
+        "status": "open"
+      },
+      "evidence": {},
+      "expected": null,
+      "net_sell_usd": 8.153015792181249
+    },
+    {
+      "name": "partial_remaining_stop",
+      "at": 1010,
+      "quote": {
+        "mint": "TestMint",
+        "symbol": "TEST",
+        "route": "pump_bonding_curve_sol",
+        "curve_address": "TestCurve",
+        "observed_at": 1010,
+        "source_at": 1010,
+        "fx_at": 1010,
+        "x": 1000000000,
+        "y": 60,
+        "real_x": 500000000,
+        "real_y": 40,
+        "supply": 1000000000,
+        "quote_usd": 100,
+        "market_cap_usd": 6000,
+        "decimals": 6,
+        "complete": false,
+        "mayhem": false
+      },
+      "position": {
+        "quantity": 502696.16422439995,
+        "initial_quantity": 837826.940374,
+        "entry_pool": "TestCurve",
+        "entry_supply": 1000000000,
+        "cost_usd": 10,
+        "remaining_cost_usd": 6.0,
+        "entry_price_usd": 1.193563911365284e-05,
+        "entry_fees_usd": 0.6829268292682927,
+        "mint": "TestMint",
+        "symbol": "TEST",
+        "entry_at": 1000,
+        "last_usable_at": 1000,
+        "peak_price_usd": 1.1e-05,
+        "proceeds_usd": 0,
+        "sold_stages": [
+          0
+        ],
+        "status": "open"
+      },
+      "evidence": {},
+      "expected": {
+        "at": 1010,
+        "reason": "stop_loss",
+        "stages": []
+      },
+      "net_sell_usd": 2.8128291031227937
+    },
+    {
+      "name": "partial_remaining_targets",
+      "at": 1010,
+      "quote": {
+        "mint": "TestMint",
+        "symbol": "TEST",
+        "route": "pump_bonding_curve_sol",
+        "curve_address": "TestCurve",
+        "observed_at": 1010,
+        "source_at": 1010,
+        "fx_at": 1010,
+        "x": 1000000000,
+        "y": 650,
+        "real_x": 500000000,
+        "real_y": 500,
+        "supply": 1000000000,
+        "quote_usd": 100,
+        "market_cap_usd": 65000,
+        "decimals": 6,
+        "complete": false,
+        "mayhem": false
+      },
+      "position": {
+        "quantity": 502696.16422439995,
+        "initial_quantity": 837826.940374,
+        "entry_pool": "TestCurve",
+        "entry_supply": 1000000000,
+        "cost_usd": 10,
+        "remaining_cost_usd": 6.0,
+        "entry_price_usd": 1.193563911365284e-05,
+        "entry_fees_usd": 0.6829268292682927,
+        "mint": "TestMint",
+        "symbol": "TEST",
+        "entry_at": 1000,
+        "last_usable_at": 1000,
+        "peak_price_usd": 1.1e-05,
+        "proceeds_usd": 0,
+        "sold_stages": [
+          0
+        ],
+        "status": "open"
+      },
+      "evidence": {},
+      "expected": {
+        "at": 1010,
+        "reason": "market_cap_target",
+        "stages": [
+          1
+        ]
+      },
+      "net_sell_usd": 31.45564861716359
+    },
+    {
+      "name": "partial_remaining_trail",
+      "at": 1010,
+      "quote": {
+        "mint": "TestMint",
+        "symbol": "TEST",
+        "route": "pump_bonding_curve_sol",
+        "curve_address": "TestCurve",
+        "observed_at": 1010,
+        "source_at": 1010,
+        "fx_at": 1010,
+        "x": 1000000000,
+        "y": 170,
+        "real_x": 500000000,
+        "real_y": 40,
+        "supply": 1000000000,
+        "quote_usd": 100,
+        "market_cap_usd": 17000,
+        "decimals": 6,
+        "complete": false,
+        "mayhem": false
+      },
+      "position": {
+        "quantity": 502696.16422439995,
+        "initial_quantity": 837826.940374,
+        "entry_pool": "TestCurve",
+        "entry_supply": 1000000000,
+        "cost_usd": 10,
+        "remaining_cost_usd": 6.0,
+        "entry_price_usd": 1.193563911365284e-05,
+        "entry_fees_usd": 0.6829268292682927,
+        "mint": "TestMint",
+        "symbol": "TEST",
+        "entry_at": 1000,
+        "last_usable_at": 1000,
+        "peak_price_usd": 0.0003,
+        "proceeds_usd": 0,
+        "sold_stages": [
+          0
+        ],
+        "status": "open"
+      },
+      "evidence": {},
+      "expected": {
+        "at": 1010,
+        "reason": "trailing_exit",
+        "stages": []
+      },
+      "net_sell_usd": 8.153015792181249
+    }
+  ]
+}

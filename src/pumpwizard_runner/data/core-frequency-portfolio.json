@@ -1,0 +1,49 @@
+{
+  "entry_policy": "simulation_unverified",
+  "version": "early-ladder-v1",
+  "mode": "paper_only",
+  "budget_usd": 500,
+  "order_usd": 10,
+  "max_positions": 20,
+  "entry_cap_min": 10000,
+  "entry_cap_max": 25000,
+  "observation_seconds": 30,
+  "minimum_samples": 4,
+  "minimum_price_changes": 2,
+  "minimum_growth_fraction": 0.01,
+  "minimum_reserve_growth_usd": 10,
+  "maximum_peak_drawdown": 0.35,
+  "max_sample_gap_seconds": 20,
+  "quote_max_age_seconds": 30,
+  "entry_expiry_seconds": 30,
+  "fill_delay_seconds": 2,
+  "ownership_ttl_seconds": 120,
+  "min_curve_liquidity_usd": 1000,
+  "min_amm_liquidity_usd": 10000,
+  "max_entry_reserve_fraction": 0.01,
+  "max_roundtrip_loss_fraction": 0.15,
+  "fee_fraction": 0.025,
+  "adverse_fraction": 0.01,
+  "fixed_fee_usd": 0.1,
+  "entry_rent_usd": 0.35,
+  "failed_attempt_probability": 0.05,
+  "stop_loss_fraction": -0.3,
+  "trailing_drawdown_fraction": 0.35,
+  "quote_gap_exit_seconds": 600,
+  "max_hold_seconds": 864000,
+  "targets": [
+    {
+      "market_cap_usd": 30000,
+      "initial_fraction": 0.4
+    },
+    {
+      "market_cap_usd": 60000,
+      "initial_fraction": 0.3
+    },
+    {
+      "market_cap_usd": 100000,
+      "initial_fraction": 0.2
+    }
+  ],
+  "entry_style": "momentum"
+}

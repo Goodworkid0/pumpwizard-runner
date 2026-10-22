@@ -1,0 +1,67 @@
+/* Token detail overrides keep market controls and sparse histories readable. */
+.token-detail { padding: 24px; scrollbar-gutter: stable; }
+.token-chart-panel { min-width: 0; overflow: hidden; }
+.token-detail .chart-tabs button[aria-pressed="true"] { background: #303a60; color: #f1edff; box-shadow: inset 0 0 0 1px #64558e; }
+.history-pool-toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: 9px 12px; padding: 14px 16px 0; }
+.history-pool-toolbar label { color: #9baac4; font-size: 12px; }
+.history-pool-toolbar select { flex: 1 1 200px; min-width: 0; max-width: 320px; height: 36px; padding: 0 10px; border: 1px solid #3b4b6d; border-radius: 6px; background: #19253d; color: #e0e6f7; font: inherit; font-size: 12px; color-scheme: dark; }
+.history-pool-toolbar > span { color: #8f9eb9; font-size: 11px; }
+.candle-toolbar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; padding: 14px 16px 0; }
+.chart-interval { color: #d1d8eb; font-size: 12px; font-weight: 600; }
+.chart-interval span { color: #90a0bd; font-weight: 400; }
+.token-detail .chart-summary { margin: 12px 16px; border: 1px solid #293752; border-radius: 6px; overflow: hidden; }
+.token-detail .chart-summary small { color: #91a1bd; font-size: 9px; }
+.token-detail .chart-summary b { font-size: 12px; font-variant-numeric: tabular-nums; }
+.chart-limited { display: flex; gap: 10px; align-items: center; margin: 0 16px 8px; padding: 10px 12px; border: 1px solid #4c4564; border-radius: 6px; background: #1d2238; }
+.chart-limited > span { color: #b9a8ed; font-size: 22px; }
+.chart-limited b { color: #ded8f3; font-size: 12px; font-weight: 600; }
+.chart-limited p { margin: 3px 0 0; color: #a5afc7; font-size: 11px; line-height: 1.5; }
+.candle-chart-wrap { padding: 6px 16px 10px; }
+.token-detail .candle-chart { height: auto; min-height: 220px; }
+.chart-price-label { fill: #a3b0c8; font-size: 11px; font-variant-numeric: tabular-nums; }
+.chart-gap { fill: #e3b05d; opacity: .14; }
+.token-detail .chart-axis { color: #94a3bd; font-size: 10px; }
+.candle-axis { padding-right: 12%; }
+.chart-footnote { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; padding: 4px 16px 13px; color: #92a2be; font-size: 10px; }
+.chart-footnote > span { display: inline-flex; align-items: center; gap: 6px; }
+.chart-footnote > span:last-child { margin-left: auto; }
+.chart-key { width: 6px; height: 6px; border-radius: 2px; }
+.candle-key { background: #52d9ad; }
+.gap-key { background: #e3b05d; }
+.chart-details { padding: 0 16px; border-top: 1px solid #273654; font-size: 12px; }
+.chart-details summary { padding: 12px 0; color: #c2cbe0; cursor: pointer; }
+.chart-details summary:focus-visible, .trade-capacity summary:focus-visible { outline: 2px solid #a98aff; outline-offset: 2px; }
+.chart-details summary > span { float: right; color: #8a9bb8; font-size: 10px; }
+.chart-details > div { padding-bottom: 12px; }
+.chart-details p { margin: 0 0 8px; color: #94a4bf; line-height: 1.6; }
+.history-coverage dl { display: grid; gap: 10px; margin: 2px 0 14px; }
+.history-coverage dl > div { display: grid; grid-template-columns: 145px minmax(0, 1fr); gap: 8px; }
+.history-coverage dt { color: #8f9eb9; }
+.history-coverage dd { min-width: 0; margin: 0; color: #c7d0e4; overflow-wrap: anywhere; }
+.history-coverage code { font-size: 11px; }
+.candle-table-scroll { overflow-x: auto; }
+.candle-values table { width: 100%; border-collapse: collapse; text-align: right; font-size: 11px; font-variant-numeric: tabular-nums; }
+.candle-values caption { padding: 2px 0 10px; color: #8f9eb9; text-align: left; }
+.candle-values th, .candle-values td { padding: 9px 8px; border-top: 1px solid #273654; white-space: nowrap; }
+.candle-values th { color: #a5b5d0; font-weight: 500; }
+.candle-values th:first-child { text-align: left; }
+.token-detail .history-pagination { flex-wrap: wrap; margin-top: 0; padding: 12px 16px; line-height: 1.5; }
+.token-detail .history-import { margin-top: 0; padding: 10px 12px; }
+.token-detail .history-import small { font-size: 9px; }
+.token-detail .history-import b { margin-top: 4px; font-weight: 500; }
+.token-detail-actions { position: sticky; bottom: -24px; margin: 12px -24px -24px; padding: 14px 24px; border-top: 1px solid #293a5e; background: #111b2f; box-shadow: 0 -8px 20px #10182a55; z-index: 1; }
+@media (max-width: 640px) {
+  .token-detail { padding: 16px; }
+  .token-metrics b { font-size: 14px; }
+  .history-pool-toolbar { align-items: stretch; }
+  .history-pool-toolbar label { width: 100%; }
+  .history-pool-toolbar select { max-width: 100%; flex-basis: 100%; }
+  .history-pool-toolbar > span { width: 100%; }
+  .candle-toolbar .chart-tabs { width: 100%; }
+  .candle-toolbar .chart-tabs button { padding: 0 7px; white-space: nowrap; }
+  .token-detail .candle-chart { min-height: 150px; }
+  .chart-details summary > span { display: none; }
+  .chart-footnote > span:last-child { width: 100%; margin-left: 0; }
+  .history-coverage dl > div { grid-template-columns: minmax(0, 1fr); gap: 3px; }
+  .token-detail-actions { bottom: -16px; margin: 12px -16px -16px; padding: 12px 16px; }
+}

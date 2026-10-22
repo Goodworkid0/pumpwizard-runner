@@ -3,13 +3,13 @@ requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pumpwizard-runner"
-version = "0.1.0"
-description = "A local-first desktop runner for versioned PumpWizard strategy configurations"
+name = "solanamarket-wizard"
+version = "0.2.0.dev121"
+description = "A local-first browser application for compatible Solana trading strategy configurations"
 readme = "README.md"
 requires-python = ">=3.11"
 license = {file = "LICENSE"}
-authors = [{name = "PumpWizard contributors"}]
+authors = [{name = "SolanaMarket Wizard contributors"}]
 classifiers = [
   "Development Status :: 2 - Pre-Alpha",
   "License :: OSI Approved :: MIT License",
@@ -18,17 +18,18 @@ classifiers = [
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
 ]
-dependencies = []
+dependencies = ["cryptography>=38,<47", "solders==0.29.0"]
 
 [project.optional-dependencies]
 build = ["pyinstaller==6.22.3"]
 dev = ["pytest==8.4.2", "ruff==0.13.2"]
 
 [project.scripts]
+solanamarket-wizard = "pumpwizard_runner.cli:main"
 pumpwizard = "pumpwizard_runner.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/Goodworkid0/pumpwizard-runner"
+Homepage = "https://it.pumpwizard.fun"
 Repository = "https://github.com/Goodworkid0/pumpwizard-runner"
 Issues = "https://github.com/Goodworkid0/pumpwizard-runner/issues"
 
@@ -38,6 +39,9 @@ package-dir = {"" = "src"}
 [tool.setuptools.packages.find]
 where = ["src"]
 
+[tool.setuptools.package-data]
+pumpwizard_runner = ["data/*.json"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q"
@@ -45,4 +49,3 @@ addopts = "-q"
 [tool.ruff]
 line-length = 100
 target-version = "py311"
-

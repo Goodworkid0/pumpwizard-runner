@@ -12,7 +12,29 @@ permissions:
   id-token: write
 
 jobs:
+  browser-e2e:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: web-client/package-lock.json
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install -e .[dev]
+      - working-directory: web-client
+        run: npm ci
+      - working-directory: web-client
+        run: npx playwright install --with-deps chromium
+      - working-directory: web-client
+        run: npm run test:e2e
+
   build:
+    needs: browser-e2e
     strategy:
       fail-fast: false
       matrix:
@@ -29,12 +51,34 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: web-client/package-lock.json
       - run: python -m pip install --upgrade pip
       - run: python -m pip install -e .[build]
+      - working-directory: web-client
+        run: npm ci
+      - working-directory: web-client
+        run: npm run build
       - run: python packaging/build.py --output release-artifacts
+      - name: Smoke test the packaged browser
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import subprocess, sys
+          candidates = list(Path('dist').glob('*/SolanaMarketWizard/SolanaMarketWizard*'))
+          executable = next(path for path in candidates if path.is_file() and path.name in ('SolanaMarketWizard', 'SolanaMarketWizard.exe'))
+          subprocess.run([sys.executable, 'packaging/smoke_browser.py', str(executable)], check=True)
+          if sys.platform == 'darwin':
+              app = next(Path('dist').glob('*/SolanaMarketWizard.app/Contents/MacOS/SolanaMarketWizard'))
+              subprocess.run([sys.executable, 'packaging/smoke_browser.py', str(app)], check=True)
+          PY
       - uses: actions/upload-artifact@v4
         with:
-          name: PumpWizard-${{ matrix.name }}
+          name: SolanaMarketWizard-${{ matrix.name }}
           path: release-artifacts/
           if-no-files-found: error
       - if: startsWith(github.ref, 'refs/tags/v')
@@ -47,6 +91,15 @@ jobs:
     needs: build
     runs-on: ubuntu-24.04
     steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Require matching published Community patch note
+        env:
+          PYTHONPATH: src
+          TAG: ${{ github.ref_name }}
+        run: python packaging/check_release_note.py --live --tag "$TAG"
       - uses: actions/download-artifact@v4
         with:
           path: release-artifacts
@@ -55,7 +108,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           TAG: ${{ github.ref_name }}
         run: |
-          gh release create "$TAG" release-artifacts/*/* \
+          gh release create "$TAG" release-artifacts/*/*.zip release-artifacts/*/SHA256SUMS-* \
             --repo "${{ github.repository }}" \
             --title "PumpWizard Runner $TAG" \
             --generate-notes

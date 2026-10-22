@@ -1,0 +1,417 @@
+.session-mode-picker-expanded {
+  width: min(880px, calc(100vw - 64px));
+}
+
+.session-mode-picker-expanded .session-mode-step.session-answer-options {
+  grid-template-columns: repeat(2, minmax(0, 430px));
+  gap: 18px;
+}
+
+.session-mode-picker-expanded .session-mode-step > button {
+  min-height: 430px;
+  gap: 18px;
+  padding: 30px;
+}
+
+.session-mode-picker-expanded .session-mode-heading {
+  gap: 15px;
+}
+
+.session-mode-picker-expanded .session-mode-heading > i {
+  flex-basis: 52px;
+  width: 52px;
+  height: 52px;
+  border-radius: 13px;
+  font-size: 24px;
+}
+
+.session-mode-picker-expanded .session-mode-heading small {
+  font-size: 8px;
+  letter-spacing: 0.85px;
+}
+
+.session-mode-picker-expanded .session-mode-heading b {
+  font-size: 18px;
+}
+
+.session-mode-picker-expanded .session-mode-step button > p {
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+
+
+.session-mode-picker-expanded .session-mode-step ul {
+  gap: 10px;
+}
+
+.session-mode-picker-expanded .session-mode-step li {
+  padding-left: 18px;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.session-mode-picker-expanded .session-mode-facts > span {
+  min-height: 62px;
+  padding: 11px 9px;
+}
+
+.session-mode-picker-expanded .session-mode-facts small {
+  font-size: 7px;
+}
+
+.session-mode-picker-expanded .session-mode-facts b,
+.session-mode-picker-expanded .session-mode-step em {
+  font-size: 9px;
+}
+
+.monitoring-confirm-picker {
+  width: min(760px, calc(100vw - 64px));
+}
+
+.monitoring-confirm-card {
+  display: grid;
+  gap: 22px;
+  padding: 32px;
+  border: 1px solid #43577d;
+  background: linear-gradient(150deg, #192641 0%, #10192c 72%);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.38);
+}
+
+.monitoring-confirm-card header {
+  display: grid;
+  gap: 14px;
+}
+
+.monitoring-confirm-card header .session-mode-heading > i {
+  flex-basis: 52px;
+  width: 52px;
+  height: 52px;
+  border-radius: 13px;
+  font-size: 24px;
+}
+
+.monitoring-confirm-card header .session-mode-heading small {
+  font-size: 8px;
+}
+
+.monitoring-confirm-card header .session-mode-heading h2 {
+  margin: 0;
+  color: #f1f3fb;
+  font-size: 20px;
+}
+
+.monitoring-confirm-card header > p {
+  max-width: 620px;
+  margin: 0;
+  color: #aebbd1;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.monitoring-confirm-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.monitoring-confirm-grid > section {
+  padding: 18px;
+  border: 1px solid #304263;
+  background: rgba(13, 22, 39, 0.62);
+}
+
+.monitoring-confirm-grid small,
+.monitoring-confirm-facts small {
+  color: #63dfc0;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.75px;
+}
+
+.monitoring-confirm-grid ul {
+  display: grid;
+  gap: 9px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.monitoring-confirm-grid li {
+  position: relative;
+  padding-left: 17px;
+  color: #c4cddd;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.monitoring-confirm-grid li::before {
+  position: absolute;
+  left: 0;
+  color: #8f7fff;
+  content: '✓';
+  font-weight: 800;
+}
+
+.monitoring-confirm-facts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  padding: 1px;
+  background: #31415f;
+}
+
+.monitoring-confirm-facts > span {
+  display: grid;
+  gap: 5px;
+  padding: 12px;
+  background: #10192c;
+}
+
+.monitoring-confirm-facts b {
+  color: #eef2fb;
+  font-size: 11px;
+}
+
+.monitoring-confirm-facts em {
+  color: #8292ae;
+  font-size: 8px;
+  font-style: normal;
+}
+
+.monitoring-confirm-card > aside {
+  padding: 13px 15px;
+  border-left: 3px solid #63dfc0;
+  background: rgba(99, 223, 192, 0.07);
+}
+
+.monitoring-confirm-card > aside b {
+  color: #dffaf1;
+  font-size: 11px;
+}
+
+.monitoring-confirm-card > aside p {
+  margin: 5px 0 0;
+  color: #9eacc5;
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+.monitoring-confirm-card > footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.monitoring-confirm-card > footer button {
+  min-height: 40px;
+  padding: 0 18px;
+  border: 1px solid #3a4d73;
+  background: #18243d;
+  color: #dce4f5;
+}
+
+.monitoring-confirm-card > footer button.primary {
+  border-color: #8f7fff;
+  background: #755cff;
+  color: #fff;
+  font-weight: 800;
+}
+
+@media (max-height: 700px) and (min-width: 761px) {
+  .monitoring-confirm-card {
+    gap: 13px;
+    padding: 22px 26px;
+  }
+
+  .monitoring-confirm-card header {
+    gap: 8px;
+  }
+
+  .monitoring-confirm-card header > p {
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .monitoring-confirm-grid > section {
+    padding: 13px 15px;
+  }
+
+  .monitoring-confirm-grid ul {
+    gap: 5px;
+    margin-top: 9px;
+  }
+
+  .monitoring-confirm-grid li {
+    font-size: 9px;
+    line-height: 1.35;
+  }
+
+  .monitoring-confirm-facts > span {
+    gap: 3px;
+    padding: 8px 10px;
+  }
+
+  .monitoring-confirm-card > aside {
+    padding: 9px 12px;
+  }
+
+  .monitoring-confirm-card > aside p {
+    margin-top: 3px;
+    font-size: 9px;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 760px) {
+  .session-mode-picker-expanded,
+  .monitoring-confirm-picker {
+    width: 100%;
+  }
+
+  .session-mode-picker-expanded .session-mode-step.session-answer-options,
+  .monitoring-confirm-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .session-mode-picker-expanded .session-mode-step > button {
+    min-height: 400px;
+    padding: 24px;
+  }
+
+  .monitoring-confirm-card {
+    padding: 22px;
+  }
+
+  .monitoring-confirm-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .monitoring-confirm-card > footer {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.monitor-activity-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.monitor-activity-options button { display: grid; gap: 8px; padding: 20px; border: 1px solid #43577d; border-radius: 6px; background: #17243b; color: #eef0ff; font: inherit; cursor: pointer; text-align: left; white-space: normal; }
+.monitor-activity-options button[aria-pressed="true"] { border-color: #927aff; background: #292348; }
+.monitor-activity-options span { color: #adb9d2; font-size: 12px; line-height: 1.5; }
+@media (max-width: 540px) { .monitor-activity-options { grid-template-columns: 1fr; } }
+
+.automation-wallet-notice { display: grid; gap: 10px; padding: 18px; margin-bottom: 16px; border: 1px solid #7560bc; border-radius: 8px; background: #24213c; }
+.automation-wallet-notice h3, .automation-wallet-notice p { margin: 0; }
+.automation-wallet-notice button { justify-self: start; padding: 10px 14px; }
+.automation-wallet-notice small { color: #afbad1; }
+.automation-wallet-setup { width: min(680px, calc(100vw - 32px)); max-height: calc(100dvh - 36px); overflow-y: auto; padding: 24px; }
+.automation-wallet-setup p { color: #b0bed4; line-height: 1.5; }
+.automation-wallet-setup code { display: block; overflow-wrap: anywhere; white-space: normal; font-size: 12px; }
+.automation-wallet-choices, .automation-wallet-funding { display: grid; gap: 12px; }
+.automation-wallet-setup button { padding: 10px 14px; }
+.automation-wallet-choices button { text-align: left; border: 1px solid #4a5d81; border-radius: 6px; background: #1b2942; color: #edf1ff; }
+.automation-wallet-choices button.primary { background: #7961ff; }
+.automation-wallet-choices code { margin-top: 6px; color: #b5c3dc; }
+.automation-wallet-funding .primary { margin-top: 6px; }
+.automation-wallet-transfer { width: min(620px, calc(100vw - 32px)); max-height: calc(100dvh - 36px); overflow-y: auto; }
+.automation-wallet-transfer code { overflow-wrap: anywhere; white-space: normal; }
+.automation-wallet-transfer .control-fields { grid-template-columns: minmax(0, 1fr); }
+.automation-wallet-transfer dd { margin-left: 0; }
+.automation-wallet-setup, .automation-wallet-transfer { font-size: 14px; }
+.automation-wallet-setup h2 { margin: 8px 0 12px; font-size: 24px; }
+.automation-wallet-setup h3 { margin: 6px 0; font-size: 16px; }
+.automation-wallet-setup p { margin: 8px 0; }
+.automation-wallet-setup button:not(.close), .automation-wallet-transfer button:not(.close) { border: 1px solid #43577d; border-radius: 6px; background: #1b2942; color: #edf1ff; font: inherit; cursor: pointer; }
+.automation-wallet-setup button.primary, .automation-wallet-transfer button.primary { border-color: #947cff; background: #7961ff; font-weight: 700; }
+.automation-wallet-setup button:disabled { opacity: .5; cursor: default; }
+
+/* Wallet setup shares the session wizard's surface, progress and choice cards. */
+.automation-wallet-setup, .automation-wallet-transfer { width: min(920px, calc(100vw - 32px)); padding: 28px; border: 1px solid #43577d; background: #111a2d; color: #e4e8f7; }
+.automation-wallet-setup > small, .automation-wallet-transfer > small { color: #b09aff; font-weight: 700; letter-spacing: .06em; }
+.automation-wallet-setup h2, .automation-wallet-transfer h2 { font-size: 26px; margin: 10px 0; }
+.automation-wallet-progress { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; list-style: none; padding: 0; margin: 22px 0; }
+.automation-wallet-progress li { border-top: 3px solid #303c59; padding-top: 12px; color: #9cabc5; font-size: 13px; display: flex; align-items: center; gap: 8px; }
+.automation-wallet-progress li.reached { border-color: #9179ff; color: #e7e0ff; }
+.automation-wallet-progress li span { display: grid; place-items: center; background: #25233f; border-radius: 50%; width: 24px; height: 24px; flex: 0 0 24px; }
+.automation-wallet-section-heading, .automation-wallet-card header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.automation-wallet-section-heading { margin-bottom: 12px; }
+.automation-wallet-choices { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+.automation-wallet-card { min-width: 0; padding: 20px; border: 1px solid #3b4968; background: #172138; border-radius: 7px; }
+.automation-wallet-card header small { color: #a7b5cf; font-size: 11px; }
+.automation-wallet-card > code { margin: 10px 0 16px; }
+.automation-wallet-card > button { width: 100%; margin-top: 16px; text-align: center; }
+.automation-wallet-new { border: 1px dashed #7764b4; background: #23203b; align-self: stretch; display: flex; flex-direction: column; align-items: start; }
+.automation-wallet-new > button { margin-top: auto; }
+.automation-wallet-plus { font-size: 26px; color: #b6a7ff; }
+.automation-wallet-new p { margin-bottom: 22px; }
+.automation-wallet-selected { border-color: #8f79e1; background: #24213d; margin-bottom: 16px; }
+.automation-wallet-selected .stored-address { margin: 12px 0; border: 0; padding: 0; background: transparent; }
+.automation-wallet-selected .stored-address code { margin-top: 6px; }
+.automation-balance-total { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; margin: 10px 0; }
+.automation-balance-total strong { font-size: 25px; line-height: 1.3; }
+.automation-balance-total > span { font-size: 13px; color: #b6c5de; }
+.automation-wallet-balance > small { display: block; margin-top: 10px; color: #97a9c7; font-size: 11px; }
+.automation-token-list { border-top: 1px solid #3b4563; padding-top: 10px; font-size: 13px; }
+.automation-token-list summary { cursor: pointer; color: #c7baff; }
+.automation-token-list > div { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; border-bottom: 1px solid #303b57; padding: 12px 0; }
+.automation-token-list > div > span:last-child { text-align: right; overflow-wrap: anywhere; }
+.automation-token-list code, .automation-token-list small { display: block; font-size: 10px; color: #9caecc; margin-top: 4px; overflow-wrap: anywhere; }
+.automation-wallet-setup .wallet-balance-pending, .automation-wallet-setup .automation-token-list p { font-size: 12px; }
+.automation-funding-panel { border: 1px solid #364563; border-radius: 7px; padding: 20px; background: #141f34; }
+.automation-funding-panel h3 small { font-size: 10px; color: #a89cce; margin-left: 8px; }
+.automation-funding-source { margin: 16px 0; padding: 14px; border-radius: 5px; background: #0f182b; }
+.automation-funding-source > small { color: #a7b8d2; font-size: 11px; }
+.automation-funding-source > code { margin-top: 6px; color: #a7b8d2; }
+.automation-funding-source .automation-balance-total strong { font-size: 20px; }
+.automation-amount { display: grid; gap: 8px; font-weight: 600; }
+.automation-amount input { min-width: 0; width: 100%; box-sizing: border-box; border: 1px solid #52678e; border-radius: 5px; background: #0d1729; color: #f0ecff; padding: 12px 14px; font: inherit; font-size: 20px; }
+.automation-amount-shortcuts { display: flex; align-items: center; gap: 8px; margin-top: 10px; }
+.automation-amount-shortcuts span { font-size: 12px; color: #a9b8ce; margin-right: auto; }
+.automation-amount-shortcuts button { padding: 6px 14px; }
+.automation-funding-panel > button { width: 100%; margin-top: 8px; }
+.automation-wallet-setup .automation-funding-hint { font-size: 12px; }
+.automation-wallet-continue { display: flex; gap: 20px; align-items: center; padding: 16px 0; }
+.automation-wallet-continue > div { flex: 1; }
+.automation-wallet-continue p { font-size: 12px; }
+.automation-wallet-continue > button { flex: 0 0 auto; }
+.automation-wallet-setup .session-plan-note { font-size: 12px; padding: 12px; line-height: 1.5; }
+.automation-wallet-transfer dl { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 14px; padding: 20px; border: 1px solid #7966bd; border-radius: 6px; background: #24213d; }
+.automation-wallet-transfer dt { color: #b9c2d7; }
+.automation-wallet-transfer dd { min-width: 0; }
+.automation-wallet-transfer button { padding: 10px 16px; }
+.session-plan-wizard .execution-options { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.session-plan-wizard .execution-options button { min-height: 180px; padding: 18px; }
+.session-plan-wizard .execution-options button b { font-size: 15px; }
+.session-plan-wizard .execution-options button span { font-size: 12px; line-height: 1.5; }
+.session-plan-wizard .execution-options button em { font-size: 10px; }
+.session-plan-wizard .execution-options button:disabled { opacity: .7; }
+@media (max-width: 680px) {
+  .automation-wallet-setup, .automation-wallet-transfer { padding: 20px; }
+  .automation-wallet-setup h2, .automation-wallet-transfer h2 { font-size: 23px; padding-right: 14px; }
+  .automation-wallet-choices, .session-plan-wizard .execution-options { grid-template-columns: minmax(0, 1fr); }
+  .session-plan-wizard .execution-options button { min-height: 130px; }
+  .automation-wallet-progress li { font-size: 11px; gap: 5px; }
+  .automation-wallet-progress li span { display: none; }
+  .automation-wallet-card, .automation-funding-panel { padding: 14px; }
+  .automation-wallet-continue { display: grid; gap: 6px; }
+  .automation-wallet-transfer dl { grid-template-columns: minmax(0, 1fr); gap: 6px; padding: 14px; }
+  .automation-wallet-transfer dd { margin-bottom: 10px; }
+}
+.automation-wallet-funding { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; gap: 18px; }
+.automation-wallet-funding .automation-wallet-continue { display: grid; gap: 8px; padding: 0; }
+.automation-wallet-funding .automation-wallet-card header { flex-wrap: wrap; }
+.automation-wallet-funding .automation-wallet-card header button { font-size: 12px; padding: 6px 10px; }
+.automation-wallet-funding .automation-wallet-card, .automation-wallet-funding .automation-funding-panel { padding: 16px; }
+.automation-wallet-funding .automation-funding-source { padding: 12px; margin: 12px 0; }
+.automation-wallet-funding .automation-funding-source .automation-balance-total { margin-bottom: 0; }
+@media (max-width: 680px) { .automation-wallet-funding { grid-template-columns: minmax(0, 1fr); } }
+.transfer-result-message, .transfer-signature code { overflow-wrap: anywhere; white-space: normal; }
+.transfer-receipt-state { border: 1px solid #826937; background: #29251d; border-radius: 6px; padding: 14px 16px; }
+.transfer-receipt-state p { margin: 6px 0 0; color: #c3c9d8; }
+.transfer-receipt-confirmed, .transfer-receipt-finalized { background: #142e2d; border-color: #328d81; }
+.transfer-signature { display: grid; gap: 8px; padding: 14px; border: 1px solid #3b4968; border-radius: 6px; }
+.transfer-signature code { font-size: 12px; }
+.transfer-signature a { color: #b8a7ff; }
+.transfer-receipt-state > b { display: flex; align-items: center; gap: 10px; }
+.transfer-confirmation-spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid #5a537a; border-top-color: #c7baff; border-radius: 50%; animation: transfer-confirmation-spin .85s linear infinite; flex: 0 0 auto; }
+@keyframes transfer-confirmation-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .transfer-confirmation-spinner { animation: none; border-top-color: #e7e0ff; } }
